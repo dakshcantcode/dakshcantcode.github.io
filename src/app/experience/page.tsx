@@ -1,23 +1,21 @@
+import type { Metadata } from "next";
 import { ThemedSection } from "@/components/shell/themed-section";
 import { TextMaskReveal } from "@/components/motion/text-mask-reveal";
 import { Reveal } from "@/components/motion/reveal";
-import { profile } from "@/lib/resume";
 
-export default function HomePage() {
+export const metadata: Metadata = {
+  title: "Experience",
+};
+
+export default function ExperiencePage() {
   return (
     <>
-      <ThemedSection className="flex min-h-svh items-center">
+      <ThemedSection className="flex min-h-[60svh] items-end pb-24 pt-32">
         <div className="mx-auto w-full max-w-5xl px-6">
           <TextMaskReveal
-            lines={[profile.name]}
+            lines={["Work &", "Selected Projects"]}
             className="text-5xl font-semibold tracking-tighter sm:text-7xl"
           />
-          <Reveal delay={0.3}>
-            <p className="mt-6 max-w-xl text-lg text-muted-foreground">
-              {profile.headline} Placeholder hero — full Home page arrives in
-              Phase 2.
-            </p>
-          </Reveal>
         </div>
       </ThemedSection>
 
@@ -25,11 +23,11 @@ export default function HomePage() {
         <div className="mx-auto max-w-5xl px-6">
           <Reveal>
             <p className="text-sm uppercase tracking-[0.2em] text-muted-foreground">
-              Dark band placeholder
+              Placeholder
             </p>
             <p className="mt-4 max-w-2xl text-2xl font-medium tracking-tight">
-              This section demonstrates the alternating monochrome theme.
-              Content lands in Phase 2.
+              The OptimaCore timeline and the scroll-jacked project showcase
+              land here in Phase 3.
             </p>
           </Reveal>
         </div>

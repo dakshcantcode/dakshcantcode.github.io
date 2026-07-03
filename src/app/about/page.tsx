@@ -1,35 +1,33 @@
+import type { Metadata } from "next";
 import { ThemedSection } from "@/components/shell/themed-section";
 import { TextMaskReveal } from "@/components/motion/text-mask-reveal";
 import { Reveal } from "@/components/motion/reveal";
-import { profile } from "@/lib/resume";
 
-export default function HomePage() {
+export const metadata: Metadata = {
+  title: "About",
+};
+
+export default function AboutPage() {
   return (
     <>
-      <ThemedSection className="flex min-h-svh items-center">
+      <ThemedSection className="flex min-h-[60svh] items-end pb-24 pt-32">
         <div className="mx-auto w-full max-w-5xl px-6">
           <TextMaskReveal
-            lines={[profile.name]}
+            lines={["Beyond", "the code"]}
             className="text-5xl font-semibold tracking-tighter sm:text-7xl"
           />
-          <Reveal delay={0.3}>
-            <p className="mt-6 max-w-xl text-lg text-muted-foreground">
-              {profile.headline} Placeholder hero — full Home page arrives in
-              Phase 2.
-            </p>
-          </Reveal>
         </div>
       </ThemedSection>
 
-      <ThemedSection theme="dark" className="py-32">
+      <ThemedSection theme="dark" className="py-32" id="contact">
         <div className="mx-auto max-w-5xl px-6">
           <Reveal>
             <p className="text-sm uppercase tracking-[0.2em] text-muted-foreground">
-              Dark band placeholder
+              Placeholder
             </p>
             <p className="mt-4 max-w-2xl text-2xl font-medium tracking-tight">
-              This section demonstrates the alternating monochrome theme.
-              Content lands in Phase 2.
+              The piano / soccer / gym narrative and the contact section land
+              here in Phase 4.
             </p>
           </Reveal>
         </div>
