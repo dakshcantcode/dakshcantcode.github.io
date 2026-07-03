@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { ThemedSection } from "@/components/shell/themed-section";
 import { TextMaskReveal } from "@/components/motion/text-mask-reveal";
 import { Reveal } from "@/components/motion/reveal";
+import { TempoEyebrow } from "@/components/shell/notation";
 import { WorkTimeline } from "@/components/experience/work-timeline";
 import { ProjectShowcase } from "@/components/experience/project-showcase";
 import { SkillsGrid } from "@/components/experience/skills-grid";
@@ -18,7 +19,7 @@ export default function ExperiencePage() {
         <div className="mx-auto w-full max-w-5xl px-6">
           <TextMaskReveal
             lines={["Work &", "Selected Projects"]}
-            className="text-5xl font-semibold tracking-tighter sm:text-7xl"
+            className="font-heading text-5xl font-semibold tracking-tight sm:text-7xl"
           />
           <Reveal delay={0.4}>
             <p className="mt-6 max-w-xl text-lg text-muted-foreground">
@@ -36,13 +37,11 @@ export default function ExperiencePage() {
       <ThemedSection className="py-32">
         <div className="mx-auto max-w-5xl px-6">
           <Reveal>
-            <p className="text-xs uppercase tracking-[0.3em] text-muted-foreground">
-              Selected projects
-            </p>
+            <TempoEyebrow tempo="Cadenza" label="Selected projects" />
           </Reveal>
           <TextMaskReveal
             lines={["Three builds,", "two trophies."]}
-            className="mt-4 text-4xl font-semibold tracking-tighter sm:text-6xl"
+            className="mt-4 font-heading text-4xl font-semibold tracking-tight sm:text-6xl"
           />
         </div>
       </ThemedSection>

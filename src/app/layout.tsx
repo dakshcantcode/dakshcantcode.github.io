@@ -1,13 +1,24 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Cormorant_Garamond, EB_Garamond, Geist_Mono } from "next/font/google";
 import { MotionProvider } from "@/components/shell/motion-provider";
 import { SiteNav } from "@/components/shell/site-nav";
 import { SiteFooter } from "@/components/shell/site-footer";
 import "./globals.css";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const cormorant = Cormorant_Garamond({
+  variable: "--font-cormorant",
   subsets: ["latin"],
+  weight: ["500", "600", "700"],
+  style: ["normal", "italic"],
+  display: "swap",
+});
+
+const ebGaramond = EB_Garamond({
+  variable: "--font-eb-garamond",
+  subsets: ["latin"],
+  weight: ["400", "500", "600"],
+  style: ["normal", "italic"],
+  display: "swap",
 });
 
 const geistMono = Geist_Mono({
@@ -21,7 +32,7 @@ export const metadata: Metadata = {
     template: "%s — Daksh Agrawal",
   },
   description:
-    "Computer Science @ University of Waterloo. Software engineering, machine learning, and 3D visualization — open to Summer 2026 internships & co-ops.",
+    "Computer Science @ University of Waterloo. AI Engineer @ Kissht for Summer 2026 — open to future co-op terms.",
   openGraph: {
     title: "Daksh Agrawal — Software Engineering & Machine Learning",
     description:
@@ -32,7 +43,7 @@ export const metadata: Metadata = {
     card: "summary",
     title: "Daksh Agrawal — Software Engineering & Machine Learning",
     description:
-      "Computer Science @ University of Waterloo. Open to Summer 2026 internships & co-ops.",
+      "Computer Science @ University of Waterloo. AI Engineer @ Kissht for Summer 2026 — open to future co-op terms.",
   },
 };
 
@@ -45,7 +56,7 @@ export default function RootLayout({
     <html
       lang="en"
       data-scroll-behavior="smooth"
-      className={`${geistSans.variable} ${geistMono.variable} h-full scroll-smooth antialiased`}
+      className={`${cormorant.variable} ${ebGaramond.variable} ${geistMono.variable} h-full scroll-smooth antialiased`}
     >
       <body className="flex min-h-full flex-col">
         <MotionProvider>

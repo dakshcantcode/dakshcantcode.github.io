@@ -9,7 +9,7 @@ export function ProjectPanel({ project }: { project: Project }) {
     <div className="relative">
       <span
         aria-hidden="true"
-        className="pointer-events-none absolute -top-20 right-0 select-none font-mono text-[8rem] leading-none text-foreground/[0.06] sm:text-[11rem]"
+        className="numeral pointer-events-none absolute -top-20 right-0 select-none text-[8rem] italic leading-none text-foreground/[0.06] sm:text-[11rem]"
       >
         {project.index}
       </span>
@@ -17,7 +17,7 @@ export function ProjectPanel({ project }: { project: Project }) {
       <Badge variant="secondary" className="font-normal">
         {project.award ?? "Deep Learning Project"}
       </Badge>
-      <h3 className="mt-6 text-4xl font-semibold tracking-tighter sm:text-5xl">
+      <h3 className="mt-6 text-4xl font-semibold tracking-tight sm:text-5xl">
         {project.name}
       </h3>
       <p className="mt-4 max-w-xl text-lg text-muted-foreground sm:text-xl">
@@ -30,7 +30,7 @@ export function ProjectPanel({ project }: { project: Project }) {
       <div className="mt-10 grid max-w-3xl grid-cols-1 gap-6 sm:grid-cols-3">
         {project.metrics.map((metric) => (
           <div key={metric.label}>
-            <p className="font-mono text-3xl font-semibold tracking-tight">
+            <p className="numeral text-4xl font-semibold">
               {metric.value}
             </p>
             <p className="mt-2 text-xs uppercase leading-relaxed tracking-widest text-muted-foreground">

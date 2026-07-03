@@ -3,16 +3,15 @@
 import { Badge } from "@/components/ui/badge";
 import { Reveal } from "@/components/motion/reveal";
 import { StaggerGroup, StaggerItem } from "@/components/motion/stagger";
+import { TempoEyebrow } from "@/components/shell/notation";
 import { skillGroups } from "@/lib/resume";
 
 export function SkillsGrid() {
   return (
     <div className="mx-auto max-w-5xl px-6 py-32">
       <Reveal>
-        <p className="text-xs uppercase tracking-[0.3em] text-muted-foreground">
-          Toolbox
-        </p>
-        <h2 className="mt-4 text-3xl font-semibold tracking-tight sm:text-4xl">
+        <TempoEyebrow tempo="Scherzo" label="Toolbox" />
+        <h2 className="mt-4 text-3xl font-semibold sm:text-4xl">
           Skills & technologies.
         </h2>
       </Reveal>

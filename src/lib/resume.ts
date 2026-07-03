@@ -69,6 +69,17 @@ export const profile: Profile = {
 
 export const experience: Experience[] = [
   {
+    company: "Kissht",
+    role: "AI Engineer",
+    dates: "May 2026 — Aug 2026",
+    location: "Current",
+    highlights: [
+      // Placeholder highlights — Daksh: replace with shipped outcomes as the term progresses.
+      "Building AI systems on Kissht's consumer-lending platform — scope and shipped outcomes to be filled in as the term progresses.",
+      "Working across the ML lifecycle: data pipelines, model iteration, and taking models to production.",
+    ],
+  },
+  {
     company: "OptimaCore Inc",
     role: "Software Engineer",
     dates: "Oct 2025 — Feb 2026",
@@ -192,5 +203,5 @@ export const contact = {
   email: "ds2agraw@uwaterloo.ca",
   linkedin: "https://www.linkedin.com/in/dakshagrawal1408/",
   github: "https://github.com/dakshcantcode",
-  cta: "Open to Summer 2026 internships & co-ops",
+  cta: "AI Engineer @ Kissht for Summer 2026 — open to future co-op terms",
 };

@@ -2,7 +2,9 @@
 
 import { Counter } from "@/components/motion/counter";
 import { Parallax } from "@/components/motion/parallax";
+import { Reveal } from "@/components/motion/reveal";
 import { StaggerGroup, StaggerItem } from "@/components/motion/stagger";
+import { DynamicsMark, TempoEyebrow } from "@/components/shell/notation";
 import { stats } from "@/lib/resume";
 
 export function StatsBand() {
@@ -14,7 +16,13 @@ export function StatsBand() {
       >
         <span />
       </Parallax>
-      <StaggerGroup className="relative mx-auto grid max-w-5xl grid-cols-2 gap-x-6 gap-y-16 px-6 py-36 lg:grid-cols-4">
+      <div className="mx-auto max-w-5xl px-6 pt-36">
+        <Reveal className="flex items-baseline gap-3">
+          <TempoEyebrow tempo="Fortissimo" label="By the numbers" />
+          <DynamicsMark>ff</DynamicsMark>
+        </Reveal>
+      </div>
+      <StaggerGroup className="relative mx-auto grid max-w-5xl grid-cols-2 gap-x-6 gap-y-16 px-6 pb-36 pt-16 lg:grid-cols-4">
         {stats.map((stat) => (
           <StaggerItem key={stat.label}>
             <Counter
@@ -22,7 +30,7 @@ export function StatsBand() {
               decimals={stat.decimals}
               prefix={stat.prefix}
               suffix={stat.suffix}
-              className="font-mono text-5xl font-semibold tracking-tight sm:text-6xl"
+              className="numeral text-6xl font-semibold sm:text-7xl"
             />
             <p className="mt-3 max-w-[16rem] text-xs uppercase leading-relaxed tracking-widest text-muted-foreground">
               {stat.label}

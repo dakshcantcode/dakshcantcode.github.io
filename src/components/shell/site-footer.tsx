@@ -1,8 +1,11 @@
-import Link from "next/link";
 import { Mail } from "lucide-react";
 import { GitHubIcon, LinkedInIcon } from "@/components/shell/brand-icons";
+import {
+  DynamicsMark,
+  FinalBarline,
+  StaffDivider,
+} from "@/components/shell/notation";
 import { Button } from "@/components/ui/button";
-import { Separator } from "@/components/ui/separator";
 import { contact, profile } from "@/lib/resume";
 
 export function SiteFooter() {
@@ -44,9 +47,15 @@ export function SiteFooter() {
             </Button>
           </div>
         </div>
-        <Separator className="my-6" />
-        <p className="text-xs text-muted-foreground">
-          © 2026 {profile.name}. {contact.cta}.
+        <div className="my-6 flex items-center gap-3">
+          <StaffDivider className="flex-1" />
+          <FinalBarline />
+        </div>
+        <p className="flex items-center gap-3 text-xs text-muted-foreground">
+          <span>
+            © 2026 {profile.name}. {contact.cta}.
+          </span>
+          <DynamicsMark className="text-sm">pp</DynamicsMark>
         </p>
       </div>
     </footer>

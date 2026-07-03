@@ -7,6 +7,7 @@ import { Badge } from "@/components/ui/badge";
 import { Card, CardContent } from "@/components/ui/card";
 import { Reveal } from "@/components/motion/reveal";
 import { StaggerGroup, StaggerItem } from "@/components/motion/stagger";
+import { TempoEyebrow } from "@/components/shell/notation";
 import { projects } from "@/lib/resume";
 
 export function FeaturedWork() {
@@ -14,10 +15,8 @@ export function FeaturedWork() {
     <div className="mx-auto max-w-5xl px-6 py-32">
       <Reveal className="flex flex-wrap items-end justify-between gap-4">
         <div>
-          <p className="text-xs uppercase tracking-[0.3em] text-muted-foreground">
-            Selected work
-          </p>
-          <h2 className="mt-4 text-3xl font-semibold tracking-tight sm:text-4xl">
+          <TempoEyebrow tempo="Da capo" label="Selected work" />
+          <h2 className="mt-4 text-3xl font-semibold sm:text-4xl">
             Award-winning builds.
           </h2>
         </div>
@@ -41,10 +40,10 @@ export function FeaturedWork() {
               <Link href="/experience" className="block h-full">
                 <Card className="flex h-full flex-col border-border/60 shadow-none transition-shadow hover:shadow-lg">
                   <CardContent className="flex flex-1 flex-col p-8">
-                    <span className="font-mono text-xs text-muted-foreground">
+                    <span className="numeral text-sm italic text-muted-foreground">
                       {project.index}
                     </span>
-                    <h3 className="mt-4 text-xl font-semibold tracking-tight">
+                    <h3 className="mt-4 text-2xl font-semibold">
                       {project.name}
                     </h3>
                     <p className="mt-2 flex-1 text-sm leading-relaxed text-muted-foreground">

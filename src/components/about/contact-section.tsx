@@ -11,6 +11,7 @@ import {
 } from "@/components/ui/tooltip";
 import { GitHubIcon, LinkedInIcon } from "@/components/shell/brand-icons";
 import { StaggerGroup, StaggerItem } from "@/components/motion/stagger";
+import { TempoEyebrow } from "@/components/shell/notation";
 import { contact } from "@/lib/resume";
 
 export function ContactSection() {
@@ -35,15 +36,13 @@ export function ContactSection() {
     <div className="flex min-h-svh items-center">
       <StaggerGroup className="mx-auto w-full max-w-5xl px-6 py-32 text-center">
         <StaggerItem>
-          <p className="text-xs uppercase tracking-[0.3em] text-muted-foreground">
-            Contact
-          </p>
+          <TempoEyebrow tempo="Fine" label="Contact" />
         </StaggerItem>
 
         <StaggerItem>
           <a
             href={`mailto:${contact.email}`}
-            className="group relative mt-8 inline-block break-all text-[clamp(1.5rem,5.5vw,4.25rem)] font-semibold tracking-tighter"
+            className="group relative mt-8 inline-block break-all font-heading text-[clamp(1.5rem,5.5vw,4.25rem)] font-semibold tracking-tight"
           >
             {contact.email}
             <span className="absolute -bottom-1 left-0 hidden h-0.5 w-full origin-left scale-x-0 bg-foreground transition-transform duration-500 ease-out group-hover:scale-x-100 sm:block" />
@@ -52,8 +51,8 @@ export function ContactSection() {
 
         <StaggerItem>
           <p className="mx-auto mt-8 max-w-md text-muted-foreground">
-            {contact.cta}. If you're hiring — or just want to talk shop about
-            ML, 3D, or shipping fast — my inbox is open.
+            {contact.cta}. If you want to talk shop about ML, 3D, or shipping
+            fast — my inbox is open.
           </p>
         </StaggerItem>
 

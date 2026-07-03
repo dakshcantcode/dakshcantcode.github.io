@@ -10,6 +10,7 @@ import {
 import { ChevronDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { TextMaskReveal } from "@/components/motion/text-mask-reveal";
+import { TempoEyebrow } from "@/components/shell/notation";
 import { profile } from "@/lib/resume";
 
 const ease = [0.22, 1, 0.36, 1] as const;
@@ -26,19 +27,21 @@ export function Hero() {
         style={reduceMotion ? undefined : { y, opacity }}
         className="mx-auto w-full max-w-5xl px-6 pt-12"
       >
-        <motion.p
+        <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.8, delay: 0.1 }}
-          className="text-xs uppercase tracking-[0.3em] text-muted-foreground"
         >
-          Software Engineering · Machine Learning
-        </motion.p>
+          <TempoEyebrow
+            tempo="Allegro con brio"
+            label="Software · Machine Learning"
+          />
+        </motion.div>
 
         <h1 className="mt-6">
           <TextMaskReveal
             lines={["Daksh", "Agrawal"]}
-            className="text-7xl font-semibold leading-[0.95] tracking-tighter sm:text-9xl"
+            className="text-8xl font-semibold leading-[0.9] tracking-tight sm:text-[10rem]"
           />
         </h1>
 
