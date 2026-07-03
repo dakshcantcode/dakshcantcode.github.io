@@ -22,6 +22,18 @@ export const metadata: Metadata = {
   },
   description:
     "Computer Science @ University of Waterloo. Software engineering, machine learning, and 3D visualization — open to Summer 2026 internships & co-ops.",
+  openGraph: {
+    title: "Daksh Agrawal — Software Engineering & Machine Learning",
+    description:
+      "Computer Science @ University of Waterloo. Award-winning hackathon builds, GraphQL systems, and deep learning projects.",
+    type: "website",
+  },
+  twitter: {
+    card: "summary",
+    title: "Daksh Agrawal — Software Engineering & Machine Learning",
+    description:
+      "Computer Science @ University of Waterloo. Open to Summer 2026 internships & co-ops.",
+  },
 };
 
 export default function RootLayout({
