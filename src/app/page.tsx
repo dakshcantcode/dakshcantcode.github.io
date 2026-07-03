@@ -1,38 +1,31 @@
 import { ThemedSection } from "@/components/shell/themed-section";
-import { TextMaskReveal } from "@/components/motion/text-mask-reveal";
-import { Reveal } from "@/components/motion/reveal";
-import { profile } from "@/lib/resume";
+import { Hero } from "@/components/home/hero";
+import { IntroStatement } from "@/components/home/intro-statement";
+import { FocusGrid } from "@/components/home/focus-grid";
+import { StatsBand } from "@/components/home/stats-band";
+import { FeaturedWork } from "@/components/home/featured-work";
+import { CtaBand } from "@/components/home/cta-band";
 
 export default function HomePage() {
   return (
     <>
-      <ThemedSection className="flex min-h-svh items-center">
-        <div className="mx-auto w-full max-w-5xl px-6">
-          <TextMaskReveal
-            lines={[profile.name]}
-            className="text-5xl font-semibold tracking-tighter sm:text-7xl"
-          />
-          <Reveal delay={0.3}>
-            <p className="mt-6 max-w-xl text-lg text-muted-foreground">
-              {profile.headline} Placeholder hero — full Home page arrives in
-              Phase 2.
-            </p>
-          </Reveal>
-        </div>
+      <ThemedSection>
+        <Hero />
       </ThemedSection>
-
-      <ThemedSection theme="dark" className="py-32">
-        <div className="mx-auto max-w-5xl px-6">
-          <Reveal>
-            <p className="text-sm uppercase tracking-[0.2em] text-muted-foreground">
-              Dark band placeholder
-            </p>
-            <p className="mt-4 max-w-2xl text-2xl font-medium tracking-tight">
-              This section demonstrates the alternating monochrome theme.
-              Content lands in Phase 2.
-            </p>
-          </Reveal>
-        </div>
+      <ThemedSection theme="dark">
+        <IntroStatement />
+      </ThemedSection>
+      <ThemedSection>
+        <FocusGrid />
+      </ThemedSection>
+      <ThemedSection theme="dark">
+        <StatsBand />
+      </ThemedSection>
+      <ThemedSection>
+        <FeaturedWork />
+      </ThemedSection>
+      <ThemedSection theme="dark">
+        <CtaBand />
       </ThemedSection>
     </>
   );
