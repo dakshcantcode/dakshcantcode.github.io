@@ -36,7 +36,7 @@ export function ContactSection() {
     <div className="flex min-h-svh items-center">
       <StaggerGroup className="mx-auto w-full max-w-5xl px-6 py-32 text-center">
         <StaggerItem>
-          <TempoEyebrow tempo="Fine" label="Contact" />
+          <TempoEyebrow tempo="Contact" />
         </StaggerItem>
 
         <StaggerItem>

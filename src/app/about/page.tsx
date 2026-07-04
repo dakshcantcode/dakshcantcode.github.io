@@ -35,8 +35,7 @@ export default function AboutPage() {
 
       <ThemedSection theme="dark">
         <NarrativeSection
-          tempo="Adagio"
-          label="Music"
+          tempo="Music"
           heading="Practice, every day."
           body="Years at the piano taught me what discipline actually is: showing up before motivation does, hearing the gap between good and precise, and closing it one repetition at a time. It's the same ear I bring to code — the difference between something that works and something that's right."
           visual={<PianoKeysVisual />}
@@ -46,8 +45,7 @@ export default function AboutPage() {
       <ThemedSection>
         <NarrativeSection
           flip
-          tempo="Vivace"
-          label="Sport"
+          tempo="Sport"
           heading="Strong body, clear mind."
           body="Soccer taught me to think in systems — space, timing, and trusting teammates to be where they said they'd be. The gym taught me progressive overload: small, measured increments that compound into something you couldn't lift a year ago. Both keep me sharp for the long build."
           visual={<RingsVisual />}
@@ -57,7 +55,7 @@ export default function AboutPage() {
       <ThemedSection theme="dark">
         <div className="mx-auto max-w-4xl px-6 py-40">
           <Reveal>
-            <TempoEyebrow tempo="Legato" label="The thread" />
+            <TempoEyebrow tempo="The thread" />
           </Reveal>
           <ScrubText
             text="Piano scales, soccer drills, progressive overload, late-night debugging — the thread through all of it is the same: fall in love with the process, measure honestly, and let consistency do the compounding."
@@ -69,7 +67,7 @@ export default function AboutPage() {
       <ThemedSection>
         <div className="mx-auto max-w-5xl px-6 py-32">
           <Reveal>
-            <TempoEyebrow tempo="Tempo presente" label="Now" />
+            <TempoEyebrow tempo="Now" />
             <p className="mt-6 max-w-2xl font-heading text-2xl font-medium sm:text-3xl">
               {profile.program} @ {profile.school},{" "}
               {profile.scholarship} — GPA {profile.gpa}. AI Engineer @ Kissht

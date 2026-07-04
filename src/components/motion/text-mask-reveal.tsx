@@ -31,11 +31,13 @@ export function TextMaskReveal({
       viewport={{ once: true }}
     >
       {lines.map((line, i) => (
-        <span key={i} className="block overflow-hidden">
+        // pb/-mb give serif descenders room inside the mask without
+        // changing line spacing (masks have no background, overlap is fine).
+        <span key={i} className="block overflow-hidden pb-[0.15em] -mb-[0.15em]">
           <motion.span
             className={cn("block", lineClassName)}
             variants={{
-              hidden: { y: "110%" },
+              hidden: { y: "120%" },
               show: {
                 y: "0%",
                 transition: {

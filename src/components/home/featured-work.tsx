@@ -15,7 +15,7 @@ export function FeaturedWork() {
     <div className="mx-auto max-w-5xl px-6 py-32">
       <Reveal className="flex flex-wrap items-end justify-between gap-4">
         <div>
-          <TempoEyebrow tempo="Da capo" label="Selected work" />
+          <TempoEyebrow tempo="Selected work" />
           <h2 className="mt-4 text-3xl font-semibold sm:text-4xl">
             Award-winning builds.
           </h2>

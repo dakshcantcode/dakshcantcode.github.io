@@ -18,7 +18,7 @@ export function FocusGrid() {
   return (
     <div className="mx-auto max-w-5xl px-6 py-32">
       <Reveal>
-        <TempoEyebrow tempo="Quattro voci" label="Focus areas" />
+        <TempoEyebrow tempo="Focus areas" />
         <h2 className="mt-4 max-w-md text-3xl font-semibold sm:text-4xl">
           Four disciplines, one goal: software that ships.
         </h2>

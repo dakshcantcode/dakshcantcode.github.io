@@ -73,7 +73,7 @@ export function WorkTimeline() {
   return (
     <div className="mx-auto max-w-5xl px-6 py-32">
       <Reveal>
-        <TempoEyebrow tempo="Con moto" label="Experience" />
+        <TempoEyebrow tempo="Experience" />
       </Reveal>
 
       {/* Keyboard selector — literal piano palette on the dark band. */}

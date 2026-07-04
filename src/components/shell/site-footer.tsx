@@ -1,10 +1,6 @@
 import { Mail } from "lucide-react";
 import { GitHubIcon, LinkedInIcon } from "@/components/shell/brand-icons";
-import {
-  DynamicsMark,
-  FinalBarline,
-  StaffDivider,
-} from "@/components/shell/notation";
+import { FinalBarline, StaffDivider } from "@/components/shell/notation";
 import { Button } from "@/components/ui/button";
 import { contact, profile } from "@/lib/resume";
 
@@ -51,11 +47,8 @@ export function SiteFooter() {
           <StaffDivider className="flex-1" />
           <FinalBarline />
         </div>
-        <p className="flex items-center gap-3 text-xs text-muted-foreground">
-          <span>
-            © 2026 {profile.name}. {contact.cta}.
-          </span>
-          <DynamicsMark className="text-sm">pp</DynamicsMark>
+        <p className="text-xs text-muted-foreground">
+          © 2026 {profile.name}. {contact.cta}.
         </p>
       </div>
     </footer>

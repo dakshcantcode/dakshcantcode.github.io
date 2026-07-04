@@ -11,6 +11,7 @@ import { ChevronDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { TextMaskReveal } from "@/components/motion/text-mask-reveal";
 import { TempoEyebrow } from "@/components/shell/notation";
+import { PianoSilhouetteBg } from "@/components/shell/piano-silhouette-bg";
 import { profile } from "@/lib/resume";
 
 const ease = [0.22, 1, 0.36, 1] as const;
@@ -23,19 +24,17 @@ export function Hero() {
 
   return (
     <div className="relative flex min-h-svh items-center overflow-hidden">
+      <PianoSilhouetteBg />
       <motion.div
         style={reduceMotion ? undefined : { y, opacity }}
-        className="mx-auto w-full max-w-5xl px-6 pt-12"
+        className="relative mx-auto w-full max-w-5xl px-6 pt-12"
       >
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.8, delay: 0.1 }}
         >
-          <TempoEyebrow
-            tempo="Allegro con brio"
-            label="Software · Machine Learning"
-          />
+          <TempoEyebrow tempo="Software · Machine Learning" />
         </motion.div>
 
         <h1 className="mt-6">

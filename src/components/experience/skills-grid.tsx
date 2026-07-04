@@ -3,7 +3,7 @@
 import { motion } from "framer-motion";
 import { Reveal } from "@/components/motion/reveal";
 import { PianoKey } from "@/components/piano/piano-key";
-import { DynamicsMark, TempoEyebrow } from "@/components/shell/notation";
+import { TempoEyebrow } from "@/components/shell/notation";
 import { skillGroups } from "@/lib/resume";
 import { cn } from "@/lib/utils";
 
@@ -32,10 +32,7 @@ export function SkillsGrid() {
   return (
     <div className="mx-auto max-w-5xl px-6 py-32">
       <Reveal>
-        <div className="flex items-baseline gap-3">
-          <TempoEyebrow tempo="Scherzo" label="Toolbox" />
-          <DynamicsMark>8va</DynamicsMark>
-        </div>
+        <TempoEyebrow tempo="Toolbox" />
         <h2 className="mt-4 text-3xl font-semibold sm:text-4xl">
           Skills & technologies.
         </h2>

@@ -37,7 +37,7 @@ export default function ExperiencePage() {
       <ThemedSection score className="py-32">
         <div className="mx-auto max-w-5xl px-6">
           <Reveal>
-            <TempoEyebrow tempo="Cadenza" label="Selected projects" />
+            <TempoEyebrow tempo="Selected projects" />
           </Reveal>
           <TextMaskReveal
             lines={["Three builds,", "two trophies."]}

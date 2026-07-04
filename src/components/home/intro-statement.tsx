@@ -9,7 +9,7 @@ export function IntroStatement() {
   return (
     <div className="mx-auto max-w-4xl px-6 py-40">
       <Reveal>
-        <TempoEyebrow tempo="Andante" label="In short" />
+        <TempoEyebrow tempo="In short" />
       </Reveal>
       <ScrubText
         text={profile.summary}

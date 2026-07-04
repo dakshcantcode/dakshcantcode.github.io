@@ -10,7 +10,7 @@ export function CtaBand() {
   return (
     <div className="mx-auto max-w-5xl px-6 py-40 text-center">
       <Reveal>
-        <TempoEyebrow tempo="Coda" className="mb-6" />
+        <TempoEyebrow tempo="Currently" className="mb-6" />
       </Reveal>
       <TextMaskReveal
         lines={["AI Engineer @ Kissht", "for Summer 2026."]}

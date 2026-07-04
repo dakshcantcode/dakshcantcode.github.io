@@ -4,7 +4,7 @@ import { Counter } from "@/components/motion/counter";
 import { Parallax } from "@/components/motion/parallax";
 import { Reveal } from "@/components/motion/reveal";
 import { StaggerGroup, StaggerItem } from "@/components/motion/stagger";
-import { DynamicsMark, TempoEyebrow } from "@/components/shell/notation";
+import { TempoEyebrow } from "@/components/shell/notation";
 import { stats } from "@/lib/resume";
 
 export function StatsBand() {
@@ -17,9 +17,8 @@ export function StatsBand() {
         <span />
       </Parallax>
       <div className="mx-auto max-w-5xl px-6 pt-36">
-        <Reveal className="flex items-baseline gap-3">
-          <TempoEyebrow tempo="Fortissimo" label="By the numbers" />
-          <DynamicsMark>ff</DynamicsMark>
+        <Reveal>
+          <TempoEyebrow tempo="By the numbers" />
         </Reveal>
       </div>
       <StaggerGroup className="relative mx-auto grid max-w-5xl grid-cols-2 gap-x-6 gap-y-16 px-6 pb-36 pt-16 lg:grid-cols-4">

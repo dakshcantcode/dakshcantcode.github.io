@@ -7,7 +7,7 @@ import { cn } from "@/lib/utils";
 
 type NarrativeSectionProps = {
   tempo: string;
-  label: string;
+  label?: string;
   heading: string;
   body: string;
   flip?: boolean;

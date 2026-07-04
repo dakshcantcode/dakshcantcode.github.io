@@ -9,7 +9,7 @@ import { CtaBand } from "@/components/home/cta-band";
 export default function HomePage() {
   return (
     <>
-      <ThemedSection score>
+      <ThemedSection>
         <Hero />
       </ThemedSection>
       <ThemedSection theme="dark">
