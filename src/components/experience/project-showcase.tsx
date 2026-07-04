@@ -22,6 +22,45 @@ import { ProjectPanel } from "./project-panel";
 const KEY_FREQS = [261.63, 329.63, 392.0];
 
 /**
+ * The nav's sliding-note idea, reused as a progress indicator: a notehead
+ * springs between three ascending staff positions as the active project
+ * changes (C -> E -> G, matching the key pitches).
+ */
+function StaffProgress({ active, count }: { active: number; count: number }) {
+  const STEP_X = 56;
+  const width = STEP_X * count + 24;
+  return (
+    <div
+      aria-hidden="true"
+      className="relative mx-auto mb-6 hidden h-9 sm:block"
+      style={{ width }}
+    >
+      <div className="absolute inset-x-0 top-1/2 -translate-y-1/2 space-y-[6px]">
+        {[0, 1, 2, 3, 4].map((i) => (
+          <div key={i} className="h-px w-full bg-foreground/15" />
+        ))}
+      </div>
+      {Array.from({ length: count }).map((_, i) => (
+        <span
+          key={i}
+          className="absolute size-2 -rotate-[20deg] scale-x-125 rounded-full bg-foreground/15"
+          style={{ left: 12 + i * STEP_X, top: 20 - i * 6 }}
+        />
+      ))}
+      <motion.span
+        animate={{ x: active * STEP_X, y: -active * 6 }}
+        transition={{ type: "spring", stiffness: 400, damping: 40 }}
+        className="absolute"
+        style={{ left: 12, top: 20 }}
+      >
+        <span className="block size-2 -rotate-[20deg] scale-x-125 rounded-full bg-foreground" />
+        <span className="absolute -top-3 right-0 h-3 w-px bg-foreground" />
+      </motion.span>
+    </div>
+  );
+}
+
+/**
  * Scroll glissando: the section pins for 300vh; scrolling presses the three
  * giant piano keys in sequence, and the active key's project panel swaps in
  * above the keyboard. Vertical stack below md and for reduced motion.
@@ -109,6 +148,7 @@ export function ProjectShowcase() {
         </div>
 
         <div className="mx-auto w-full max-w-5xl px-6">
+          <StaffProgress active={active} count={projects.length} />
           <div className="relative flex h-36 items-stretch gap-1 sm:h-44">
             {/* Literal piano palette (not band tokens): a real keyboard
                 emerging from the black band reads instantly as a piano. */}
