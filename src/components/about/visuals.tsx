@@ -55,17 +55,3 @@ export function PianoKeysVisual() {
   );
 }
 
-export function RingsVisual() {
-  return (
-    <div aria-hidden="true" className="relative mx-auto size-64">
-      {[0, 12.5, 25, 37.5].map((inset) => (
-        <div
-          key={inset}
-          className="absolute rounded-full border border-foreground/15"
-          style={{ inset: `${inset}%` }}
-        />
-      ))}
-      <div className="absolute left-1/2 top-[6%] size-3 -translate-x-1/2 rounded-full bg-foreground/60" />
-    </div>
-  );
-}
