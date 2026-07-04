@@ -1,16 +1,41 @@
 "use client";
 
-import { Badge } from "@/components/ui/badge";
+import { motion } from "framer-motion";
 import { Reveal } from "@/components/motion/reveal";
-import { StaggerGroup, StaggerItem } from "@/components/motion/stagger";
-import { TempoEyebrow } from "@/components/shell/notation";
+import { PianoKey } from "@/components/piano/piano-key";
+import { DynamicsMark, TempoEyebrow } from "@/components/shell/notation";
 import { skillGroups } from "@/lib/resume";
+import { cn } from "@/lib/utils";
 
+// Real octave layout: which positions are black keys (C# D# F# G# A#).
+const OCTAVE_PATTERN = [
+  "white",
+  "black",
+  "white",
+  "black",
+  "white",
+  "white",
+  "black",
+  "white",
+  "black",
+  "white",
+  "black",
+  "white",
+] as const;
+
+/**
+ * Each skill group is an "octave": skills map onto white and black keys,
+ * and scrolling the row into view plays an ascending scale run — keys
+ * press and release left to right via the PianoKey ripple variant.
+ */
 export function SkillsGrid() {
   return (
     <div className="mx-auto max-w-5xl px-6 py-32">
       <Reveal>
-        <TempoEyebrow tempo="Scherzo" label="Toolbox" />
+        <div className="flex items-baseline gap-3">
+          <TempoEyebrow tempo="Scherzo" label="Toolbox" />
+          <DynamicsMark>8va</DynamicsMark>
+        </div>
         <h2 className="mt-4 text-3xl font-semibold sm:text-4xl">
           Skills & technologies.
         </h2>
@@ -22,18 +47,46 @@ export function SkillsGrid() {
             key={group.label}
             className="grid grid-cols-1 gap-4 border-t border-border py-8 md:grid-cols-[220px_1fr]"
           >
-            <p className="text-sm font-medium text-muted-foreground">
+            <p className="font-heading text-lg italic text-muted-foreground">
               {group.label}
             </p>
-            <StaggerGroup stagger={0.03} className="flex flex-wrap gap-2">
-              {group.skills.map((skill) => (
-                <StaggerItem key={skill}>
-                  <Badge variant="outline" className="font-normal">
-                    {skill}
-                  </Badge>
-                </StaggerItem>
-              ))}
-            </StaggerGroup>
+            <motion.div
+              initial="rest"
+              whileInView="played"
+              viewport={{ once: true, margin: "-15% 0px" }}
+              variants={{
+                rest: {},
+                played: { transition: { staggerChildren: 0.055 } },
+              }}
+              className="flex items-start overflow-x-auto pb-2"
+            >
+              {group.skills.map((skill, i) => {
+                const variant = OCTAVE_PATTERN[i % OCTAVE_PATTERN.length];
+                return (
+                  <PianoKey
+                    key={skill}
+                    variant={variant}
+                    interactive={false}
+                    ripple
+                    className={cn(
+                      "shrink-0 p-2",
+                      variant === "white"
+                        ? "h-28 w-24"
+                        : "-mx-3 h-[4.5rem] w-16",
+                    )}
+                  >
+                    <span
+                      className={cn(
+                        "block text-[11px] leading-tight",
+                        variant === "black" && "text-background",
+                      )}
+                    >
+                      {skill}
+                    </span>
+                  </PianoKey>
+                );
+              })}
+            </motion.div>
           </div>
         ))}
       </div>

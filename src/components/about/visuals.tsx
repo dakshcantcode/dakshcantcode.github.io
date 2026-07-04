@@ -1,25 +1,54 @@
+"use client";
+
+import { useEffect, useState } from "react";
+import { useReducedMotion } from "framer-motion";
+import { PianoKey } from "@/components/piano/piano-key";
+
+// Black keys at the classic octave joints (after C, D, F, G, A).
+const BLACK_JOINTS = [0, 1, 3, 4, 5];
+const WHITE_KEYS = 7;
+// A gentle C-major arpeggio, played on the white keys in a loop.
+const ARPEGGIO: number[] = [0, 2, 4, 6, 4, 2];
+
 /**
- * Abstract monochrome visuals for the narrative bands. Pure divs —
- * they inherit the band's theme via foreground-opacity tokens.
+ * Decorative one-octave keyboard that idly plays an arpeggio — one key
+ * pressing at a time. Holds still under reduced motion. Literal piano
+ * palette: it sits on the dark About band.
  */
-
-const keyHeights = [55, 80, 40, 95, 65, 100, 50, 85, 60, 90, 45, 70];
-
 export function PianoKeysVisual() {
+  const reduceMotion = useReducedMotion();
+  const [active, setActive] = useState(-1);
+
+  useEffect(() => {
+    if (reduceMotion) return;
+    let step = 0;
+    const id = setInterval(() => {
+      setActive(ARPEGGIO[step % ARPEGGIO.length]);
+      step += 1;
+    }, 800);
+    return () => clearInterval(id);
+  }, [reduceMotion]);
+
   return (
     <div
       aria-hidden="true"
-      className="flex h-64 items-end justify-center gap-1.5"
+      className="relative mx-auto flex h-56 w-full max-w-sm items-stretch gap-1"
     >
-      {keyHeights.map((height, i) => (
-        <div
+      {Array.from({ length: WHITE_KEYS }).map((_, i) => (
+        <PianoKey
           key={i}
-          className={
-            i === 5
-              ? "w-5 rounded-t-sm bg-foreground/50 sm:w-6"
-              : "w-5 rounded-t-sm bg-foreground/10 sm:w-6"
-          }
-          style={{ height: `${height}%` }}
+          interactive={false}
+          pressed={active === i}
+          className="min-w-0 flex-1 border-neutral-300 bg-white shadow-[0_2px_0_0_#d4d4d4]"
+        />
+      ))}
+      {BLACK_JOINTS.map((i) => (
+        <PianoKey
+          key={`black-${i}`}
+          variant="black"
+          interactive={false}
+          className="absolute top-0 h-[58%] w-7 border border-t-0 border-neutral-800 bg-neutral-950"
+          style={{ left: `calc(${((i + 1) * 100) / WHITE_KEYS}% - 0.875rem)` }}
         />
       ))}
     </div>
