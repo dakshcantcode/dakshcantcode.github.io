@@ -133,6 +133,9 @@
   h4 {
     @apply font-heading;
   }
+  ::selection {
+    @apply bg-foreground text-background;
+  }
 }
 
 /* Engraved-score numerals: Garamonds default to oldstyle proportional

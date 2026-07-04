@@ -9,6 +9,7 @@ import {
 } from "framer-motion";
 import { ChevronDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { Lift } from "@/components/motion/lift";
 import { TextMaskReveal } from "@/components/motion/text-mask-reveal";
 import { TempoEyebrow } from "@/components/shell/notation";
 import { PianoSilhouetteBg } from "@/components/shell/piano-silhouette-bg";
@@ -59,12 +60,16 @@ export function Hero() {
           transition={{ duration: 0.7, delay: 0.75, ease }}
           className="mt-10 flex flex-wrap gap-3"
         >
-          <Button asChild size="lg">
-            <Link href="/experience">View work</Link>
-          </Button>
-          <Button asChild size="lg" variant="outline">
-            <Link href="/about#contact">Get in touch</Link>
-          </Button>
+          <Lift>
+            <Button asChild size="lg">
+              <Link href="/experience">View work</Link>
+            </Button>
+          </Lift>
+          <Lift>
+            <Button asChild size="lg" variant="outline">
+              <Link href="/about#contact">Get in touch</Link>
+            </Button>
+          </Lift>
         </motion.div>
       </motion.div>
 

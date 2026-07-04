@@ -10,6 +10,7 @@ import {
   TooltipTrigger,
 } from "@/components/ui/tooltip";
 import { GitHubIcon, LinkedInIcon } from "@/components/shell/brand-icons";
+import { Lift } from "@/components/motion/lift";
 import { StaggerGroup, StaggerItem } from "@/components/motion/stagger";
 import { TempoEyebrow } from "@/components/shell/notation";
 import { contact } from "@/lib/resume";
@@ -58,32 +59,38 @@ export function ContactSection() {
 
         <StaggerItem>
           <div className="mt-12 flex flex-wrap items-center justify-center gap-3">
-            <Button asChild variant="outline">
-              <a href={`mailto:${contact.email}`}>
-                <Mail className="size-4" />
-                Email
-              </a>
-            </Button>
-            <Button asChild variant="outline">
-              <a
-                href={contact.linkedin}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <LinkedInIcon />
-                LinkedIn
-              </a>
-            </Button>
-            <Button asChild variant="outline">
-              <a
-                href={contact.github}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <GitHubIcon />
-                GitHub
-              </a>
-            </Button>
+            <Lift>
+              <Button asChild variant="outline">
+                <a href={`mailto:${contact.email}`}>
+                  <Mail className="size-4" />
+                  Email
+                </a>
+              </Button>
+            </Lift>
+            <Lift>
+              <Button asChild variant="outline">
+                <a
+                  href={contact.linkedin}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <LinkedInIcon />
+                  LinkedIn
+                </a>
+              </Button>
+            </Lift>
+            <Lift>
+              <Button asChild variant="outline">
+                <a
+                  href={contact.github}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <GitHubIcon />
+                  GitHub
+                </a>
+              </Button>
+            </Lift>
             <TooltipProvider>
               <Tooltip>
                 <TooltipTrigger asChild>
