@@ -34,7 +34,7 @@ export default function ExperiencePage() {
         <WorkTimeline />
       </ThemedSection>
 
-      <ThemedSection className="py-32">
+      <ThemedSection score className="py-32">
         <div className="mx-auto max-w-5xl px-6">
           <Reveal>
             <TempoEyebrow tempo="Cadenza" label="Selected projects" />
@@ -54,7 +54,7 @@ export default function ExperiencePage() {
         <SkillsGrid />
       </ThemedSection>
 
-      <ThemedSection theme="dark">
+      <ThemedSection theme="dark" score>
         <CtaBand />
       </ThemedSection>
     </>

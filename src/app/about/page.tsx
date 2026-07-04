@@ -79,7 +79,7 @@ export default function AboutPage() {
         </div>
       </ThemedSection>
 
-      <ThemedSection theme="dark" id="contact">
+      <ThemedSection theme="dark" id="contact" score>
         <ContactSection />
       </ThemedSection>
     </>

@@ -21,6 +21,27 @@ export function GitHubIcon({ className }: BrandIconProps) {
   );
 }
 
+/**
+ * Stylized treble clef, stroke-based. Structural music glyphs must be SVG —
+ * Unicode 𝄞 falls back to inconsistent system fonts (tofu on Android).
+ */
+export function TrebleClefIcon({ className }: BrandIconProps) {
+  return (
+    <svg
+      viewBox="0 0 24 32"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.4"
+      strokeLinecap="round"
+      aria-hidden="true"
+      className={cn("h-6 w-auto", className)}
+    >
+      <path d="M12.5 2.5c2.6 2.2 3.4 4.6 1.3 7.2l-4.6 5.6c-2.3 2.8-1.6 6.3 1.1 7.7 2.5 1.3 5.4.4 6.4-1.9.9-2.1.1-4.5-2-5.4-1.5-.6-3-.3-4 .6" />
+      <path d="M12.5 2.5c-.9 3.9-1.1 7.8-.6 11.7.4 3.4 1.1 6.7.9 10.1-.1 2-1.5 3.3-3.2 2.9-1.3-.3-2.1-1.6-1.8-2.8" />
+    </svg>
+  );
+}
+
 export function LinkedInIcon({ className }: BrandIconProps) {
   return (
     <svg
