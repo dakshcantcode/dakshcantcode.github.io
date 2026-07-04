@@ -3,17 +3,26 @@ import { ThemedSection } from "@/components/shell/themed-section";
 import { TextMaskReveal } from "@/components/motion/text-mask-reveal";
 import { Reveal } from "@/components/motion/reveal";
 import { ScrubText } from "@/components/motion/scrub-text";
+import { StaggerGroup, StaggerItem } from "@/components/motion/stagger";
 import { TempoEyebrow } from "@/components/shell/notation";
-import { NarrativeSection } from "@/components/about/narrative-section";
-import { PianoKeysVisual, RingsVisual } from "@/components/about/visuals";
+import { GuitarVisual } from "@/components/about/guitar-visual";
+import { PianoKeysVisual } from "@/components/about/visuals";
 import { ContactSection } from "@/components/about/contact-section";
+import { NowPlaying } from "@/components/about/now-playing";
 import { profile } from "@/lib/resume";
 
 export const metadata: Metadata = {
   title: "About",
   description:
-    "The discipline behind the code — piano, soccer, and the gym. Daksh Agrawal, CS @ University of Waterloo, AI Engineer @ Kissht for Summer 2026.",
+    "Game backends and machine learning by day; nine years of piano, plus guitar and vocals, after hours. Daksh Agrawal — CS @ Waterloo, AI Engineer @ Kissht.",
 };
+
+const facts = [
+  { value: "09", label: "years of piano" },
+  { value: "03", label: "instruments — piano, guitar, vocals" },
+  { value: "02", label: "crafts — game backends & ML" },
+  { value: "∞", label: "reps — soccer, gym, scales" },
+];
 
 export default function AboutPage() {
   return (
@@ -26,42 +35,66 @@ export default function AboutPage() {
           />
           <Reveal delay={0.4}>
             <p className="mt-6 max-w-xl text-lg text-muted-foreground">
-              The habits that make the engineering possible — practiced daily,
-              measured honestly.
+              Game backends and machine learning by day. Nine years of piano —
+              plus guitar and vocals — after hours.
             </p>
           </Reveal>
         </div>
       </ThemedSection>
 
       <ThemedSection theme="dark">
-        <NarrativeSection
-          tempo="Music"
-          heading="Practice, every day."
-          body="Years at the piano taught me what discipline actually is: showing up before motivation does, hearing the gap between good and precise, and closing it one repetition at a time. It's the same ear I bring to code — the difference between something that works and something that's right."
-          visual={<PianoKeysVisual />}
-        />
+        <div className="mx-auto max-w-5xl px-6 py-32">
+          <Reveal>
+            <TempoEyebrow tempo="Instruments" />
+            <h2 className="mt-4 max-w-lg text-3xl font-semibold sm:text-4xl">
+              Engineer by trade, musician by wiring.
+            </h2>
+          </Reveal>
+
+          <Reveal className="mt-16">
+            <GuitarVisual className="w-full text-foreground" />
+            <p className="mt-3 text-right text-xs italic text-muted-foreground">
+              go on — strum it
+            </p>
+          </Reveal>
+
+          <StaggerGroup className="mt-16 grid grid-cols-2 gap-x-6 gap-y-10 lg:grid-cols-4">
+            {facts.map((fact) => (
+              <StaggerItem key={fact.label}>
+                <p className="numeral text-5xl font-semibold">{fact.value}</p>
+                <p className="mt-2 text-xs uppercase leading-relaxed tracking-widest text-muted-foreground">
+                  {fact.label}
+                </p>
+              </StaggerItem>
+            ))}
+          </StaggerGroup>
+
+          <div className="mt-24 grid grid-cols-1 items-center gap-12 md:grid-cols-2">
+            <PianoKeysVisual />
+            <Reveal x={24} y={0}>
+              <p className="font-heading text-2xl font-medium leading-snug sm:text-3xl">
+                Piano came first — nine years of scales before the first line
+                of code. The discipline transferred.
+              </p>
+            </Reveal>
+          </div>
+        </div>
       </ThemedSection>
 
       <ThemedSection>
-        <NarrativeSection
-          flip
-          tempo="Sport"
-          heading="Strong body, clear mind."
-          body="Soccer taught me to think in systems — space, timing, and trusting teammates to be where they said they'd be. The gym taught me progressive overload: small, measured increments that compound into something you couldn't lift a year ago. Both keep me sharp for the long build."
-          visual={<RingsVisual />}
-        />
-      </ThemedSection>
-
-      <ThemedSection theme="dark">
-        <div className="mx-auto max-w-4xl px-6 py-40">
+        <div className="mx-auto max-w-4xl px-6 py-36">
           <Reveal>
             <TempoEyebrow tempo="The thread" />
           </Reveal>
           <ScrubText
-            text="Piano scales, soccer drills, progressive overload, late-night debugging — the thread through all of it is the same: fall in love with the process, measure honestly, and let consistency do the compounding."
+            text="Backends for games, models for production, songs for the room — same craft: patterns, timing, and honest practice."
             className="mt-8 font-heading text-3xl font-medium leading-snug sm:text-4xl"
           />
         </div>
+      </ThemedSection>
+
+      <ThemedSection theme="dark">
+        <NowPlaying />
       </ThemedSection>
 
       <ThemedSection>
