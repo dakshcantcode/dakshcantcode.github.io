@@ -108,21 +108,24 @@ export function PianoSilhouetteBg({
           onActivate?.();
         }
       }}
-      className="absolute inset-x-0 bottom-0 h-[30svh] cursor-pointer select-none overflow-hidden font-mono text-[10px] outline-none [mask-image:linear-gradient(to_top,black_55%,transparent)] focus-visible:ring-2 focus-visible:ring-foreground/30 sm:h-[42svh]"
+      className="absolute inset-x-0 bottom-0 h-[38svh] cursor-pointer select-none overflow-hidden font-mono text-[10px] outline-none [mask-image:linear-gradient(to_top,black_62%,transparent)] focus-visible:ring-2 focus-visible:ring-foreground/30 sm:h-[54svh]"
     >
       <motion.div
         style={{ y: reduceMotion ? 0 : parallaxY }}
-        className="relative h-full w-full"
+        className="relative h-full w-full [perspective:900px]"
       >
         <motion.div
           animate={reduceMotion ? undefined : { y: [0, -5, 0] }}
           transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }}
-          className="relative flex h-full w-full"
+          className="relative flex h-full w-full origin-bottom [transform:rotateX(38deg)] [transform-style:preserve-3d]"
         >
+          {/* Fallboard gap at the far end + depth shading into the distance */}
+          <div className="pointer-events-none absolute inset-x-0 top-0 z-10 h-1.5 bg-foreground/15" />
+          <div className="pointer-events-none absolute inset-0 z-10 bg-gradient-to-b from-foreground/[0.07] via-transparent to-transparent" />
           {Array.from({ length: WHITE_KEYS }).map((_, i) => (
             <div
               key={i}
-              className="relative min-w-0 flex-1 overflow-hidden rounded-t-md border-x border-t border-foreground/[0.08] bg-gradient-to-b from-transparent via-transparent to-foreground/[0.04] text-center leading-[1.6] text-foreground/[0.05] shadow-[inset_-1px_0_0_rgba(0,0,0,0.025)] transition-[transform,background-color] duration-200 ease-out hover:translate-y-[3px] hover:bg-foreground/[0.025]"
+              className="relative min-w-0 flex-1 overflow-hidden rounded-t-md border-x border-t border-foreground/[0.11] bg-gradient-to-b from-transparent via-transparent to-foreground/[0.05] text-center leading-[1.6] text-foreground/[0.06] shadow-[inset_-1px_0_0_rgba(0,0,0,0.04)] transition-[transform,background-color] duration-200 ease-out hover:translate-y-[3px] hover:bg-foreground/[0.03]"
             >
               <DigitStack value={OCTAVE_FREQS[i % 7]} rows={ROWS} />
               {/* Key-front lip */}
@@ -135,7 +138,7 @@ export function PianoSilhouetteBg({
               return (
                 <div
                   key={`${octave}-${freq}`}
-                  className="absolute top-0 h-[62%] w-[4.5%] overflow-hidden rounded-b-md bg-gradient-to-b from-foreground/[0.13] via-foreground/[0.07] to-foreground/[0.10] text-center leading-[1.15] text-foreground/[0.09] shadow-lg shadow-black/10 transition-transform duration-200 ease-out hover:translate-y-[3px]"
+                  className="absolute top-0 h-[62%] w-[4.5%] overflow-hidden rounded-b-md bg-gradient-to-b from-foreground/[0.18] via-foreground/[0.10] to-foreground/[0.14] text-center leading-[1.15] text-foreground/[0.10] shadow-lg shadow-black/20 transition-transform duration-200 ease-out hover:translate-y-[3px]"
                   style={{
                     left: `calc(${(boundary * 100) / WHITE_KEYS}% - 2.25%)`,
                   }}
