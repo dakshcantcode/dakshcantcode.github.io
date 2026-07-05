@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useRef, useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import {
@@ -10,7 +10,6 @@ import {
   useMotionValue,
   useReducedMotion,
   useScroll,
-  useSpring,
   useTransform,
 } from "framer-motion";
 import { ChevronDown } from "lucide-react";
@@ -19,6 +18,7 @@ import { Lift } from "@/components/motion/lift";
 import { TextMaskReveal } from "@/components/motion/text-mask-reveal";
 import { TempoEyebrow } from "@/components/shell/notation";
 import { PianoSilhouetteBg } from "@/components/shell/piano-silhouette-bg";
+import { MoonlightToggle } from "@/components/stage/moonlight-toggle";
 import { profile } from "@/lib/resume";
 
 const ease = [0.22, 1, 0.36, 1] as const;
@@ -26,61 +26,35 @@ const ease = [0.22, 1, 0.36, 1] as const;
 export function Hero() {
   const router = useRouter();
   const reduceMotion = useReducedMotion();
-  const rootRef = useRef<HTMLDivElement>(null);
   const { scrollY } = useScroll();
   const y = useTransform(scrollY, [0, 700], [0, 160]);
   const opacity = useTransform(scrollY, [0, 400], [1, 0]);
 
-  // Hover-and-scroll zoom into the stage: 0 = resting, 1 = fullscreen.
+  // Click-to-enter zoom into the stage: 0 = resting, 1 = fullscreen.
   const zoom = useMotionValue(0);
-  const zoomSpring = useSpring(zoom, { stiffness: 140, damping: 26 });
-  const pianoScale = useTransform(zoomSpring, [0, 1], [1, 7]);
-  const pianoZ = useTransform(zoomSpring, (v) => (v > 0.02 ? 30 : 0));
-  const contentFade = useTransform(zoomSpring, [0, 0.4], [1, 0]);
-  const overlayOpacity = useTransform(zoomSpring, [0.55, 1], [0, 1]);
-  const hoveredRef = useRef(false);
+  const pianoScale = useTransform(zoom, [0, 1], [1, 7]);
+  const pianoZ = useTransform(zoom, (v) => (v > 0.02 ? 30 : 0));
+  const contentFade = useTransform(zoom, [0, 0.4], [1, 0]);
+  const overlayOpacity = useTransform(zoom, [0.55, 1], [0, 1]);
   const navigatingRef = useRef(false);
   const [hintVisible, setHintVisible] = useState(false);
 
-  const enterStage = (viaClick: boolean) => {
+  const enterStage = () => {
     if (navigatingRef.current) return;
     navigatingRef.current = true;
     try {
-      sessionStorage.setItem("stage-entry", viaClick ? "click" : "zoom");
+      sessionStorage.setItem("stage-entry", "click");
     } catch {}
-    if (viaClick) {
-      animate(zoom, 1, { duration: 0.7, ease });
+    if (reduceMotion) {
+      router.push("/stage");
+      return;
     }
-    setTimeout(() => router.push("/stage"), viaClick ? 720 : 300);
+    animate(zoom, 1, { duration: 0.7, ease });
+    setTimeout(() => router.push("/stage"), 720);
   };
 
-  useEffect(() => {
-    const el = rootRef.current;
-    if (!el || reduceMotion) return;
-    const onWheel = (e: WheelEvent) => {
-      const z = zoom.get();
-      // Engage only while hovering the piano (or mid-zoom).
-      if (!hoveredRef.current && z <= 0) return;
-      if (z <= 0 && e.deltaY < 0) return;
-      if (navigatingRef.current) {
-        e.preventDefault();
-        return;
-      }
-      e.preventDefault();
-      const next = Math.min(1, Math.max(0, z + e.deltaY / 1400));
-      zoom.set(next);
-      if (next >= 1) enterStage(false);
-    };
-    el.addEventListener("wheel", onWheel, { passive: false });
-    return () => el.removeEventListener("wheel", onWheel);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [reduceMotion]);
-
   return (
-    <div
-      ref={rootRef}
-      className="relative flex min-h-svh items-center overflow-hidden"
-    >
+    <div className="relative flex min-h-svh items-center overflow-hidden">
       {/* Soft spotlight vignette behind the headline */}
       <div
         aria-hidden="true"
@@ -96,11 +70,8 @@ export function Hero() {
         className="absolute inset-0"
       >
         <PianoSilhouetteBg
-          onHoverChange={(h) => {
-            hoveredRef.current = h;
-            setHintVisible(h);
-          }}
-          onActivate={() => enterStage(true)}
+          onHoverChange={setHintVisible}
+          onActivate={enterStage}
         />
       </motion.div>
 
@@ -139,7 +110,7 @@ export function Hero() {
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.75, ease }}
-            className="pointer-events-auto mt-10 flex flex-wrap gap-3"
+            className="pointer-events-auto mt-10 flex flex-wrap items-center gap-3"
           >
             <Lift>
               <Button
@@ -160,6 +131,7 @@ export function Hero() {
                 <Link href="/about#contact">Get in touch</Link>
               </Button>
             </Lift>
+            <MoonlightToggle className="text-muted-foreground hover:text-foreground" />
           </motion.div>
         </motion.div>
       </motion.div>
@@ -174,7 +146,7 @@ export function Hero() {
             transition={{ duration: 0.3 }}
             className="pointer-events-none absolute bottom-20 left-1/2 z-40 -translate-x-1/2 font-heading text-sm italic text-muted-foreground"
           >
-            scroll — or press a key — to take the stage
+            click the keys to take the stage
           </motion.p>
         )}
       </AnimatePresence>

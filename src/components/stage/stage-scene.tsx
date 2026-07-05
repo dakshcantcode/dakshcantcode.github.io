@@ -3,15 +3,10 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import { motion, useReducedMotion } from "framer-motion";
-import { ArrowLeft, Volume2, VolumeX } from "lucide-react";
+import { ArrowLeft } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Lift } from "@/components/motion/lift";
 import { TempoEyebrow } from "@/components/shell/notation";
-import {
-  stageAudioRunning,
-  startStageAudio,
-  stopStageAudio,
-} from "@/components/stage/stage-audio";
 
 // Keyboard trapezoid in perspective: front edge y=330, back edge y=292.
 const KB = { fx0: 60, fx1: 400, fy: 330, bx0: 86, bx1: 392, by: 292 };
@@ -189,39 +184,13 @@ function GrandPiano({ className }: { className?: string }) {
 export function StageScene() {
   const reduceMotion = useReducedMotion();
   const [revealed, setRevealed] = useState(false);
-  const [audioOn, setAudioOn] = useState(false);
-  const [needsGesture, setNeedsGesture] = useState(false);
 
   useEffect(() => {
-    let entry: string | null = null;
     try {
-      entry = sessionStorage.getItem("stage-entry");
       sessionStorage.removeItem("stage-entry");
     } catch {}
     setRevealed(true);
-
-    // A click entry carries transient user activation across the SPA
-    // navigation — try to start the room. Wheel-only entries usually
-    // can't autoplay; fall back to an explicit prompt.
-    startStageAudio().then((ok) => {
-      setAudioOn(ok);
-      setNeedsGesture(!ok);
-    });
-    void entry;
-
-    return () => stopStageAudio();
   }, []);
-
-  const toggleAudio = async () => {
-    if (stageAudioRunning()) {
-      stopStageAudio();
-      setAudioOn(false);
-      return;
-    }
-    const ok = await startStageAudio();
-    setAudioOn(ok);
-    setNeedsGesture(!ok);
-  };
 
   return (
     <div className="relative min-h-svh overflow-hidden bg-[#070707] text-white">
@@ -271,7 +240,7 @@ export function StageScene() {
           delay: 0.5,
           ease: [0.22, 1, 0.36, 1],
         }}
-        className="absolute bottom-[14%] left-1/2 w-[min(680px,78vw)] -translate-x-1/2"
+        className="absolute left-1/2 top-1/2 w-[min(680px,80vw)] -translate-x-1/2 -translate-y-1/2"
       >
         <GrandPiano className="w-full drop-shadow-[0_24px_48px_rgba(0,0,0,0.8)]" />
         <GrandPiano className="w-full -scale-y-100 opacity-[0.10] [mask-image:linear-gradient(to_bottom,transparent_30%,black_95%)]" />
@@ -296,27 +265,6 @@ export function StageScene() {
             transition={{ duration: reduceMotion ? 0 : 0.8, delay: 1.3 }}
             className="flex items-center gap-3"
           >
-            {needsGesture && !audioOn && (
-              <span className="font-heading text-sm italic text-white/50">
-                the room is quiet —
-              </span>
-            )}
-            <Lift>
-              <Button
-                variant="outline"
-                size="sm"
-                onClick={toggleAudio}
-                className="border-white/25 bg-white/5 text-white hover:bg-white/15 hover:text-white"
-                aria-label={audioOn ? "Stop the music" : "Play the room"}
-              >
-                {audioOn ? (
-                  <Volume2 className="size-4" />
-                ) : (
-                  <VolumeX className="size-4" />
-                )}
-                {audioOn ? "Playing" : "Play the room"}
-              </Button>
-            </Lift>
             <Lift>
               <Button
                 asChild
