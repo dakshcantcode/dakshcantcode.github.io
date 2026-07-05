@@ -58,7 +58,17 @@ function DigitStack({
   );
 }
 
-export function PianoSilhouetteBg() {
+type PianoSilhouetteBgProps = {
+  /** Fires when the pointer enters/leaves the instrument. */
+  onHoverChange?: (hovered: boolean) => void;
+  /** Click / Enter / Space on the instrument (used to enter the stage). */
+  onActivate?: () => void;
+};
+
+export function PianoSilhouetteBg({
+  onHoverChange,
+  onActivate,
+}: PianoSilhouetteBgProps) {
   const ref = useRef<HTMLDivElement>(null);
   const reduceMotion = useReducedMotion();
   const { scrollYProgress } = useScroll({
@@ -76,18 +86,29 @@ export function PianoSilhouetteBg() {
   return (
     <div
       ref={ref}
-      aria-hidden="true"
+      role="button"
+      tabIndex={0}
+      aria-label="Enter the stage"
       onPointerMove={(e) => {
         const rect = ref.current?.getBoundingClientRect();
         if (!rect) return;
         mx.set(e.clientX - rect.left);
         my.set(e.clientY - rect.top);
       }}
+      onPointerEnter={() => onHoverChange?.(true)}
       onPointerLeave={() => {
         mx.set(-9999);
         my.set(-9999);
+        onHoverChange?.(false);
       }}
-      className="absolute inset-x-0 bottom-0 h-[30svh] select-none overflow-hidden font-mono text-[10px] [mask-image:linear-gradient(to_top,black_55%,transparent)] sm:h-[42svh]"
+      onClick={onActivate}
+      onKeyDown={(e) => {
+        if (e.key === "Enter" || e.key === " ") {
+          e.preventDefault();
+          onActivate?.();
+        }
+      }}
+      className="absolute inset-x-0 bottom-0 h-[30svh] cursor-pointer select-none overflow-hidden font-mono text-[10px] outline-none [mask-image:linear-gradient(to_top,black_55%,transparent)] focus-visible:ring-2 focus-visible:ring-foreground/30 sm:h-[42svh]"
     >
       <motion.div
         style={{ y: reduceMotion ? 0 : parallaxY }}
