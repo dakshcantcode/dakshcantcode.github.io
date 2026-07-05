@@ -13,99 +13,175 @@ import {
   stopStageAudio,
 } from "@/components/stage/stage-audio";
 
-/** Stylized grand piano, side profile with the lid up. */
+// Keyboard trapezoid in perspective: front edge y=330, back edge y=292.
+const KB = { fx0: 60, fx1: 400, fy: 330, bx0: 86, bx1: 392, by: 292 };
+const WHITE_COUNT = 21;
+// Black keys after white keys C,D,F,G,A per octave.
+const BLACK_AFTER = [0, 1, 3, 4, 5, 7, 8, 10, 11, 12, 14, 15, 17, 18, 19];
+
+const lerp = (a: number, b: number, t: number) => a + (b - a) * t;
+const frontX = (t: number) => lerp(KB.fx0, KB.fx1, t);
+const backX = (t: number) => lerp(KB.bx0, KB.bx1, t);
+
+/**
+ * Blueprint grand: 3/4 top view with the lid up — visible strings fan
+ * across the soundboard, keys drawn in perspective, and frequency
+ * annotations plus the 12-TET pitch formula engraved along the rim.
+ */
 function GrandPiano({ className }: { className?: string }) {
   return (
-    <svg viewBox="0 0 640 320" className={className} aria-hidden="true">
+    <svg viewBox="0 0 720 420" className={className} aria-hidden="true">
       <defs>
-        <linearGradient id="lid-sheen" x1="0" y1="0" x2="1" y2="1">
-          <stop offset="0" stopColor="rgba(255,255,255,0.30)" />
-          <stop offset="0.5" stopColor="rgba(255,255,255,0.08)" />
+        <linearGradient id="lid-sheen" x1="0" y1="1" x2="1" y2="0">
+          <stop offset="0" stopColor="rgba(255,255,255,0.22)" />
+          <stop offset="0.55" stopColor="rgba(255,255,255,0.07)" />
           <stop offset="1" stopColor="rgba(255,255,255,0.02)" />
         </linearGradient>
-        <linearGradient id="body-sheen" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0" stopColor="rgba(255,255,255,0.16)" />
-          <stop offset="1" stopColor="rgba(255,255,255,0.02)" />
+        <linearGradient id="board-sheen" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0" stopColor="rgba(255,255,255,0.10)" />
+          <stop offset="1" stopColor="rgba(255,255,255,0.015)" />
         </linearGradient>
       </defs>
 
-      {/* Open lid */}
+      {/* Open lid, hinged along the spine */}
       <path
-        d="M150,148 L488,52 L540,150 Z"
+        d="M86,292 L340,116 L430,30 L190,196 Z"
         fill="url(#lid-sheen)"
+        stroke="rgba(255,255,255,0.38)"
+        strokeWidth="1.5"
+        strokeLinejoin="round"
+      />
+      {/* Lid prop */}
+      <line x1="404" y1="150" x2="382" y2="66" stroke="rgba(255,255,255,0.42)" strokeWidth="2" />
+
+      {/* Body top (soundboard) — spine to curved tail */}
+      <path
+        d="M86,292 L340,116 C420,84 540,88 582,148 C614,196 566,250 478,264 C440,270 412,276 392,292 L86,292 Z"
+        fill="#0b0b0b"
         stroke="rgba(255,255,255,0.35)"
         strokeWidth="1.5"
-      />
-      {/* Lid prop stick */}
-      <line
-        x1="430"
-        y1="98"
-        x2="452"
-        y2="152"
-        stroke="rgba(255,255,255,0.4)"
-        strokeWidth="2"
-      />
-
-      {/* Body (rim), curved tail on the right */}
-      <path
-        d="M118,148 L540,150 C588,154 596,196 552,202 L168,206 C136,206 118,186 118,148 Z"
-        fill="#0c0c0c"
-        stroke="rgba(255,255,255,0.30)"
-        strokeWidth="1.5"
+        strokeLinejoin="round"
       />
       <path
-        d="M118,148 L540,150 C588,154 596,196 552,202 L168,206 C136,206 118,186 118,148 Z"
-        fill="url(#body-sheen)"
+        d="M86,292 L340,116 C420,84 540,88 582,148 C614,196 566,250 478,264 C440,270 412,276 392,292 L86,292 Z"
+        fill="url(#board-sheen)"
+      />
+      {/* Body depth: front skirt below the soundboard */}
+      <path
+        d="M86,292 L392,292 L392,308 L86,308 Z"
+        fill="#090909"
+        stroke="rgba(255,255,255,0.22)"
+        strokeWidth="1"
       />
 
-      {/* Keyboard block + keys */}
-      <rect
-        x="76"
-        y="150"
-        width="44"
-        height="18"
-        rx="2"
-        fill="#101010"
+      {/* Strings: pin block to the far rim, long bass to short treble */}
+      {Array.from({ length: 15 }).map((_, i) => {
+        const t = i / 14;
+        const x1 = lerp(112, 372, t);
+        const y1 = lerp(286, 288, t);
+        const x2 = lerp(330, 470, 1 - t * 0.2) + (1 - t) * 160;
+        const y2 = lerp(132, 252, t);
+        return (
+          <line
+            key={i}
+            x1={x1}
+            y1={y1}
+            x2={Math.min(x2, 566)}
+            y2={y2}
+            stroke={`rgba(255,255,255,${0.10 + 0.12 * (1 - Math.abs(t - 0.5))})`}
+            strokeWidth={1.4 - t * 0.7}
+          />
+        );
+      })}
+      {/* Bridge crossing the strings */}
+      <path
+        d="M300,220 C370,196 440,186 500,196"
+        fill="none"
         stroke="rgba(255,255,255,0.30)"
-        strokeWidth="1.2"
+        strokeWidth="1.6"
       />
-      <rect x="80" y="154" width="36" height="9" rx="1" fill="rgba(255,255,255,0.75)" />
-      {[84, 90, 96, 102, 108].map((x) => (
-        <rect key={x} x={x} y="154" width="2.4" height="5.5" fill="#0a0a0a" />
-      ))}
+
+      {/* Frequency annotations + the pitch formula */}
+      <text x="336" y="146" fill="rgba(255,255,255,0.30)" fontSize="9" fontFamily="var(--font-geist-mono), monospace" transform="rotate(-33 336 146)">
+        27.50
+      </text>
+      <text x="380" y="196" fill="rgba(255,255,255,0.28)" fontSize="9" fontFamily="var(--font-geist-mono), monospace" transform="rotate(-18 380 196)">
+        261.63
+      </text>
+      <text x="356" y="252" fill="rgba(255,255,255,0.26)" fontSize="9" fontFamily="var(--font-geist-mono), monospace" transform="rotate(-6 356 252)">
+        4186.01
+      </text>
+      <text x="470" y="288" fill="rgba(255,255,255,0.34)" fontSize="11" fontStyle="italic" fontFamily="var(--font-geist-mono), monospace">
+        f(n) = 440·2^((n−69)/12)
+      </text>
+
+      {/* Keyboard in perspective */}
+      <path
+        d={`M${KB.fx0},${KB.fy} L${KB.fx1},${KB.fy} L${KB.bx1},${KB.by} L${KB.bx0},${KB.by} Z`}
+        fill="rgba(255,255,255,0.88)"
+        stroke="rgba(255,255,255,0.5)"
+        strokeWidth="1"
+      />
+      {Array.from({ length: WHITE_COUNT - 1 }).map((_, i) => {
+        const t = (i + 1) / WHITE_COUNT;
+        return (
+          <line
+            key={i}
+            x1={frontX(t)}
+            y1={KB.fy}
+            x2={backX(t)}
+            y2={KB.by}
+            stroke="rgba(0,0,0,0.35)"
+            strokeWidth="0.8"
+          />
+        );
+      })}
+      {BLACK_AFTER.map((after) => {
+        const tc = (after + 1) / WHITE_COUNT;
+        const w = 0.6 / WHITE_COUNT;
+        const t0 = tc - w / 2;
+        const t1 = tc + w / 2;
+        // Black keys occupy the back 58% of the key depth.
+        const myF = lerp(KB.by, KB.fy, 0.58);
+        const fx = (t: number) => lerp(backX(t), frontX(t), 0.58);
+        return (
+          <path
+            key={after}
+            d={`M${fx(t0)},${myF} L${fx(t1)},${myF} L${backX(t1)},${KB.by} L${backX(t0)},${KB.by} Z`}
+            fill="#0a0a0a"
+            stroke="rgba(255,255,255,0.18)"
+            strokeWidth="0.6"
+          />
+        );
+      })}
+      {/* Cheek blocks */}
+      <path d={`M${KB.fx0 - 10},${KB.fy} L${KB.fx0},${KB.fy} L${KB.bx0},${KB.by} L${KB.bx0 - 8},${KB.by} Z`} fill="#0d0d0d" stroke="rgba(255,255,255,0.28)" strokeWidth="1" />
+      <path d={`M${KB.fx1},${KB.fy} L${KB.fx1 + 10},${KB.fy} L${KB.bx1 + 8},${KB.by} L${KB.bx1},${KB.by} Z`} fill="#0d0d0d" stroke="rgba(255,255,255,0.28)" strokeWidth="1" />
 
       {/* Legs + casters */}
       {[
-        { x: 128, h: 84 },
-        { x: 316, h: 88 },
-        { x: 520, h: 86 },
+        { x: 92, y: 308, h: 78 },
+        { x: 384, y: 308, h: 78 },
+        { x: 520, y: 258, h: 66 },
       ].map((leg) => (
         <g key={leg.x}>
           <path
-            d={`M${leg.x},206 L${leg.x + 10},206 L${leg.x + 7},${206 + leg.h} L${leg.x + 3},${206 + leg.h} Z`}
-            fill="#0e0e0e"
-            stroke="rgba(255,255,255,0.25)"
+            d={`M${leg.x},${leg.y} L${leg.x + 11},${leg.y} L${leg.x + 8},${leg.y + leg.h} L${leg.x + 3},${leg.y + leg.h} Z`}
+            fill="#0d0d0d"
+            stroke="rgba(255,255,255,0.26)"
             strokeWidth="1"
           />
-          <circle
-            cx={leg.x + 5}
-            cy={206 + leg.h + 5}
-            r="4.5"
-            fill="#0c0c0c"
-            stroke="rgba(255,255,255,0.3)"
-            strokeWidth="1"
-          />
+          <circle cx={leg.x + 5.5} cy={leg.y + leg.h + 5} r="4.5" fill="#0b0b0b" stroke="rgba(255,255,255,0.3)" strokeWidth="1" />
         </g>
       ))}
 
       {/* Pedal lyre */}
-      <line x1="322" y1="206" x2="322" y2="264" stroke="rgba(255,255,255,0.25)" strokeWidth="2" />
-      <rect x="306" y="262" width="34" height="8" rx="3" fill="#0e0e0e" stroke="rgba(255,255,255,0.28)" strokeWidth="1" />
-
-      {/* Bench */}
-      <rect x="14" y="216" width="76" height="12" rx="3" fill="#0d0d0d" stroke="rgba(255,255,255,0.25)" strokeWidth="1.2" />
-      <line x1="24" y1="228" x2="24" y2="278" stroke="rgba(255,255,255,0.22)" strokeWidth="3" />
-      <line x1="80" y1="228" x2="80" y2="278" stroke="rgba(255,255,255,0.22)" strokeWidth="3" />
+      <line x1="236" y1="308" x2="236" y2="368" stroke="rgba(255,255,255,0.25)" strokeWidth="2" />
+      <line x1="252" y1="308" x2="248" y2="368" stroke="rgba(255,255,255,0.25)" strokeWidth="2" />
+      <rect x="220" y="366" width="46" height="9" rx="3" fill="#0e0e0e" stroke="rgba(255,255,255,0.28)" strokeWidth="1" />
+      {[230, 242, 254].map((x) => (
+        <rect key={x} x={x} y="369" width="6" height="3.5" rx="1" fill="rgba(255,255,255,0.55)" />
+      ))}
     </svg>
   );
 }
