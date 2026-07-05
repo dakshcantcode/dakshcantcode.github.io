@@ -22,6 +22,12 @@ const links = [
   { href: "/about", label: "About" },
 ];
 
+/**
+ * Floating frosted-glass nav (macOS style): translucent white glass with
+ * dark ink, so it reads over both light and dark bands. The grand-staff
+ * system stays — staff lines behind the links, a notehead-with-stem
+ * marking the active page, treble-clef monogram.
+ */
 export function SiteNav() {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
@@ -29,31 +35,31 @@ export function SiteNav() {
   const progress = useSpring(scrollYProgress, { stiffness: 120, damping: 30 });
 
   return (
-    <header className="fixed inset-x-0 top-0 z-50 border-b border-white/10 bg-black/70 backdrop-blur-xl">
-      <motion.div
-        aria-hidden="true"
-        style={{ scaleX: progress }}
-        className="absolute inset-x-0 bottom-0 h-px origin-left bg-white/50"
-      />
-      <nav className="mx-auto flex h-14 max-w-5xl items-center justify-between px-6">
+    <header className="fixed inset-x-0 top-4 z-50 px-4">
+      <nav className="relative mx-auto flex h-14 max-w-5xl items-center justify-between overflow-hidden rounded-full border border-white/40 bg-white/60 px-6 shadow-lg shadow-black/[0.06] ring-1 ring-black/5 backdrop-blur-2xl backdrop-saturate-150">
+        {/* Scroll progress along the capsule's bottom edge */}
+        <motion.div
+          aria-hidden="true"
+          style={{ scaleX: progress }}
+          className="absolute inset-x-6 bottom-0 h-[2px] origin-left rounded-full bg-neutral-900/50"
+        />
+
         <Link
           href="/"
-          className="flex items-center gap-2 text-white"
+          className="flex items-center gap-2 text-neutral-900"
           aria-label="Daksh Agrawal — home"
         >
-          <TrebleClefIcon className="text-white/80" />
+          <TrebleClefIcon className="text-neutral-700" />
           <span className="font-heading text-lg italic tracking-wide">DA</span>
         </Link>
 
-        {/* Grand-staff link row: 5 staff lines behind the links; the active
-            link is marked by a notehead-with-stem sitting on the staff. */}
         <div className="relative hidden md:block">
           <div
             aria-hidden="true"
             className="pointer-events-none absolute -inset-x-10 bottom-[10px] space-y-[6px] [mask-image:linear-gradient(to_right,transparent,black_20%,black_80%,transparent)]"
           >
             {[0, 1, 2, 3, 4].map((i) => (
-              <div key={i} className="h-px w-full bg-white/15" />
+              <div key={i} className="h-px w-full bg-neutral-900/15" />
             ))}
           </div>
           <ul className="relative flex items-center gap-10">
@@ -65,7 +71,9 @@ export function SiteNav() {
                     href={link.href}
                     className={cn(
                       "group block pb-9 pt-3 font-heading text-sm italic transition-colors duration-300",
-                      active ? "text-white" : "text-white/60 hover:text-white",
+                      active
+                        ? "text-neutral-900"
+                        : "text-neutral-900/55 hover:text-neutral-900",
                     )}
                   >
                     <span className="block transition-transform duration-300 group-hover:-translate-y-0.5">
@@ -83,8 +91,8 @@ export function SiteNav() {
                       className="absolute bottom-[15px]"
                       style={{ left: "50%", marginLeft: -4 }}
                     >
-                      <span className="block size-2 -rotate-[20deg] scale-x-125 rounded-full bg-white" />
-                      <span className="absolute -top-2.5 right-0 h-2.5 w-px bg-white" />
+                      <span className="block size-2 -rotate-[20deg] scale-x-125 rounded-full bg-neutral-900" />
+                      <span className="absolute -top-2.5 right-0 h-2.5 w-px bg-neutral-900" />
                     </motion.span>
                   )}
                 </li>
@@ -98,7 +106,7 @@ export function SiteNav() {
             asChild
             size="sm"
             variant="ghost"
-            className="h-7 font-heading text-sm italic text-white/80 hover:bg-white/10 hover:text-white"
+            className="h-7 font-heading text-sm italic text-neutral-900/70 hover:bg-neutral-900/[0.06] hover:text-neutral-900"
           >
             <Link href="/about#contact">Get in touch</Link>
           </Button>
@@ -109,7 +117,7 @@ export function SiteNav() {
             <Button
               variant="ghost"
               size="icon"
-              className="size-8 text-white hover:bg-white/10 hover:text-white md:hidden"
+              className="size-8 text-neutral-900 hover:bg-neutral-900/[0.06] hover:text-neutral-900 md:hidden"
             >
               <Menu className="size-4" />
               <span className="sr-only">Open menu</span>
@@ -117,7 +125,7 @@ export function SiteNav() {
           </SheetTrigger>
           <SheetContent
             side="top"
-            className="dark border-white/10 bg-background text-foreground"
+            className="border-black/10 bg-white/80 text-neutral-900 backdrop-blur-2xl"
           >
             <SheetTitle className="sr-only">Navigation</SheetTitle>
             <div className="p-6 pt-12">
@@ -131,8 +139,8 @@ export function SiteNav() {
                       className={cn(
                         "block py-2 font-heading text-3xl font-medium italic transition-colors",
                         pathname === link.href
-                          ? "text-foreground"
-                          : "text-muted-foreground hover:text-foreground",
+                          ? "text-neutral-900"
+                          : "text-neutral-900/50 hover:text-neutral-900",
                       )}
                     >
                       {link.label}
