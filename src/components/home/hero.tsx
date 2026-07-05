@@ -31,9 +31,11 @@ export function Hero() {
         className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_55%_45%_at_32%_38%,rgba(0,0,0,0.05),transparent_65%)]"
       />
       <PianoSilhouetteBg />
+      {/* pointer-events-none lets the piano receive hovers through this
+          layer; interactive children re-enable themselves. */}
       <motion.div
         style={reduceMotion ? undefined : { y, opacity }}
-        className="relative mx-auto w-full max-w-5xl px-6 pt-12"
+        className="pointer-events-none relative mx-auto w-full max-w-5xl px-6 pt-12"
       >
         <motion.div
           initial={{ opacity: 0 }}
@@ -63,7 +65,7 @@ export function Hero() {
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.75, ease }}
-          className="mt-10 flex flex-wrap gap-3"
+          className="pointer-events-auto mt-10 flex flex-wrap gap-3"
         >
           <Lift>
             <Button
@@ -91,7 +93,7 @@ export function Hero() {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 1.4, duration: 0.8 }}
-        className="absolute bottom-8 left-1/2 -translate-x-1/2"
+        className="pointer-events-none absolute bottom-8 left-1/2 -translate-x-1/2"
       >
         <motion.span
           animate={reduceMotion ? undefined : { y: [0, 8, 0] }}
