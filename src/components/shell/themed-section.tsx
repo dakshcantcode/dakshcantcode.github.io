@@ -28,8 +28,11 @@ export function ThemedSection({
     <section
       id={id}
       className={cn(
-        theme === "dark" && "dark",
-        "bg-background text-foreground",
+        // Layered monochrome: subtle gradients + edge highlights keep the
+        // palette black & white without reading flat.
+        theme === "dark"
+          ? "dark bg-background text-foreground bg-gradient-to-b from-[#181818] via-[#101010] to-[#0a0a0a] shadow-[inset_0_1px_0_rgba(255,255,255,0.06)]"
+          : "bg-background text-foreground bg-gradient-to-b from-white via-[#fbfbfa] to-[#f2f2f0]",
         score && "relative overflow-hidden",
         className,
       )}

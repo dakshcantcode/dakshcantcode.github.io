@@ -64,7 +64,7 @@ function GuitarString({
         <motion.svg
           viewBox="0 0 1000 24"
           preserveAspectRatio="none"
-          className="h-5 w-full text-foreground/50 transition-colors duration-300 group-hover:text-foreground/80"
+          className="h-5 w-full text-foreground/50 transition-[color,filter] duration-300 group-hover:text-foreground/80 group-hover:[filter:drop-shadow(0_2px_4px_rgba(0,0,0,0.25))]"
           initial={false}
           whileInView={
             reduceMotion || introduced ? undefined : { opacity: 1 }

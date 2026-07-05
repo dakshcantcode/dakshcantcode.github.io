@@ -25,6 +25,11 @@ export function Hero() {
 
   return (
     <div className="relative flex min-h-svh items-center overflow-hidden">
+      {/* Soft spotlight vignette behind the headline */}
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_55%_45%_at_32%_38%,rgba(0,0,0,0.05),transparent_65%)]"
+      />
       <PianoSilhouetteBg />
       <motion.div
         style={reduceMotion ? undefined : { y, opacity }}
@@ -61,12 +66,21 @@ export function Hero() {
           className="mt-10 flex flex-wrap gap-3"
         >
           <Lift>
-            <Button asChild size="lg">
+            <Button
+              asChild
+              size="lg"
+              className="bg-gradient-to-b from-neutral-700 to-neutral-950 shadow-md shadow-black/20"
+            >
               <Link href="/experience">View work</Link>
             </Button>
           </Lift>
           <Lift>
-            <Button asChild size="lg" variant="outline">
+            <Button
+              asChild
+              size="lg"
+              variant="outline"
+              className="bg-white/60 shadow-sm shadow-black/5 backdrop-blur-sm"
+            >
               <Link href="/about#contact">Get in touch</Link>
             </Button>
           </Lift>
