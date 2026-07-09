@@ -13,6 +13,7 @@ import { Lift } from "@/components/motion/lift";
 import { TextMaskReveal } from "@/components/motion/text-mask-reveal";
 import { TempoEyebrow } from "@/components/shell/notation";
 import { MoonlightToggle } from "@/components/stage/moonlight-toggle";
+import { ScoreCard } from "@/components/home/score-card";
 import { profile } from "@/lib/resume";
 
 const ease = [0.22, 1, 0.36, 1] as const;
@@ -33,8 +34,9 @@ export function Hero() {
 
       <motion.div
         style={reduceMotion ? undefined : { y, opacity }}
-        className="relative mx-auto w-full max-w-5xl px-6 pt-12"
+        className="relative mx-auto w-full max-w-5xl px-6 pt-12 lg:grid lg:grid-cols-[minmax(0,1fr)_400px] lg:items-center lg:gap-14"
       >
+        <div>
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
@@ -77,6 +79,10 @@ export function Hero() {
           </Lift>
           <MoonlightToggle className="text-muted-foreground hover:text-foreground" />
         </motion.div>
+        </div>
+
+        {/* The score: bar one of the piece the toggle plays */}
+        <ScoreCard className="hidden lg:block" />
       </motion.div>
 
       <motion.div

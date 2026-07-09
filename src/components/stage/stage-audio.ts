@@ -14,6 +14,18 @@ let timer: number | null = null;
 let measureIndex = 0;
 let nextMeasureAt = 0;
 
+// Play-state subscribers (keeps the hero score card and toggle in sync).
+type Listener = (playing: boolean) => void;
+const listeners = new Set<Listener>();
+const notify = (playing: boolean) => listeners.forEach((l) => l(playing));
+
+export function subscribeStageAudio(listener: Listener) {
+  listeners.add(listener);
+  return () => {
+    listeners.delete(listener);
+  };
+}
+
 // f(n) = 440·2^((n−69)/12)
 const freq = (midi: number) => 440 * Math.pow(2, (midi - 69) / 12);
 
@@ -155,6 +167,7 @@ export async function startStageAudio(): Promise<boolean> {
   };
   tick();
   timer = window.setInterval(tick, 400);
+  notify(true);
   return true;
 }
 
@@ -162,6 +175,7 @@ export function stopStageAudio() {
   if (timer !== null) {
     clearInterval(timer);
     timer = null;
+    notify(false);
   }
   if (ctx && master) {
     master.gain.cancelScheduledValues(ctx.currentTime);
