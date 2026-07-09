@@ -19,9 +19,19 @@ import { TextMaskReveal } from "@/components/motion/text-mask-reveal";
 import { TempoEyebrow } from "@/components/shell/notation";
 import { PianoSilhouetteBg } from "@/components/shell/piano-silhouette-bg";
 import { MoonlightToggle } from "@/components/stage/moonlight-toggle";
-import { profile } from "@/lib/resume";
+import { PixelDialogue } from "@/components/home/pixel-dialogue";
+import { PixelSprite } from "@/components/home/pixel-sprite";
 
 const ease = [0.22, 1, 0.36, 1] as const;
+
+// Deterministic floating sparkles (x%, y%, delay, duration).
+const SPARKLES = [
+  [12, 22, 0, 3.4],
+  [78, 16, 0.8, 4.1],
+  [88, 42, 1.6, 3.2],
+  [8, 55, 2.2, 3.8],
+  [62, 8, 1.1, 4.4],
+] as const;
 
 export function Hero() {
   const router = useRouter();
@@ -61,6 +71,24 @@ export function Hero() {
         className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_55%_45%_at_32%_38%,rgba(0,0,0,0.05),transparent_65%)]"
       />
 
+      {/* Floating pixel sparkles */}
+      {!reduceMotion &&
+        SPARKLES.map(([x, sy, delay, dur]) => (
+          <motion.span
+            key={`${x}-${sy}`}
+            aria-hidden="true"
+            animate={{ y: [0, -14, 0], opacity: [0.15, 0.7, 0.15] }}
+            transition={{
+              duration: dur,
+              delay,
+              repeat: Infinity,
+              ease: "easeInOut",
+            }}
+            className="pointer-events-none absolute size-1.5 bg-retro-gold"
+            style={{ left: `${x}%`, top: `${sy}%` }}
+          />
+        ))}
+
       <motion.div
         style={{
           scale: reduceMotion ? 1 : pianoScale,
@@ -93,18 +121,19 @@ export function Hero() {
           <h1 className="mt-6">
             <TextMaskReveal
               lines={["Daksh", "Agrawal"]}
-              className="text-8xl font-semibold leading-[0.9] tracking-tight sm:text-[10rem]"
+              className="font-pixel text-3xl leading-[1.5] [text-shadow:4px_4px_0_var(--color-retro-gold)] sm:text-5xl sm:leading-[1.4]"
             />
           </h1>
 
-          <motion.p
+          <motion.div
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.55, ease }}
-            className="mt-8 max-w-xl text-lg text-muted-foreground sm:text-xl"
+            className="pointer-events-auto mt-8 flex max-w-xl items-end gap-4"
           >
-            Computer Science @ {profile.school} — {profile.scholarship}.
-          </motion.p>
+            <PixelSprite className="hidden shrink-0 sm:block" />
+            <PixelDialogue />
+          </motion.div>
 
           <motion.div
             initial={{ opacity: 0, y: 16 }}
@@ -144,7 +173,7 @@ export function Hero() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: 6 }}
             transition={{ duration: 0.3 }}
-            className="pointer-events-none absolute bottom-20 left-1/2 z-40 -translate-x-1/2 font-heading text-sm italic text-muted-foreground"
+            className="pointer-events-none absolute bottom-20 left-1/2 z-40 -translate-x-1/2 font-pixel text-[9px] uppercase text-muted-foreground"
           >
             click the keys to take the stage
           </motion.p>
