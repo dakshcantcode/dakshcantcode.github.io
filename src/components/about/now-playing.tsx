@@ -36,7 +36,7 @@ function Vinyl({ art, alt }: { art: string; alt: string }) {
   return (
     <motion.div
       animate={reduceMotion ? undefined : { rotate: 360 }}
-      transition={{ duration: 9, repeat: Infinity, ease: "linear" }}
+      transition={{ duration: 14, repeat: Infinity, ease: "linear" }}
       className="relative aspect-square w-full max-w-sm rounded-full shadow-[0_18px_50px_rgba(0,0,0,0.55)]"
       style={{
         background:
@@ -101,7 +101,7 @@ export function NowPlaying() {
       {/* Album-color wash — animates toward whichever cover you touch */}
       <motion.div
         aria-hidden="true"
-        animate={{ backgroundColor: `${tint}4d` }}
+        animate={{ backgroundColor: `${tint}33` }}
         transition={{ duration: reduceMotion ? 0 : 0.8 }}
         className="pointer-events-none absolute inset-0 [mask-image:radial-gradient(70%_65%_at_65%_18%,black,transparent)]"
       />
@@ -132,7 +132,7 @@ export function NowPlaying() {
           {/* Top-artist spotlight: the Eagles, on vinyl */}
           <Reveal>
             <div className="relative inline-block w-full max-w-sm">
-              <Badge className="absolute -top-3 left-4 z-10 gap-1 font-heading text-[10px] font-bold uppercase">
+              <Badge className="absolute -top-3 left-4 z-10 gap-1">
                 <Star className="size-3 fill-current" />
                 Top artist
               </Badge>
@@ -144,7 +144,7 @@ export function NowPlaying() {
               )}
             </div>
             <div className="mt-6 flex items-end justify-between gap-4">
-              <h3 className="font-heading text-3xl font-bold uppercase">
+              <h3 className="font-heading text-4xl font-semibold italic">
                 Eagles
               </h3>
               <Visualizer color={tint} />
@@ -205,7 +205,7 @@ export function NowPlaying() {
                 </StaggerItem>
               ))}
             </StaggerGroup>
-            <p className="mt-4 text-right font-heading text-[10px] font-bold uppercase text-muted-foreground">
+            <p className="mt-4 text-right text-xs italic text-muted-foreground">
               hover a cover — {tracks.length} tracks deep
             </p>
           </div>

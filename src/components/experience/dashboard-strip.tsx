@@ -37,7 +37,7 @@ export function DashboardStrip() {
         {stats.map((stat, i) => (
           <StaggerItem key={stat.label}>
             <div className="group h-full rounded-2xl border border-border/60 bg-card p-6 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-lg hover:shadow-black/[0.06]">
-              <p className="font-heading text-[10px] font-bold uppercase leading-relaxed text-muted-foreground">
+              <p className="text-xs uppercase tracking-widest text-muted-foreground">
                 {stat.label}
               </p>
               <p className="mt-3">
@@ -50,12 +50,12 @@ export function DashboardStrip() {
                 />
               </p>
               <div className="mt-4 flex items-end justify-between gap-3">
-                <span className="text-xs font-medium text-retro-green">
+                <span className="text-xs font-medium text-muted-foreground">
                   {DELTAS[i % DELTAS.length]}
                 </span>
                 <svg
                   viewBox="0 0 60 20"
-                  className="h-5 w-16 text-retro-gold opacity-70 transition-opacity group-hover:opacity-100"
+                  className="h-5 w-16 text-foreground/50 opacity-70 transition-opacity group-hover:opacity-100"
                   aria-hidden="true"
                 >
                   <polyline
@@ -77,23 +77,23 @@ export function DashboardStrip() {
       <Reveal className="mt-4">
         <div className="rounded-2xl border border-border/60 bg-card p-6 shadow-sm sm:p-8">
           <div className="flex items-baseline justify-between">
-            <p className="font-heading text-[10px] font-bold uppercase text-muted-foreground">
+            <p className="text-xs uppercase tracking-widest text-muted-foreground">
               Skill trajectory
             </p>
             <p className="text-xs text-muted-foreground">2022 → 2026</p>
           </div>
-          <svg viewBox="0 0 360 100" className="mt-4 w-full" aria-hidden="true">
+          <svg viewBox="0 0 360 100" className="mt-4 w-full text-foreground/80" aria-hidden="true">
             <defs>
               <linearGradient id="ws-fill" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="0" stopColor="#f0b429" stopOpacity="0.25" />
-                <stop offset="1" stopColor="#f0b429" stopOpacity="0" />
+                <stop offset="0" stopColor="#8a8a8a" stopOpacity="0.25" />
+                <stop offset="1" stopColor="#8a8a8a" stopOpacity="0" />
               </linearGradient>
             </defs>
             <path d={`${AREA_LINE} L360,100 L0,100 Z`} fill="url(#ws-fill)" />
             <motion.path
               d={AREA_LINE}
               fill="none"
-              stroke="#f0b429"
+              stroke="currentColor"
               strokeWidth="2"
               strokeLinecap="round"
               initial={reduceMotion ? undefined : { pathLength: 0 }}
@@ -105,14 +105,14 @@ export function DashboardStrip() {
               cx="360"
               cy="10"
               r="3.5"
-              fill="#34d399"
+              fill="currentColor"
               initial={reduceMotion ? undefined : { opacity: 0 }}
               whileInView={{ opacity: 1 }}
               viewport={{ once: true }}
               transition={{ delay: 1.5 }}
             />
           </svg>
-          <div className="mt-2 flex justify-between font-heading text-[10px] font-bold uppercase text-muted-foreground/70">
+          <div className="mt-2 flex justify-between text-xs uppercase tracking-widest text-muted-foreground/70">
             <span>First keys</span>
             <span>First commit</span>
             <span>Waterloo</span>

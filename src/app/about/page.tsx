@@ -31,7 +31,7 @@ export default function AboutPage() {
         <div className="mx-auto w-full max-w-5xl px-6">
           <TextMaskReveal
             lines={["Beyond", "the code"]}
-            className="font-heading text-3xl font-bold uppercase leading-snug sm:text-5xl"
+            className="font-heading text-5xl font-semibold tracking-tight sm:text-7xl"
           />
           <Reveal delay={0.4}>
             <p className="mt-6 max-w-xl text-lg text-muted-foreground">

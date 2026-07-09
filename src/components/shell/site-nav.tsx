@@ -36,7 +36,7 @@ export function SiteNav() {
 
   return (
     <header className="fixed inset-x-0 top-4 z-50 px-4">
-      <nav className="relative mx-auto flex h-14 max-w-5xl items-center justify-between overflow-hidden rounded-full border border-white/40 bg-white/45 px-6 shadow-lg shadow-black/[0.06] ring-1 ring-black/5 backdrop-blur-2xl backdrop-saturate-150">
+      <nav className="relative mx-auto flex h-14 max-w-5xl items-center justify-between overflow-hidden rounded-full border border-white/40 bg-white/60 px-6 shadow-lg shadow-black/[0.06] ring-1 ring-black/5 backdrop-blur-2xl backdrop-saturate-150">
         {/* Scroll progress along the capsule's bottom edge */}
         <motion.div
           aria-hidden="true"
@@ -50,7 +50,7 @@ export function SiteNav() {
           aria-label="Daksh Agrawal — home"
         >
           <TrebleClefIcon className="text-foreground/70" />
-          <span className="font-heading text-sm font-bold tracking-wide">DA</span>
+          <span className="font-heading text-lg italic tracking-wide">DA</span>
         </Link>
 
         <div className="relative hidden md:block">
@@ -70,7 +70,7 @@ export function SiteNav() {
                   <Link
                     href={link.href}
                     className={cn(
-                      "group block pb-9 pt-4 font-heading text-[11px] font-bold uppercase transition-colors duration-300",
+                      "group block pb-9 pt-3 font-heading text-sm italic transition-colors duration-300",
                       active
                         ? "text-foreground"
                         : "text-foreground/55 hover:text-foreground",
@@ -91,9 +91,8 @@ export function SiteNav() {
                       className="absolute bottom-[15px]"
                       style={{ left: "50%", marginLeft: -4 }}
                     >
-                      {/* Pixel notehead: a square note on the staff */}
-                      <span className="block size-2 bg-foreground" />
-                      <span className="absolute -top-2.5 right-0 h-2.5 w-[2px] bg-foreground" />
+                      <span className="block size-2 -rotate-[20deg] scale-x-125 rounded-full bg-foreground" />
+                      <span className="absolute -top-2.5 right-0 h-2.5 w-px bg-foreground" />
                     </motion.span>
                   )}
                 </li>
@@ -107,7 +106,7 @@ export function SiteNav() {
             asChild
             size="sm"
             variant="ghost"
-            className="h-7 font-heading text-[11px] font-bold uppercase text-foreground/70 hover:bg-foreground/[0.06] hover:text-foreground"
+            className="h-7 font-heading text-sm italic text-foreground/70 hover:bg-foreground/[0.06] hover:text-foreground"
           >
             <Link href="/about#contact">Get in touch</Link>
           </Button>
@@ -126,7 +125,7 @@ export function SiteNav() {
           </SheetTrigger>
           <SheetContent
             side="top"
-            className="border-black/10 bg-[#dcebf7]/85 text-foreground backdrop-blur-2xl"
+            className="border-black/10 bg-white/80 text-foreground backdrop-blur-2xl"
           >
             <SheetTitle className="sr-only">Navigation</SheetTitle>
             <div className="p-6 pt-12">
@@ -138,7 +137,7 @@ export function SiteNav() {
                       href={link.href}
                       onClick={() => setOpen(false)}
                       className={cn(
-                        "block py-2 font-heading text-2xl font-bold uppercase transition-colors",
+                        "block py-2 font-heading text-3xl font-medium italic transition-colors",
                         pathname === link.href
                           ? "text-foreground"
                           : "text-foreground/50 hover:text-foreground",

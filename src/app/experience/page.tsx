@@ -20,7 +20,7 @@ export default function ExperiencePage() {
         <div className="mx-auto w-full max-w-5xl px-6">
           <TextMaskReveal
             lines={["Work &", "Selected Projects"]}
-            className="font-heading text-3xl font-bold uppercase leading-snug sm:text-5xl"
+            className="font-heading text-5xl font-semibold tracking-tight sm:text-7xl"
           />
           <Reveal delay={0.4}>
             <p className="mt-6 max-w-xl text-lg text-muted-foreground">
@@ -46,7 +46,7 @@ export default function ExperiencePage() {
           </Reveal>
           <TextMaskReveal
             lines={["Three builds,", "two trophies."]}
-            className="mt-4 font-heading text-2xl font-bold uppercase leading-snug sm:text-4xl"
+            className="mt-4 font-heading text-4xl font-semibold tracking-tight sm:text-6xl"
           />
         </div>
       </ThemedSection>

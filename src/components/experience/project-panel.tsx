@@ -37,12 +37,12 @@ export function ProjectPanel({ project, compact = false }: ProjectPanelProps) {
         {project.index}
       </span>
 
-      <Badge variant="secondary" className="font-heading text-[10px] font-bold uppercase">
+      <Badge variant="secondary" className="font-normal">
         {project.award ?? "Deep Learning Project"}
       </Badge>
       <h3
         className={cn(
-          "font-bold uppercase",
+          "font-semibold tracking-tight",
           compact ? "mt-4 text-xl sm:text-2xl" : "mt-5 text-2xl sm:text-3xl",
         )}
       >
@@ -96,7 +96,7 @@ export function ProjectPanel({ project, compact = false }: ProjectPanelProps) {
                 }
                 viewport={{ once: true, margin: "-10% 0px" }}
                 transition={{ duration: 1, delay: 0.15 * i, ease: "easeOut" }}
-                className="h-full rounded-full bg-gradient-to-r from-retro-gold to-retro-green"
+                className="h-full rounded-full bg-gradient-to-r from-foreground/40 to-foreground/70"
                 style={
                   reduceMotion
                     ? { width: `${BAR_WIDTHS[i % BAR_WIDTHS.length]}%` }
