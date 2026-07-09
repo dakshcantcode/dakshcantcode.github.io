@@ -38,7 +38,7 @@ export function SkillsGrid() {
         </h2>
       </Reveal>
 
-      <div className="mt-14">
+      <div className="mt-14 rounded-2xl border border-border/60 bg-card/50 px-6 py-2 shadow-sm sm:px-10">
         {skillGroups.map((group) => (
           <div
             key={group.label}

@@ -142,6 +142,7 @@ export function WorkTimeline() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -24 }}
             transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
+            className="rounded-2xl border border-border/60 bg-card/50 p-8 shadow-lg shadow-black/10 backdrop-blur-sm sm:p-10"
           >
             <JobEntry job={job} />
           </motion.div>
