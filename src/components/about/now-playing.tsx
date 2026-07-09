@@ -132,7 +132,7 @@ export function NowPlaying() {
           {/* Top-artist spotlight: the Eagles, on vinyl */}
           <Reveal>
             <div className="relative inline-block w-full max-w-sm">
-              <Badge className="absolute -top-3 left-4 z-10 gap-1 font-pixel text-[8px] uppercase">
+              <Badge className="absolute -top-3 left-4 z-10 gap-1 font-heading text-[10px] font-bold uppercase">
                 <Star className="size-3 fill-current" />
                 Top artist
               </Badge>
@@ -205,7 +205,7 @@ export function NowPlaying() {
                 </StaggerItem>
               ))}
             </StaggerGroup>
-            <p className="mt-4 text-right font-pixel text-[8px] uppercase text-muted-foreground">
+            <p className="mt-4 text-right font-heading text-[10px] font-bold uppercase text-muted-foreground">
               hover a cover — {tracks.length} tracks deep
             </p>
           </div>

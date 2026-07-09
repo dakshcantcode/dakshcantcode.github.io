@@ -26,7 +26,7 @@ export function TempoEyebrow({ tempo, label, className }: TempoEyebrowProps) {
   return (
     <p
       className={cn(
-        "font-pixel text-[10px] uppercase leading-relaxed tracking-wide text-muted-foreground",
+        "font-heading text-[11px] font-bold uppercase leading-relaxed tracking-widest text-muted-foreground",
         className,
       )}
     >

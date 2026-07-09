@@ -37,7 +37,7 @@ export function ProjectPanel({ project, compact = false }: ProjectPanelProps) {
         {project.index}
       </span>
 
-      <Badge variant="secondary" className="font-pixel text-[8px] uppercase">
+      <Badge variant="secondary" className="font-heading text-[10px] font-bold uppercase">
         {project.award ?? "Deep Learning Project"}
       </Badge>
       <h3

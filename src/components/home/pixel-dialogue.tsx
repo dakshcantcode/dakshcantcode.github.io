@@ -46,7 +46,7 @@ export function PixelDialogue({ className }: { className?: string }) {
       <span className="absolute -top-2.5 left-4 border-2 border-foreground bg-background px-2 font-pixel text-[8px] uppercase text-retro-gold">
         Daksh
       </span>
-      <span className="block min-h-[3.75rem] font-pixel text-[10px] leading-[1.9] sm:text-[11px]">
+      <span className="block min-h-[3.5rem] font-heading text-sm font-bold leading-relaxed sm:text-base">
         {reduceMotion ? text : text.slice(0, chars)}
         {!done && <span className="animate-pulse">▌</span>}
       </span>

@@ -37,7 +37,7 @@ export function DashboardStrip() {
         {stats.map((stat, i) => (
           <StaggerItem key={stat.label}>
             <div className="group h-full rounded-2xl border border-border/60 bg-card p-6 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-lg hover:shadow-black/[0.06]">
-              <p className="font-pixel text-[9px] uppercase leading-relaxed text-muted-foreground">
+              <p className="font-heading text-[10px] font-bold uppercase leading-relaxed text-muted-foreground">
                 {stat.label}
               </p>
               <p className="mt-3">
@@ -77,7 +77,7 @@ export function DashboardStrip() {
       <Reveal className="mt-4">
         <div className="rounded-2xl border border-border/60 bg-card p-6 shadow-sm sm:p-8">
           <div className="flex items-baseline justify-between">
-            <p className="font-pixel text-[9px] uppercase text-muted-foreground">
+            <p className="font-heading text-[10px] font-bold uppercase text-muted-foreground">
               Skill trajectory
             </p>
             <p className="text-xs text-muted-foreground">2022 → 2026</p>
@@ -112,7 +112,7 @@ export function DashboardStrip() {
               transition={{ delay: 1.5 }}
             />
           </svg>
-          <div className="mt-2 flex justify-between font-pixel text-[8px] uppercase text-muted-foreground/70">
+          <div className="mt-2 flex justify-between font-heading text-[10px] font-bold uppercase text-muted-foreground/70">
             <span>First keys</span>
             <span>First commit</span>
             <span>Waterloo</span>
