@@ -3,35 +3,46 @@
 import { motion, useReducedMotion } from "framer-motion";
 
 /**
- * 12×14 trainer sprite with gold headphones, drawn entirely with
- * box-shadow pixels — no image assets, crisp at any scale.
+ * 14×18 trainer sprite — gold headphones, navy hoodie, standing on a
+ * grass tile. Box-shadow pixels only; outlined so it sits cleanly on
+ * the powder-blue environment.
  */
 
 const PALETTE: Record<string, string> = {
-  K: "#1a1a1a", // hair / outline / shoes
+  O: "#0f1d2e", // outline / hair
   S: "#e8b48c", // skin
-  G: "#f0b429", // headphones + shirt (retro gold)
-  D: "#2d2d2d", // pants
+  s: "#d69a72", // skin shade
+  G: "#f0b429", // headphones (gold)
+  N: "#16324f", // hoodie (navy)
+  n: "#0f2740", // hoodie shade
+  D: "#1d2b3a", // pants
+  W: "#e8f2fb", // eye light
+  g: "#4caf6d", // grass
+  d: "#3a8f56", // grass shade
 };
 
 const GRID = [
-  "...GGGGGG...",
-  "...KKKKKK...",
-  "..KKKKKKKK..",
-  ".GKSSSSSSKG.",
-  ".GKSKSSKSKG.",
-  "..KSSSSSSK..",
-  "...KSSSSK...",
-  "....GGGG....",
-  "..GGGGGGGG..",
-  "..SGGGGGGS..",
-  "....GGGG....",
-  "....DDDD....",
-  "....D..D....",
-  "....K..K....",
+  "....GGGGGG....",
+  "...GOOOOOOG...",
+  "..GOOOOOOOOG..",
+  ".GGOOOOOOOOGG.",
+  ".GOSSSSSSSSOG.",
+  ".GOSWOSSOWSOG.",
+  "..OSSSSSSSSO..",
+  "..OSsSSSSsSO..",
+  "...OSSSSSSO...",
+  "....NNNNNN....",
+  "..NNNNNNNNNN..",
+  ".SNNNnNNnNNNS.",
+  ".SNNNNNNNNNNS.",
+  "..NNnNNNNnNN..",
+  "....DDDDDD....",
+  "....DD..DD....",
+  "....OO..OO....",
+  "gdgdgdgdgdgdgd",
 ];
 
-const PX = 6;
+const PX = 7;
 
 const shadows = GRID.flatMap((row, y) =>
   row.split("").flatMap((ch, x) => {
@@ -43,27 +54,33 @@ const shadows = GRID.flatMap((row, y) =>
 export function PixelSprite({ className }: { className?: string }) {
   const reduceMotion = useReducedMotion();
   return (
-    <motion.div
-      aria-hidden="true"
-      animate={reduceMotion ? undefined : { y: [0, -4, 0] }}
-      transition={{ duration: 2.2, repeat: Infinity, ease: "easeInOut" }}
-      className={className}
-      style={{
-        width: GRID[0].length * PX,
-        height: GRID.length * PX,
-        imageRendering: "pixelated",
-      }}
-    >
-      <div
+    <div className={className}>
+      <motion.div
+        aria-hidden="true"
+        animate={reduceMotion ? undefined : { y: [0, -4, 0] }}
+        transition={{ duration: 2.2, repeat: Infinity, ease: "easeInOut" }}
         style={{
-          width: PX,
-          height: PX,
-          marginLeft: -PX,
-          marginTop: -PX,
-          transform: `translate(${PX}px, ${PX}px)`,
-          boxShadow: shadows,
+          width: GRID[0].length * PX,
+          height: GRID.length * PX,
+          imageRendering: "pixelated",
         }}
+      >
+        <div
+          style={{
+            width: PX,
+            height: PX,
+            marginLeft: -PX,
+            marginTop: -PX,
+            transform: `translate(${PX}px, ${PX}px)`,
+            boxShadow: shadows,
+          }}
+        />
+      </motion.div>
+      {/* Ground shadow */}
+      <div
+        aria-hidden="true"
+        className="mx-auto -mt-1 h-1.5 w-16 rounded-full bg-foreground/15 blur-[2px]"
       />
-    </motion.div>
+    </div>
   );
 }

@@ -15,6 +15,7 @@ import { TempoEyebrow } from "@/components/shell/notation";
 import { MoonlightToggle } from "@/components/stage/moonlight-toggle";
 import { PixelDialogue } from "@/components/home/pixel-dialogue";
 import { PixelSprite } from "@/components/home/pixel-sprite";
+import { PokedexPanel } from "@/components/home/pokedex-panel";
 
 const ease = [0.22, 1, 0.36, 1] as const;
 
@@ -35,6 +36,19 @@ export function Hero() {
 
   return (
     <div className="relative flex min-h-svh items-center overflow-hidden">
+      {/* Minimalist Pokéball motif, slowly rotating */}
+      <motion.div
+        aria-hidden="true"
+        animate={reduceMotion ? undefined : { rotate: 360 }}
+        transition={{ duration: 80, repeat: Infinity, ease: "linear" }}
+        className="pointer-events-none absolute -right-40 top-1/2 size-[34rem] -translate-y-1/2 sm:-right-24"
+      >
+        <div className="absolute inset-0 rounded-full border-2 border-foreground/10" />
+        <div className="absolute inset-x-0 top-1/2 h-0.5 -translate-y-1/2 bg-foreground/10" />
+        <div className="absolute left-1/2 top-1/2 size-16 -translate-x-1/2 -translate-y-1/2 rounded-full border-2 border-foreground/10 bg-background" />
+        <div className="absolute left-1/2 top-1/2 size-6 -translate-x-1/2 -translate-y-1/2 rounded-full border-2 border-foreground/15" />
+      </motion.div>
+
       {/* Floating pixel sparkles */}
       {!reduceMotion &&
         SPARKLES.map(([x, sy, delay, dur]) => (
@@ -100,6 +114,9 @@ export function Hero() {
           </Lift>
           <MoonlightToggle className="text-muted-foreground hover:text-foreground" />
         </motion.div>
+
+        {/* The old piano's spot: Pokédex trainer entry */}
+        <PokedexPanel className="mt-14" />
       </motion.div>
 
       <motion.div
