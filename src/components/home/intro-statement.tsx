@@ -13,7 +13,7 @@ export function IntroStatement() {
       </Reveal>
       <ScrubText
         text={profile.summary}
-        className="mt-8 font-heading text-3xl font-medium leading-snug sm:text-4xl"
+        className="mt-8 text-3xl font-medium leading-snug tracking-tight sm:text-4xl"
       />
     </div>
   );

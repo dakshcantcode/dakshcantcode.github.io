@@ -1,29 +1,39 @@
 import type { Metadata } from "next";
-import { Cormorant_Garamond, EB_Garamond, Geist_Mono } from "next/font/google";
+import {
+  Geist,
+  Geist_Mono,
+  Press_Start_2P,
+  Silkscreen,
+} from "next/font/google";
 import { MotionProvider } from "@/components/shell/motion-provider";
 import { SiteNav } from "@/components/shell/site-nav";
 import { SiteFooter } from "@/components/shell/site-footer";
 import "./globals.css";
 
-const cormorant = Cormorant_Garamond({
-  variable: "--font-cormorant",
+const geistSans = Geist({
+  variable: "--font-geist-sans",
   subsets: ["latin"],
-  weight: ["500", "600", "700"],
-  style: ["normal", "italic"],
-  display: "swap",
-});
-
-const ebGaramond = EB_Garamond({
-  variable: "--font-eb-garamond",
-  subsets: ["latin"],
-  weight: ["400", "500", "600"],
-  style: ["normal", "italic"],
-  display: "swap",
 });
 
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
   subsets: ["latin"],
+});
+
+// Header pixel font — compact enough to keep the existing layout bones.
+const silkscreen = Silkscreen({
+  variable: "--font-silkscreen",
+  subsets: ["latin"],
+  weight: ["400", "700"],
+  display: "swap",
+});
+
+// The loud 8-bit voice: hero name, eyebrows, dialogue box.
+const pressStart = Press_Start_2P({
+  variable: "--font-press-start",
+  subsets: ["latin"],
+  weight: "400",
+  display: "swap",
 });
 
 export const metadata: Metadata = {
@@ -56,7 +66,7 @@ export default function RootLayout({
     <html
       lang="en"
       data-scroll-behavior="smooth"
-      className={`${cormorant.variable} ${ebGaramond.variable} ${geistMono.variable} h-full scroll-smooth antialiased`}
+      className={`${geistSans.variable} ${geistMono.variable} ${silkscreen.variable} ${pressStart.variable} h-full scroll-smooth antialiased`}
     >
       <body className="flex min-h-full flex-col">
         <MotionProvider>

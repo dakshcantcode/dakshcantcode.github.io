@@ -50,7 +50,7 @@ export function SiteNav() {
           aria-label="Daksh Agrawal — home"
         >
           <TrebleClefIcon className="text-neutral-700" />
-          <span className="font-heading text-lg italic tracking-wide">DA</span>
+          <span className="font-pixel text-xs tracking-wide">DA</span>
         </Link>
 
         <div className="relative hidden md:block">
@@ -70,7 +70,7 @@ export function SiteNav() {
                   <Link
                     href={link.href}
                     className={cn(
-                      "group block pb-9 pt-3 font-heading text-sm italic transition-colors duration-300",
+                      "group block pb-9 pt-4 font-pixel text-[10px] uppercase transition-colors duration-300",
                       active
                         ? "text-neutral-900"
                         : "text-neutral-900/55 hover:text-neutral-900",
@@ -91,8 +91,9 @@ export function SiteNav() {
                       className="absolute bottom-[15px]"
                       style={{ left: "50%", marginLeft: -4 }}
                     >
-                      <span className="block size-2 -rotate-[20deg] scale-x-125 rounded-full bg-neutral-900" />
-                      <span className="absolute -top-2.5 right-0 h-2.5 w-px bg-neutral-900" />
+                      {/* Pixel notehead: a square note on the staff */}
+                      <span className="block size-2 bg-neutral-900" />
+                      <span className="absolute -top-2.5 right-0 h-2.5 w-[2px] bg-neutral-900" />
                     </motion.span>
                   )}
                 </li>
@@ -106,7 +107,7 @@ export function SiteNav() {
             asChild
             size="sm"
             variant="ghost"
-            className="h-7 font-heading text-sm italic text-neutral-900/70 hover:bg-neutral-900/[0.06] hover:text-neutral-900"
+            className="h-7 font-pixel text-[10px] uppercase text-neutral-900/70 hover:bg-neutral-900/[0.06] hover:text-neutral-900"
           >
             <Link href="/about#contact">Get in touch</Link>
           </Button>
@@ -137,7 +138,7 @@ export function SiteNav() {
                       href={link.href}
                       onClick={() => setOpen(false)}
                       className={cn(
-                        "block py-2 font-heading text-3xl font-medium italic transition-colors",
+                        "block py-2 font-heading text-2xl font-bold uppercase transition-colors",
                         pathname === link.href
                           ? "text-neutral-900"
                           : "text-neutral-900/50 hover:text-neutral-900",

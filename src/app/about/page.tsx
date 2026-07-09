@@ -31,7 +31,7 @@ export default function AboutPage() {
         <div className="mx-auto w-full max-w-5xl px-6">
           <TextMaskReveal
             lines={["Beyond", "the code"]}
-            className="font-heading text-5xl font-semibold tracking-tight sm:text-7xl"
+            className="font-heading text-3xl font-bold uppercase leading-snug sm:text-5xl"
           />
           <Reveal delay={0.4}>
             <p className="mt-6 max-w-xl text-lg text-muted-foreground">
@@ -72,7 +72,7 @@ export default function AboutPage() {
           <div className="mt-24 grid grid-cols-1 items-center gap-12 md:grid-cols-2">
             <PianoKeysVisual />
             <Reveal x={24} y={0}>
-              <p className="font-heading text-2xl font-medium leading-snug sm:text-3xl">
+              <p className="text-2xl font-medium leading-snug tracking-tight sm:text-3xl">
                 Piano came first — nine years of scales before the first line
                 of code. The discipline transferred.
               </p>
@@ -88,7 +88,7 @@ export default function AboutPage() {
           </Reveal>
           <ScrubText
             text="Backends for games, models for production, songs for the room — same craft: patterns, timing, and honest practice."
-            className="mt-8 font-heading text-3xl font-medium leading-snug sm:text-4xl"
+            className="mt-8 text-3xl font-medium leading-snug tracking-tight sm:text-4xl"
           />
         </div>
       </ThemedSection>
@@ -101,7 +101,7 @@ export default function AboutPage() {
         <div className="mx-auto max-w-5xl px-6 py-32">
           <Reveal>
             <TempoEyebrow tempo="Now" />
-            <p className="mt-6 max-w-2xl font-heading text-2xl font-medium sm:text-3xl">
+            <p className="mt-6 max-w-2xl text-2xl font-medium tracking-tight sm:text-3xl">
               {profile.program} @ {profile.school},{" "}
               {profile.scholarship} — GPA {profile.gpa}. AI Engineer @ Kissht
               for Summer 2026, open to future co-op terms.

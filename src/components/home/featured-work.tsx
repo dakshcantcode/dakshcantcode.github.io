@@ -177,7 +177,7 @@ function ProjectRows() {
             <span className="numeral text-xs italic text-muted-foreground">
               {project.index}
             </span>
-            <span className="mt-1 block font-heading text-2xl italic">
+            <span className="mt-1 block font-heading text-lg font-bold uppercase">
               {project.name}
             </span>
             <Badge variant="secondary" className="mt-3 font-normal">

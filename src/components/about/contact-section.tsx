@@ -43,7 +43,7 @@ export function ContactSection() {
         <StaggerItem>
           <a
             href={`mailto:${contact.email}`}
-            className="group relative mt-8 inline-block break-all font-heading text-[clamp(1.5rem,5.5vw,4.25rem)] font-semibold tracking-tight"
+            className="group relative mt-8 inline-block break-all text-[clamp(1.5rem,5vw,4rem)] font-semibold tracking-tight"
           >
             {contact.email}
             <span className="absolute -bottom-1 left-0 hidden h-0.5 w-full origin-left scale-x-0 bg-foreground transition-transform duration-500 ease-out group-hover:scale-x-100 sm:block" />

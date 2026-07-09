@@ -66,7 +66,7 @@ export function NowPlaying() {
               />
             )}
           </div>
-          <h3 className="mt-6 font-heading text-4xl font-semibold italic">
+          <h3 className="mt-6 font-heading text-3xl font-bold uppercase">
             Eagles
           </h3>
           <p className="mt-2 text-sm text-muted-foreground">

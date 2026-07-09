@@ -255,7 +255,7 @@ export function StageScene() {
             transition={{ duration: reduceMotion ? 0 : 0.8, delay: 1.1 }}
           >
             <TempoEyebrow tempo="The stage" className="[&_span]:text-white/60" />
-            <p className="mt-2 max-w-md font-heading text-2xl italic sm:text-3xl">
+            <p className="mt-2 max-w-md font-heading text-lg font-bold uppercase sm:text-xl">
               Where the practice goes.
             </p>
           </motion.div>

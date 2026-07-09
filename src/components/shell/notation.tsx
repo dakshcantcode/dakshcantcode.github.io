@@ -21,17 +21,25 @@ type TempoEyebrowProps = {
   className?: string;
 };
 
-/** Section eyebrow styled as a tempo marking: "Allegro · EXPERIENCE". */
+/** Section eyebrow in the 8-bit voice: "▸ EXPERIENCE" with a gold cursor. */
 export function TempoEyebrow({ tempo, label, className }: TempoEyebrowProps) {
   return (
-    <p className={cn("text-sm text-muted-foreground", className)}>
-      <span className="font-heading text-lg italic">{tempo}</span>
+    <p
+      className={cn(
+        "font-pixel text-[10px] uppercase leading-relaxed tracking-wide text-muted-foreground",
+        className,
+      )}
+    >
+      <span aria-hidden="true" className="mr-2 text-retro-gold">
+        ▸
+      </span>
+      <span>{tempo}</span>
       {label && (
         <>
           <span aria-hidden="true" className="mx-2 text-foreground/30">
             ·
           </span>
-          <span className="text-xs uppercase tracking-[0.25em]">{label}</span>
+          <span>{label}</span>
         </>
       )}
     </p>
