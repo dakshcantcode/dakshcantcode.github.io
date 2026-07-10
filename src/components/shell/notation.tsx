@@ -1,3 +1,6 @@
+"use client";
+
+import { motion } from "framer-motion";
 import { cn } from "@/lib/utils";
 
 /**
@@ -9,7 +12,18 @@ export function StaffDivider({ className }: { className?: string }) {
   return (
     <div aria-hidden="true" className={cn("w-full space-y-[6px]", className)}>
       {[0, 1, 2, 3, 4].map((i) => (
-        <div key={i} className="h-px w-full bg-foreground/10" />
+        <motion.div
+          key={i}
+          initial={{ scaleX: 0 }}
+          whileInView={{ scaleX: 1 }}
+          viewport={{ once: true, margin: "-10% 0px" }}
+          transition={{
+            duration: 0.9,
+            delay: 0.08 * i,
+            ease: [0.22, 1, 0.36, 1],
+          }}
+          className="h-px w-full origin-left bg-foreground/10"
+        />
       ))}
     </div>
   );
