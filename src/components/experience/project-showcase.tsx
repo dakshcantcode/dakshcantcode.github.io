@@ -10,9 +10,9 @@ import {
 } from "framer-motion";
 import { Volume2, VolumeX } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { MiniEq } from "@/components/motion/mini-eq";
 import { Reveal } from "@/components/motion/reveal";
 import { StaffDivider } from "@/components/shell/notation";
-import { PianoKey } from "@/components/piano/piano-key";
 import { usePianoAudio } from "@/components/piano/use-piano-audio";
 import { useIsDesktop } from "@/hooks/use-is-desktop";
 import { projects } from "@/lib/resume";
@@ -20,6 +20,8 @@ import { ProjectPanel } from "./project-panel";
 
 // C4, E4, G4 — a rising major arpeggio across the three keys.
 const KEY_FREQS = [261.63, 329.63, 392.0];
+// Decorative track lengths for the queue chips.
+const TRACK_TIMES = ["04:12", "03:47", "05:02"];
 
 /**
  * The nav's sliding-note idea, reused as a progress indicator: a notehead
@@ -147,35 +149,43 @@ export function ProjectShowcase() {
           </div>
         </div>
 
-        <div className="mx-auto w-full max-w-5xl px-6">
+        <div className="mx-auto w-full max-w-5xl px-6 pb-10">
           <StaffProgress active={active} count={projects.length} />
-          <div className="relative flex h-36 items-stretch gap-1 sm:h-44">
-            {/* Literal piano palette (not band tokens): a real keyboard
-                emerging from the black band reads instantly as a piano. */}
+          {/* Player timeline: scroll is playback */}
+          <div className="relative mb-5 h-1 overflow-hidden rounded-full bg-foreground/15">
+            <motion.div
+              style={{ scaleX: scrollYProgress }}
+              className="absolute inset-0 origin-left rounded-full bg-foreground/80"
+            />
+          </div>
+          <div className="grid grid-cols-3 gap-3">
             {projects.map((p, i) => (
-              <PianoKey
+              <button
                 key={p.slug}
-                pressed={active === i}
-                onPress={() => jumpTo(i)}
+                type="button"
+                onClick={() => jumpTo(i)}
+                aria-pressed={active === i}
                 aria-label={`Show ${p.name}`}
-                className="min-w-0 flex-1 border-neutral-300 bg-white p-4 text-neutral-900 shadow-[0_2px_0_0_#d4d4d4]"
+                className={
+                  active === i
+                    ? "flex items-center gap-3 rounded-xl border border-foreground/50 bg-card px-4 py-3 text-left shadow-lg shadow-black/20 transition-all duration-300"
+                    : "flex items-center gap-3 rounded-xl border border-border/60 bg-card/40 px-4 py-3 text-left transition-all duration-300 hover:-translate-y-0.5 hover:bg-card/70"
+                }
               >
-                <span className="numeral text-sm italic text-neutral-500">
+                <span className="numeral text-sm italic text-muted-foreground">
                   {p.index}
                 </span>
-                <span className="mt-1 block truncate font-heading text-base italic leading-tight">
+                <span className="min-w-0 flex-1 truncate font-heading text-base italic">
                   {p.name}
                 </span>
-              </PianoKey>
-            ))}
-            {[0, 1].map((i) => (
-              <PianoKey
-                key={i}
-                variant="black"
-                interactive={false}
-                className="absolute top-0 h-[55%] w-16 border border-t-0 border-neutral-800 bg-neutral-950"
-                style={{ left: `calc(${((i + 1) * 100) / 3}% - 2rem)` }}
-              />
+                {active === i ? (
+                  <MiniEq className="shrink-0 text-foreground" />
+                ) : (
+                  <span className="shrink-0 text-xs text-muted-foreground">
+                    {TRACK_TIMES[i]}
+                  </span>
+                )}
+              </button>
             ))}
           </div>
         </div>

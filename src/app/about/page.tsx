@@ -9,6 +9,7 @@ import { TempoEyebrow } from "@/components/shell/notation";
 import { GuitarVisual } from "@/components/about/guitar-visual";
 import { PianoKeysVisual } from "@/components/about/visuals";
 import { ContactSection } from "@/components/about/contact-section";
+import { Masterpieces } from "@/components/about/masterpieces";
 import { NowPlaying } from "@/components/about/now-playing";
 import { profile } from "@/lib/resume";
 
@@ -28,7 +29,7 @@ const facts = [
 export default function AboutPage() {
   return (
     <div className="relative">
-      <SignalThread segments={["sine", "sine", "square", "sine", "square", "sine"]} />
+      <SignalThread segments={["sine", "sine", "square", "sine", "sine", "square", "sine"]} />
       <ThemedSection className="flex min-h-[60svh] items-end pb-24 pt-32">
         <div className="mx-auto w-full max-w-5xl px-6">
           <TextMaskReveal
@@ -93,6 +94,10 @@ export default function AboutPage() {
             className="mt-8 text-3xl font-medium leading-snug tracking-tight sm:text-4xl"
           />
         </div>
+      </ThemedSection>
+
+      <ThemedSection>
+        <Masterpieces />
       </ThemedSection>
 
       <ThemedSection theme="dark">

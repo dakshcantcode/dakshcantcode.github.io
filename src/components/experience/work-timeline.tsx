@@ -7,18 +7,13 @@ import {
   useScroll,
   useTransform,
 } from "framer-motion";
+import { Play } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
+import { MiniEq } from "@/components/motion/mini-eq";
 import { Reveal } from "@/components/motion/reveal";
-import { PianoKey } from "@/components/piano/piano-key";
 import { TempoEyebrow } from "@/components/shell/notation";
 import { experience, type Experience } from "@/lib/resume";
 import { cn } from "@/lib/utils";
-
-// 8-key strip; entries sit on keys 2 and 6, the rest are decorative.
-const ENTRY_KEYS: Record<number, number> = { 2: 0, 6: 1 };
-const STRIP_KEYS = 8;
-// Black keys at the classic octave joints (after C, D, F, G, A).
-const BLACK_JOINTS = [0, 1, 3, 4, 5];
 
 function JobEntry({ job }: { job: Experience }) {
   const ref = useRef<HTMLDivElement>(null);
@@ -66,6 +61,25 @@ function JobEntry({ job }: { job: Experience }) {
   );
 }
 
+/** Mini "cover art": staff lines behind the company initial. */
+function CoverArt({ initial }: { initial: string }) {
+  return (
+    <span className="relative flex size-14 shrink-0 items-center justify-center overflow-hidden rounded-lg border border-border/60 bg-gradient-to-br from-secondary/80 to-background">
+      <span
+        aria-hidden="true"
+        className="absolute inset-x-2 top-1/2 -translate-y-1/2 space-y-[5px]"
+      >
+        {[0, 1, 2, 3, 4].map((i) => (
+          <span key={i} className="block h-px w-full bg-foreground/15" />
+        ))}
+      </span>
+      <span className="relative font-heading text-2xl font-semibold italic">
+        {initial}
+      </span>
+    </span>
+  );
+}
+
 export function WorkTimeline() {
   const [selected, setSelected] = useState(0);
   const job = experience[selected];
@@ -76,65 +90,45 @@ export function WorkTimeline() {
         <TempoEyebrow tempo="Experience" />
       </Reveal>
 
-      {/* Keyboard selector — literal piano palette on the dark band. */}
+      {/* The discography: each role is a record — press play */}
       <Reveal>
-        <div className="relative mt-20 max-w-2xl">
-          <div className="relative flex h-24 items-stretch gap-1 sm:h-28">
-            {Array.from({ length: STRIP_KEYS }).map((_, i) => {
-              const entryIdx = ENTRY_KEYS[i];
-              const isEntry = entryIdx !== undefined;
-              const entry = isEntry ? experience[entryIdx] : undefined;
-              return (
-                <div key={i} className="relative min-w-0 flex-1">
-                  {entry && (
-                    <>
-                      <span className="absolute -top-12 left-1/2 -translate-x-1/2 whitespace-nowrap font-heading text-xs italic text-muted-foreground">
-                        <span className="sm:hidden">{entry.company}</span>
-                        <span className="hidden sm:inline">{entry.dates}</span>
-                      </span>
-                      <span
-                        aria-hidden="true"
-                        className="absolute -top-6 left-1/2 h-6 w-px bg-foreground/30"
-                      />
-                    </>
-                  )}
-                  <PianoKey
-                    interactive={isEntry}
-                    pressed={isEntry && selected === entryIdx}
-                    onPress={
-                      entry ? () => setSelected(entryIdx!) : undefined
-                    }
-                    aria-label={entry ? `Show ${entry.company}` : undefined}
-                    className={cn(
-                      "h-full w-full border-neutral-300 bg-white p-2 text-neutral-900 shadow-[0_2px_0_0_#d4d4d4]",
-                      !isEntry && "opacity-40",
-                    )}
-                  >
-                    {entry && (
-                      <span className="hidden truncate font-heading text-xs italic sm:block sm:text-sm">
-                        {entry.company}
-                      </span>
-                    )}
-                  </PianoKey>
-                </div>
-              );
-            })}
-            {BLACK_JOINTS.map((i) => (
-              <PianoKey
-                key={`black-${i}`}
-                variant="black"
-                interactive={false}
-                className="absolute top-0 h-[52%] w-5 border border-t-0 border-neutral-800 bg-neutral-950 opacity-70 sm:w-6"
-                style={{
-                  left: `calc(${((i + 1) * 100) / STRIP_KEYS}% - 0.75rem)`,
-                }}
-              />
-            ))}
-          </div>
+        <div className="mt-14 grid gap-4 sm:grid-cols-2">
+          {experience.map((entry, idx) => {
+            const active = selected === idx;
+            return (
+              <button
+                key={entry.company}
+                type="button"
+                onClick={() => setSelected(idx)}
+                aria-pressed={active}
+                className={cn(
+                  "group flex items-center gap-4 rounded-2xl border p-4 text-left transition-all duration-300 sm:p-5",
+                  active
+                    ? "-translate-y-0.5 border-foreground/50 bg-card shadow-xl shadow-black/25"
+                    : "border-border/60 bg-card/40 hover:-translate-y-0.5 hover:bg-card/70 hover:shadow-lg hover:shadow-black/15",
+                )}
+              >
+                <CoverArt initial={entry.company[0]} />
+                <span className="min-w-0 flex-1">
+                  <span className="block truncate font-heading text-xl italic">
+                    {entry.company}
+                  </span>
+                  <span className="mt-0.5 block truncate text-xs text-muted-foreground">
+                    {entry.role} · {entry.dates}
+                  </span>
+                </span>
+                {active ? (
+                  <MiniEq className="shrink-0 text-foreground" />
+                ) : (
+                  <Play className="size-4 shrink-0 text-muted-foreground opacity-0 transition-opacity group-hover:opacity-100" />
+                )}
+              </button>
+            );
+          })}
         </div>
       </Reveal>
 
-      <div className="mt-20">
+      <div className="mt-16">
         <AnimatePresence mode="wait">
           <motion.div
             key={job.company}
