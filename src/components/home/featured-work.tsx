@@ -72,10 +72,12 @@ function GuitarNeck() {
   };
 
   return (
-    <div
+    <motion.div
       className="mt-36 hidden md:flex md:items-stretch"
       onPointerEnter={doStrum}
       onPointerDown={doStrum}
+      onViewportEnter={() => setTimeout(doStrum, 350)}
+      viewport={{ once: true, margin: "-20% 0px" }}
     >
       {/* Headstock with six tuners */}
       <svg
@@ -159,7 +161,7 @@ function GuitarNeck() {
           </Link>
         ))}
       </div>
-    </div>
+    </motion.div>
   );
 }
 

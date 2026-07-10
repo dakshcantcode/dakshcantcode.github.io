@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { motion, useReducedMotion } from "framer-motion";
+import { Parallax } from "@/components/motion/parallax";
 import { Reveal } from "@/components/motion/reveal";
 import { TempoEyebrow } from "@/components/shell/notation";
 import { focusAreas, type FocusArea } from "@/lib/resume";
@@ -111,7 +112,9 @@ export function FocusGrid() {
       </Reveal>
       <div className="mt-10">
         {focusAreas.map((area, i) => (
-          <GuitarString key={area.title} area={area} index={i} delay={i * 0.18} />
+          <Parallax key={area.title} speed={i % 2 ? 14 : -14}>
+            <GuitarString area={area} index={i} delay={i * 0.18} />
+          </Parallax>
         ))}
       </div>
     </div>
