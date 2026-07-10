@@ -1,3 +1,4 @@
+import { DustMotes } from "@/components/shell/dust-motes";
 import { NumberKeyboardBg } from "@/components/shell/number-keyboard-bg";
 import { cn } from "@/lib/utils";
 
@@ -10,6 +11,8 @@ type ThemedSectionProps = {
    * Adds relative+overflow-hidden — never combine with sticky children.
    */
   score?: boolean;
+  /** Stage-dust motes drifting through the band (dark bands only). */
+  atmosphere?: boolean;
   children: React.ReactNode;
 };
 
@@ -22,6 +25,7 @@ export function ThemedSection({
   id,
   className,
   score = false,
+  atmosphere = false,
   children,
 }: ThemedSectionProps) {
   return (
@@ -33,11 +37,12 @@ export function ThemedSection({
         theme === "dark"
           ? "dark bg-background text-foreground bg-gradient-to-b from-[#181818] via-[#101010] to-[#0a0a0a] shadow-[inset_0_1px_0_rgba(255,255,255,0.06)]"
           : "bg-background text-foreground bg-gradient-to-b from-white via-[#fbfbfa] to-[#f2f2f0]",
-        score && "relative overflow-hidden",
+        (score || atmosphere) && "relative overflow-hidden",
         className,
       )}
     >
       {score && <NumberKeyboardBg />}
+      {atmosphere && theme === "dark" && <DustMotes />}
       {children}
     </section>
   );

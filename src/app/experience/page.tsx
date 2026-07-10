@@ -61,7 +61,7 @@ export default function ExperiencePage() {
         <SkillsGrid />
       </ThemedSection>
 
-      <ThemedSection theme="dark" score>
+      <ThemedSection theme="dark" score atmosphere>
         <CtaBand />
       </ThemedSection>
     </div>

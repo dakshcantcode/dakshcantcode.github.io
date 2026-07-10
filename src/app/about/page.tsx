@@ -100,7 +100,7 @@ export default function AboutPage() {
         <Masterpieces />
       </ThemedSection>
 
-      <ThemedSection theme="dark">
+      <ThemedSection theme="dark" atmosphere>
         <NowPlaying />
       </ThemedSection>
 
@@ -117,7 +117,7 @@ export default function AboutPage() {
         </div>
       </ThemedSection>
 
-      <ThemedSection theme="dark" id="contact" score>
+      <ThemedSection theme="dark" id="contact" score atmosphere>
         <ContactSection />
       </ThemedSection>
     </div>

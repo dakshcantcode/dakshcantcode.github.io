@@ -20,13 +20,13 @@ export default function HomePage() {
       <ThemedSection>
         <FocusGrid />
       </ThemedSection>
-      <ThemedSection theme="dark" score>
+      <ThemedSection theme="dark" score atmosphere>
         <StatsBand />
       </ThemedSection>
       <ThemedSection>
         <FeaturedWork />
       </ThemedSection>
-      <ThemedSection theme="dark" score>
+      <ThemedSection theme="dark" score atmosphere>
         <CtaBand />
       </ThemedSection>
     </div>

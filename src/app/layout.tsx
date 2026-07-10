@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Cormorant_Garamond, EB_Garamond, Geist_Mono } from "next/font/google";
+import { CursorGlow } from "@/components/shell/cursor-glow";
 import { MotionProvider } from "@/components/shell/motion-provider";
 import { SiteNav } from "@/components/shell/site-nav";
 import { SiteFooter } from "@/components/shell/site-footer";
@@ -60,6 +61,7 @@ export default function RootLayout({
     >
       <body className="flex min-h-full flex-col">
         <MotionProvider>
+          <CursorGlow />
           <SiteNav />
           <main className="flex-1">{children}</main>
           <SiteFooter />
