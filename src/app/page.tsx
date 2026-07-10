@@ -1,4 +1,5 @@
 import { ThemedSection } from "@/components/shell/themed-section";
+import { SignalThread } from "@/components/motion/signal-thread";
 import { Hero } from "@/components/home/hero";
 import { IntroStatement } from "@/components/home/intro-statement";
 import { FocusGrid } from "@/components/home/focus-grid";
@@ -8,7 +9,8 @@ import { CtaBand } from "@/components/home/cta-band";
 
 export default function HomePage() {
   return (
-    <>
+    <div className="relative">
+      <SignalThread segments={["sine", "square", "sine", "square", "sine", "square"]} />
       <ThemedSection>
         <Hero />
       </ThemedSection>
@@ -27,6 +29,6 @@ export default function HomePage() {
       <ThemedSection theme="dark" score>
         <CtaBand />
       </ThemedSection>
-    </>
+    </div>
   );
 }

@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { ThemedSection } from "@/components/shell/themed-section";
+import { SignalThread } from "@/components/motion/signal-thread";
 import { TextMaskReveal } from "@/components/motion/text-mask-reveal";
 import { Reveal } from "@/components/motion/reveal";
 import { TempoEyebrow } from "@/components/shell/notation";
@@ -15,7 +16,8 @@ export const metadata: Metadata = {
 
 export default function ExperiencePage() {
   return (
-    <>
+    <div className="relative">
+      <SignalThread segments={["square", "square", "sine", "square", "sine", "square"]} />
       <ThemedSection className="flex min-h-[60svh] items-end pb-24 pt-32">
         <div className="mx-auto w-full max-w-5xl px-6">
           <TextMaskReveal
@@ -62,6 +64,6 @@ export default function ExperiencePage() {
       <ThemedSection theme="dark" score>
         <CtaBand />
       </ThemedSection>
-    </>
+    </div>
   );
 }
