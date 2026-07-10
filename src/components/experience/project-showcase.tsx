@@ -116,7 +116,7 @@ export function ProjectShowcase() {
   const project = projects[active];
 
   return (
-    <div ref={ref} className="relative h-[300vh]">
+    <div ref={ref} className="relative h-[220vh]">
       <div className="sticky top-0 flex h-svh flex-col overflow-hidden pt-24">
         <div className="relative mx-auto w-full max-w-5xl flex-1 px-6">
           <AnimatePresence mode="popLayout">
