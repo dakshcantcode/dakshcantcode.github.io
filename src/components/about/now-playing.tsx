@@ -114,8 +114,8 @@ export function NowPlaying() {
               What's in my ears.
             </h2>
             <p className="mt-3 max-w-md text-sm text-muted-foreground">
-              Nine years of piano, plus guitar and vocals — this playlist is
-              the fuel. Touch a cover; the room takes its color.
+              Nine years of piano plus guitar and vocals, and this playlist
+              fuels all of it. Hover a cover and the room borrows its color.
             </p>
           </div>
           <Lift>
@@ -139,7 +139,7 @@ export function NowPlaying() {
               {spotlight && (
                 <Vinyl
                   art={spotlight.art}
-                  alt="Eagles — Hotel California album cover"
+                  alt="Eagles, Hotel California album cover"
                 />
               )}
             </div>
@@ -150,8 +150,8 @@ export function NowPlaying() {
               <Visualizer color={tint} />
             </div>
             <p className="mt-2 text-sm text-muted-foreground">
-              {eaglesTracks.length} tracks on this playlist — more than any
-              other artist. Not close.
+              {eaglesTracks.length} tracks on this playlist. No other artist
+              is even close.
             </p>
             <StaffDivider className="mt-6 max-w-xs opacity-60" />
             <ul className="mt-6 space-y-3">
@@ -188,7 +188,7 @@ export function NowPlaying() {
                   >
                     <Image
                       src={t.art}
-                      alt={`${t.title} — ${t.artist} album cover`}
+                      alt={`${t.title} by ${t.artist}, album cover`}
                       fill
                       sizes="(max-width: 640px) 30vw, 160px"
                       className="object-cover transition-transform duration-500 group-hover:scale-[1.06]"
@@ -206,7 +206,7 @@ export function NowPlaying() {
               ))}
             </StaggerGroup>
             <p className="mt-4 text-right text-xs italic text-muted-foreground">
-              hover a cover — {tracks.length} tracks deep
+              hover around, {tracks.length} tracks deep
             </p>
           </div>
         </div>

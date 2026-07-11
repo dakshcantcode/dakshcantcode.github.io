@@ -19,8 +19,8 @@ export function CtaBand() {
       />
       <Reveal delay={0.4}>
         <p className="mx-auto mt-6 max-w-md text-muted-foreground">
-          Currently building AI for consumer lending — and open to future
-          co-op terms. If you're building something ambitious, let's talk.
+          These days I build AI for consumer lending at Kissht, and I'm open
+          to future co-op terms. Building something ambitious? Let's talk.
         </p>
         <Lift className="mt-10">
           <Button asChild size="lg">

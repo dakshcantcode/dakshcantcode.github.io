@@ -240,7 +240,7 @@ export function ScoreCard({ className }: { className?: string }) {
             className="size-1.5 rounded-full bg-foreground"
           />
           <p className="text-xs italic text-muted-foreground transition-colors group-hover:text-foreground">
-            {playing ? "now playing — tap to pause" : "tap to hear it"}
+            {playing ? "now playing, tap to pause" : "tap to hear it"}
           </p>
         </div>
       </motion.div>

@@ -26,8 +26,8 @@ export default function ExperiencePage() {
           />
           <Reveal delay={0.4}>
             <p className="mt-6 max-w-xl text-lg text-muted-foreground">
-              Production systems, award-winning hackathon tools, and deep
-              learning research — built to ship.
+              Production systems, hackathon winners, and deep learning
+              research. All of it shipped.
             </p>
           </Reveal>
         </div>

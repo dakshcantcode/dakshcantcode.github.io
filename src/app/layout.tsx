@@ -29,22 +29,22 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: {
-    default: "Daksh Agrawal — Software Engineering & Machine Learning",
-    template: "%s — Daksh Agrawal",
+    default: "Daksh Agrawal | Software & Machine Learning",
+    template: "%s | Daksh Agrawal",
   },
   description:
-    "Computer Science @ University of Waterloo. AI Engineer @ Kissht for Summer 2026 — open to future co-op terms.",
+    "Computer Science @ University of Waterloo. AI Engineer @ Kissht this summer, open to future co-op terms.",
   openGraph: {
-    title: "Daksh Agrawal — Software Engineering & Machine Learning",
+    title: "Daksh Agrawal | Software & Machine Learning",
     description:
       "Computer Science @ University of Waterloo. Award-winning hackathon builds, GraphQL systems, and deep learning projects.",
     type: "website",
   },
   twitter: {
     card: "summary",
-    title: "Daksh Agrawal — Software Engineering & Machine Learning",
+    title: "Daksh Agrawal | Software & Machine Learning",
     description:
-      "Computer Science @ University of Waterloo. AI Engineer @ Kissht for Summer 2026 — open to future co-op terms.",
+      "Computer Science @ University of Waterloo. AI Engineer @ Kissht this summer, open to future co-op terms.",
   },
 };
 

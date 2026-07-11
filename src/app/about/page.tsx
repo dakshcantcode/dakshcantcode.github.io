@@ -16,14 +16,14 @@ import { profile } from "@/lib/resume";
 export const metadata: Metadata = {
   title: "About",
   description:
-    "Game backends and machine learning by day; nine years of piano, plus guitar and vocals, after hours. Daksh Agrawal — CS @ Waterloo, AI Engineer @ Kissht.",
+    "Game backends and machine learning by day, nine years of piano after hours. Daksh Agrawal, CS @ Waterloo, AI Engineer @ Kissht.",
 };
 
 const facts = [
   { value: "09", label: "years of piano" },
-  { value: "03", label: "instruments — piano, guitar, vocals" },
-  { value: "02", label: "crafts — game backends & ML" },
-  { value: "∞", label: "reps — soccer, gym, scales" },
+  { value: "03", label: "instruments: piano, guitar, vocals" },
+  { value: "02", label: "crafts: game backends and ML" },
+  { value: "∞", label: "reps: soccer, gym, scales" },
 ];
 
 export default function AboutPage() {
@@ -38,8 +38,8 @@ export default function AboutPage() {
           />
           <Reveal delay={0.4}>
             <p className="mt-6 max-w-xl text-lg text-muted-foreground">
-              Game backends and machine learning by day. Nine years of piano —
-              plus guitar and vocals — after hours.
+              Game backends and machine learning by day. Nine years of piano
+              after hours, with guitar and vocals on the side.
             </p>
           </Reveal>
         </div>
@@ -57,7 +57,7 @@ export default function AboutPage() {
           <Reveal className="mt-16">
             <GuitarVisual className="w-full text-foreground" />
             <p className="mt-3 text-right text-xs italic text-muted-foreground">
-              go on — strum it
+              go on, strum it
             </p>
           </Reveal>
 
@@ -76,8 +76,8 @@ export default function AboutPage() {
             <PianoKeysVisual />
             <Reveal x={24} y={0}>
               <p className="text-2xl font-medium leading-snug tracking-tight sm:text-3xl">
-                Piano came first — nine years of scales before the first line
-                of code. The discipline transferred.
+                Piano came first. Nine years of scales before my first line of
+                code, and the discipline stuck around.
               </p>
             </Reveal>
           </div>
@@ -90,7 +90,7 @@ export default function AboutPage() {
             <TempoEyebrow tempo="The thread" />
           </Reveal>
           <ScrubText
-            text="Backends for games, models for production, songs for the room — same craft: patterns, timing, and honest practice."
+            text="Backends for games, models for production, songs for the room. It's all one craft: patterns, timing, honest practice."
             className="mt-8 text-3xl font-medium leading-snug tracking-tight sm:text-4xl"
           />
         </div>
@@ -110,8 +110,8 @@ export default function AboutPage() {
             <TempoEyebrow tempo="Now" />
             <p className="mt-6 max-w-2xl text-2xl font-medium tracking-tight sm:text-3xl">
               {profile.program} @ {profile.school},{" "}
-              {profile.scholarship} — GPA {profile.gpa}. AI Engineer @ Kissht
-              for Summer 2026, open to future co-op terms.
+              {profile.scholarship}, GPA {profile.gpa}. AI Engineer @ Kissht
+              this summer, open to future co-op terms.
             </p>
           </Reveal>
         </div>

@@ -47,7 +47,7 @@ export function SiteNav() {
         <Link
           href="/"
           className="flex items-center gap-2 text-foreground"
-          aria-label="Daksh Agrawal — home"
+          aria-label="Daksh Agrawal, home"
         >
           <TrebleClefIcon className="text-foreground/70" />
           <span className="font-heading text-lg italic tracking-wide">DA</span>

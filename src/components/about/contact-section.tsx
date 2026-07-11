@@ -53,7 +53,7 @@ export function ContactSection() {
         <StaggerItem>
           <p className="mx-auto mt-8 max-w-md text-muted-foreground">
             {contact.cta}. If you want to talk shop about ML, 3D, or shipping
-            fast — my inbox is open.
+            fast, my inbox is open.
           </p>
         </StaggerItem>
 

@@ -58,7 +58,7 @@ export function Hero() {
           transition={{ duration: 0.7, delay: 0.55, ease }}
           className="mt-8 max-w-xl text-lg text-muted-foreground sm:text-xl"
         >
-          Computer Science @ {profile.school} — {profile.scholarship}.
+          Computer Science @ {profile.school}, {profile.scholarship}.
         </motion.p>
 
         <motion.div
