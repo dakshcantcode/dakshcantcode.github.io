@@ -17,11 +17,24 @@ const QUOTES = [
   },
 ];
 
+// Drifting golden embers, like leaves off the Erdtree.
+const EMBERS = [
+  [8, 4, 11, 0], [24, 12, 14, 3], [42, 2, 12, 6], [58, 9, 16, 1.5],
+  [72, 5, 13, 4.5], [86, 14, 15, 8], [95, 3, 12, 10.5],
+] as const;
+
 /** The guidance of grace: a drifting golden wisp with orbiting tendrils. */
 function GraceWisp() {
   const reduceMotion = useReducedMotion();
   return (
     <div aria-hidden="true" className="relative mx-auto size-44">
+      {/* Descending shaft of light */}
+      <div
+        className="absolute -top-28 left-1/2 h-32 w-40 -translate-x-1/2 blur-xl [clip-path:polygon(38%_0,62%_0,88%_100%,12%_100%)]"
+        style={{
+          background: `linear-gradient(to bottom, ${GOLD}00, ${GOLD}2e)`,
+        }}
+      />
       {/* Halo */}
       <motion.div
         animate={
@@ -100,7 +113,6 @@ function Erdtree() {
       aria-hidden="true"
       className="pointer-events-none absolute inset-y-0 right-0 hidden w-[44%] overflow-hidden lg:block"
     >
-      {/* Canopy glow */}
       <div
         className="absolute right-[8%] top-[8%] h-[55%] w-[80%] rounded-[100%] blur-3xl"
         style={{ background: `radial-gradient(ellipse, ${GOLD}26, transparent 65%)` }}
@@ -113,11 +125,9 @@ function Erdtree() {
         strokeLinecap="round"
         opacity="0.32"
       >
-        {/* Trunk */}
         <path d="M210 560 C206 460 202 380 200 330 C198 290 196 260 200 230" strokeWidth="7" />
         <path d="M200 330 C185 300 170 285 148 272" strokeWidth="3.5" />
         <path d="M200 300 C218 272 236 258 262 248" strokeWidth="4" />
-        {/* Boughs fanning into the canopy */}
         <path d="M200 230 C185 185 160 155 118 132" strokeWidth="3" />
         <path d="M200 230 C202 178 206 148 224 112" strokeWidth="3.2" />
         <path d="M200 230 C222 190 252 162 296 144" strokeWidth="2.8" />
@@ -126,7 +136,6 @@ function Erdtree() {
         <path d="M224 112 C232 84 244 62 262 44" strokeWidth="2" />
         <path d="M118 132 C100 110 88 92 82 68" strokeWidth="1.8" />
         <path d="M296 144 C318 122 334 100 344 74" strokeWidth="1.8" />
-        {/* Canopy wisps */}
         {[
           [66, 96], [118, 58], [176, 36], [238, 28], [298, 44], [344, 86],
           [96, 152], [200, 64], [330, 140],
@@ -135,6 +144,75 @@ function Erdtree() {
         ))}
       </svg>
     </div>
+  );
+}
+
+/** The shattered ring, turning very slowly on the far side. */
+function ShatteredRing() {
+  const reduceMotion = useReducedMotion();
+  return (
+    <div
+      aria-hidden="true"
+      className="pointer-events-none absolute inset-y-0 left-[-6%] hidden w-[36%] items-center overflow-hidden lg:flex"
+    >
+      <motion.svg
+        viewBox="0 0 300 300"
+        className="w-full opacity-25"
+        animate={reduceMotion ? undefined : { rotate: 360 }}
+        transition={{ duration: 140, repeat: Infinity, ease: "linear" }}
+        fill="none"
+        stroke={GOLD}
+        strokeLinecap="round"
+      >
+        {/* Broken outer ring */}
+        <path d="M150 22 A128 128 0 0 1 272 122" strokeWidth="5" />
+        <path d="M276 168 A128 128 0 0 1 186 272" strokeWidth="5" />
+        <path d="M118 274 A128 128 0 0 1 24 176" strokeWidth="4" />
+        <path d="M28 122 A128 128 0 0 1 110 30" strokeWidth="3" />
+        {/* The tilted shard through the center */}
+        <path d="M150 40 L150 150" strokeWidth="4" transform="rotate(24 150 150)" />
+        <path d="M150 150 L150 252" strokeWidth="5" transform="rotate(24 150 150)" />
+        {/* Inner arc fragments */}
+        <path d="M150 84 A66 66 0 0 1 214 144" strokeWidth="2.5" opacity="0.7" />
+        <path d="M92 178 A66 66 0 0 1 108 100" strokeWidth="2" opacity="0.5" />
+      </motion.svg>
+    </div>
+  );
+}
+
+/** An ornate straight sword, lying behind Fia's line. */
+function DeathBlade() {
+  const reduceMotion = useReducedMotion();
+  return (
+    <motion.svg
+      viewBox="0 0 800 64"
+      preserveAspectRatio="none"
+      className="absolute inset-x-0 top-1/2 h-14 w-full -translate-y-1/2"
+      aria-hidden="true"
+      animate={reduceMotion ? undefined : { opacity: [0.3, 0.5, 0.3] }}
+      transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
+      style={{ filter: `drop-shadow(0 0 10px ${GOLD}66)` }}
+    >
+      {/* Pommel + grip */}
+      <circle cx="24" cy="32" r="7" stroke={GOLD} strokeWidth="2" fill="none" />
+      <circle cx="24" cy="32" r="2.5" fill={GOLD} />
+      <rect x="34" y="28" width="52" height="8" rx="3" fill="none" stroke={GOLD} strokeWidth="1.5" />
+      {[44, 54, 64, 74].map((x) => (
+        <line key={x} x1={x} y1="28" x2={x + 4} y2="36" stroke={GOLD} strokeWidth="1" opacity="0.7" />
+      ))}
+      {/* Crossguard, flared horns */}
+      <path d="M96 10 C88 22 88 42 96 54" stroke={GOLD} strokeWidth="2.5" fill="none" />
+      <line x1="97" y1="12" x2="97" y2="52" stroke={GOLD} strokeWidth="3" />
+      {/* Blade with fuller */}
+      <path
+        d={`M104 26 L720 28 L784 32 L720 36 L104 38 Z`}
+        fill={`${GOLD}14`}
+        stroke={GOLD}
+        strokeWidth="1.5"
+        strokeLinejoin="round"
+      />
+      <line x1="112" y1="32" x2="712" y2="32" stroke={GOLD} strokeWidth="1" opacity="0.55" />
+    </motion.svg>
   );
 }
 
@@ -153,16 +231,50 @@ export function TarnishedMessages() {
   const reduceMotion = useReducedMotion();
 
   return (
-    <div className="relative">
+    <div className="relative overflow-hidden">
+      {/* Edge vignette so the gold burns against true black */}
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_40%,rgba(0,0,0,0.55)_100%)]"
+      />
+      <ShatteredRing />
       <Erdtree />
+
+      {/* Embers drifting down across the band */}
+      {!reduceMotion &&
+        EMBERS.map(([left, top, dur, delay]) => (
+          <motion.span
+            key={`${left}-${top}`}
+            aria-hidden="true"
+            animate={{
+              x: [0, -90, -150],
+              y: [0, 140, 260],
+              rotate: [0, 90, 200],
+              opacity: [0, 0.7, 0],
+            }}
+            transition={{ duration: dur, delay, repeat: Infinity, ease: "linear" }}
+            className="pointer-events-none absolute size-1.5 rounded-[2px]"
+            style={{
+              left: `${left}%`,
+              top: `${top}%`,
+              backgroundColor: GOLD,
+              boxShadow: `0 0 6px 1px ${GOLD}59`,
+            }}
+          />
+        ))}
+
       <div className="relative mx-auto max-w-5xl px-6 py-32">
         <Reveal>
-          <p
-            className="text-center text-xs uppercase tracking-[0.3em]"
-            style={{ color: `${GOLD}b3` }}
-          >
-            From the Lands Between
-          </p>
+          <div className="mx-auto flex max-w-md items-center gap-4">
+            <GoldRule className="flex-1" />
+            <p
+              className="whitespace-nowrap text-xs uppercase tracking-[0.3em]"
+              style={{ color: `${GOLD}b3` }}
+            >
+              From the Lands Between
+            </p>
+            <GoldRule className="flex-1" />
+          </div>
         </Reveal>
 
         {/* Screen-text heading, the way the game announces things */}
@@ -177,7 +289,7 @@ export function TarnishedMessages() {
           }
           viewport={{ once: true, margin: "-15% 0px" }}
           transition={{ duration: 1.6, ease: [0.22, 1, 0.36, 1] }}
-          className="mt-6 bg-gradient-to-b from-[#f5e6c4] via-[#e2c078] to-[#a8863f] bg-clip-text text-center font-heading text-3xl font-medium uppercase tracking-[0.16em] text-transparent [filter:drop-shadow(0_0_20px_rgba(213,178,106,0.3))] sm:text-5xl"
+          className="mt-8 bg-gradient-to-b from-[#f5e6c4] via-[#e2c078] to-[#a8863f] bg-clip-text text-center font-heading text-3xl font-medium uppercase tracking-[0.16em] text-transparent [filter:drop-shadow(0_0_20px_rgba(213,178,106,0.3))] sm:text-5xl"
         >
           Arise now, ye Tarnished
         </motion.h2>
@@ -204,7 +316,6 @@ export function TarnishedMessages() {
                   backgroundColor: "rgba(10, 8, 4, 0.55)",
                 }}
               >
-                {/* Corner diamonds */}
                 {["-top-1 -left-1", "-top-1 -right-1", "-bottom-1 -left-1", "-bottom-1 -right-1"].map(
                   (pos) => (
                     <span
@@ -215,7 +326,6 @@ export function TarnishedMessages() {
                     />
                   ),
                 )}
-                {/* Inner hairline + hover glow */}
                 <span
                   aria-hidden="true"
                   className="pointer-events-none absolute inset-1.5"
@@ -245,6 +355,46 @@ export function TarnishedMessages() {
             </StaggerItem>
           ))}
         </StaggerGroup>
+
+        {/* The centerpiece: Fia's line, laid over the blade */}
+        <Reveal className="mt-10">
+          <div
+            className="group relative overflow-hidden px-8 py-14 backdrop-blur-sm sm:px-16"
+            style={{
+              border: `1px solid ${GOLD}59`,
+              backgroundColor: "rgba(8, 6, 3, 0.6)",
+            }}
+          >
+            {["-top-1 -left-1", "-top-1 -right-1", "-bottom-1 -left-1", "-bottom-1 -right-1"].map(
+              (pos) => (
+                <span
+                  key={pos}
+                  aria-hidden="true"
+                  className={`absolute ${pos} size-2.5 rotate-45`}
+                  style={{ backgroundColor: GOLD }}
+                />
+              ),
+            )}
+            <span
+              aria-hidden="true"
+              className="pointer-events-none absolute inset-2"
+              style={{ border: `1px solid ${GOLD}26` }}
+            />
+            <DeathBlade />
+            <p
+              className="relative text-center font-heading text-2xl font-medium italic leading-snug [filter:drop-shadow(0_0_14px_rgba(213,178,106,0.35))] sm:text-4xl"
+              style={{ color: GOLD_LIGHT }}
+            >
+              “O Death, become my blade once more.”
+            </p>
+            <p
+              className="relative mt-5 text-center text-[11px] uppercase tracking-[0.3em]"
+              style={{ color: `${GOLD}b3` }}
+            >
+              Fia, Deathbed Companion
+            </p>
+          </div>
+        </Reveal>
 
         <Reveal className="mt-14">
           <p className="mx-auto max-w-md text-center text-sm text-muted-foreground">
