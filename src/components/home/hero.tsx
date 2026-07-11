@@ -13,6 +13,7 @@ import { Lift } from "@/components/motion/lift";
 import { TextMaskReveal } from "@/components/motion/text-mask-reveal";
 import { TempoEyebrow } from "@/components/shell/notation";
 import { MoonlightToggle } from "@/components/stage/moonlight-toggle";
+import { HeroAtmosphere, HeroTicker } from "@/components/home/hero-atmosphere";
 import { ScoreCard } from "@/components/home/score-card";
 import { profile } from "@/lib/resume";
 
@@ -31,6 +32,7 @@ export function Hero() {
         aria-hidden="true"
         className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_55%_45%_at_32%_38%,rgba(0,0,0,0.04),transparent_65%)]"
       />
+      <HeroAtmosphere />
 
       <motion.div
         style={reduceMotion ? undefined : { y, opacity }}
@@ -101,7 +103,7 @@ export function Hero() {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 1.4, duration: 0.8 }}
-        className="pointer-events-none absolute bottom-8 left-1/2 -translate-x-1/2"
+        className="pointer-events-none absolute bottom-16 left-1/2 -translate-x-1/2"
       >
         <motion.span
           animate={reduceMotion ? undefined : { y: [0, 8, 0] }}
@@ -111,6 +113,8 @@ export function Hero() {
           <ChevronDown className="size-5 text-muted-foreground" />
         </motion.span>
       </motion.div>
+
+      <HeroTicker />
     </div>
   );
 }
