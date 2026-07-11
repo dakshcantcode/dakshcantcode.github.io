@@ -23,7 +23,7 @@ export function ProjectPanel({ project, compact = false }: ProjectPanelProps) {
   return (
     <div
       className={cn(
-        "relative rounded-2xl border border-border/60 bg-card/70 shadow-lg shadow-black/[0.06] backdrop-blur-sm transition-shadow duration-300 hover:shadow-xl",
+        "gilt-top relative rounded-2xl border border-border/60 bg-card/70 shadow-lg shadow-black/[0.06] backdrop-blur-sm transition-shadow duration-300 hover:shadow-xl",
         compact ? "p-6" : "p-8 sm:p-10",
       )}
     >

@@ -102,7 +102,7 @@ export function WorkTimeline() {
                 onClick={() => setSelected(idx)}
                 aria-pressed={active}
                 className={cn(
-                  "group flex items-center gap-4 rounded-2xl border p-4 text-left transition-all duration-300 sm:p-5",
+                  "gilt-top group flex items-center gap-4 rounded-2xl border p-4 text-left transition-all duration-300 sm:p-5",
                   active
                     ? "-translate-y-0.5 border-grace/60 bg-card shadow-xl shadow-black/25"
                     : "border-border/60 bg-card/40 hover:-translate-y-0.5 hover:bg-card/70 hover:shadow-lg hover:shadow-black/15",
@@ -136,7 +136,7 @@ export function WorkTimeline() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -24 }}
             transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
-            className="rounded-2xl border border-border/60 bg-card/50 p-8 shadow-lg shadow-black/10 backdrop-blur-sm sm:p-10"
+            className="gilt-top rounded-2xl border border-border/60 bg-card/50 p-8 shadow-lg shadow-black/10 backdrop-blur-sm sm:p-10"
           >
             <JobEntry job={job} />
           </motion.div>

@@ -52,6 +52,18 @@ export function Hero() {
           />
         </h1>
 
+        <motion.span
+          aria-hidden="true"
+          initial={{ opacity: 0, scaleX: 0 }}
+          animate={{ opacity: 1, scaleX: 1 }}
+          transition={{ delay: 1.1, duration: 0.9, ease }}
+          className="mt-5 flex origin-left items-center gap-2"
+        >
+          <span className="h-px w-24 bg-gradient-to-r from-grace/80 to-transparent" />
+          <span className="size-1.5 rotate-45 bg-grace/80" />
+          <span className="h-px w-8 bg-gradient-to-r from-grace/40 to-transparent" />
+        </motion.span>
+
         <motion.p
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
@@ -68,12 +80,12 @@ export function Hero() {
           className="mt-10 flex flex-wrap items-center gap-3"
         >
           <Lift>
-            <Button asChild size="lg">
+            <Button asChild size="lg" className="ring-1 ring-inset ring-grace/50">
               <Link href="/experience">View work</Link>
             </Button>
           </Lift>
           <Lift>
-            <Button asChild size="lg" variant="outline">
+            <Button asChild size="lg" variant="outline" className="border-grace/50 hover:border-grace">
               <Link href="/about#contact">Get in touch</Link>
             </Button>
           </Lift>

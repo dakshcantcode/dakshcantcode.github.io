@@ -356,7 +356,7 @@ export function TarnishedMessages() {
           ))}
         </StaggerGroup>
 
-        {/* The centerpiece: Fia's line, laid over the blade */}
+        {/* The centerpiece: Maliketh's line, laid over the blade */}
         <Reveal className="mt-10">
           <div
             className="group relative overflow-hidden px-8 py-14 backdrop-blur-sm sm:px-16"
@@ -391,7 +391,7 @@ export function TarnishedMessages() {
               className="relative mt-5 text-center text-[11px] uppercase tracking-[0.3em]"
               style={{ color: `${GOLD}b3` }}
             >
-              Fia, Deathbed Companion
+              Maliketh, the Black Blade
             </p>
           </div>
         </Reveal>

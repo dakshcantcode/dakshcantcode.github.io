@@ -36,7 +36,7 @@ export function DashboardStrip() {
       <StaggerGroup className="mt-12 grid grid-cols-2 gap-4 lg:grid-cols-4">
         {stats.map((stat, i) => (
           <StaggerItem key={stat.label}>
-            <div className="group h-full rounded-2xl border border-border/60 bg-card p-6 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-lg hover:shadow-black/[0.06]">
+            <div className="gilt-top group h-full rounded-2xl border border-border/60 bg-card p-6 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-lg hover:shadow-black/[0.06]">
               <p className="text-xs uppercase tracking-widest text-muted-foreground">
                 {stat.label}
               </p>
@@ -75,7 +75,7 @@ export function DashboardStrip() {
 
       {/* The growth chart */}
       <Reveal className="mt-4">
-        <div className="rounded-2xl border border-border/60 bg-card p-6 shadow-sm sm:p-8">
+        <div className="gilt-top rounded-2xl border border-border/60 bg-card p-6 shadow-sm sm:p-8">
           <div className="flex items-baseline justify-between">
             <p className="text-xs uppercase tracking-widest text-muted-foreground">
               Skill trajectory

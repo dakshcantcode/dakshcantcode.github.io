@@ -124,7 +124,7 @@ export function ScoreCard({ className }: { className?: string }) {
       transition={{ delay: 1.05, duration: 0.9, ease }}
       whileHover={reduceMotion ? undefined : { rotate: -0.4, y: -5 }}
       className={cn(
-        "group block w-full cursor-pointer rounded-sm border border-border/70 bg-gradient-to-br from-card to-secondary/50 p-6 text-left text-foreground shadow-xl shadow-black/10 transition-shadow hover:shadow-2xl hover:shadow-black/15 sm:p-7",
+        "gilt-top group block w-full cursor-pointer rounded-sm border border-border/70 bg-gradient-to-br from-card to-secondary/50 p-6 text-left text-foreground shadow-xl shadow-black/10 transition-shadow hover:shadow-2xl hover:shadow-black/15 sm:p-7",
         className,
       )}
     >

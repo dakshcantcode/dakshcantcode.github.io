@@ -62,7 +62,7 @@ export function Masterpieces() {
               {/* Tape */}
               <span
                 aria-hidden="true"
-                className="absolute -top-2.5 left-1/2 h-5 w-16 -translate-x-1/2 -rotate-2 border-x border-black/5 bg-foreground/[0.08] backdrop-blur-[1px]"
+                className="absolute -top-2.5 left-1/2 h-5 w-16 -translate-x-1/2 -rotate-2 border-x border-black/5 bg-[#d5b26a]/30 backdrop-blur-[1px]"
               />
               <p className="font-heading text-lg font-semibold italic leading-tight text-neutral-900">
                 {piece.title}

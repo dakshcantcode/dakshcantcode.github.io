@@ -23,7 +23,7 @@ export function CtaBand() {
           to future co-op terms. Building something ambitious? Let's talk.
         </p>
         <Lift className="mt-10">
-          <Button asChild size="lg">
+          <Button asChild size="lg" className="ring-1 ring-inset ring-grace/50">
             <Link href="/about#contact">Get in touch</Link>
           </Button>
         </Lift>

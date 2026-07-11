@@ -16,12 +16,12 @@ export function SiteFooter() {
             </p>
           </div>
           <div className="flex items-center gap-1">
-            <Button asChild variant="ghost" size="icon">
+            <Button asChild variant="ghost" size="icon" className="hover:text-grace">
               <a href={`mailto:${contact.email}`} aria-label="Email">
                 <Mail className="size-4" />
               </a>
             </Button>
-            <Button asChild variant="ghost" size="icon">
+            <Button asChild variant="ghost" size="icon" className="hover:text-grace">
               <a
                 href={contact.linkedin}
                 target="_blank"
@@ -31,7 +31,7 @@ export function SiteFooter() {
                 <LinkedInIcon />
               </a>
             </Button>
-            <Button asChild variant="ghost" size="icon">
+            <Button asChild variant="ghost" size="icon" className="hover:text-grace">
               <a
                 href={contact.github}
                 target="_blank"

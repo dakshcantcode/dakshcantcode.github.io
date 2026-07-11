@@ -90,12 +90,12 @@ function GuitarNeck() {
       >
         <path d="M30 4 L8 16 Q1 20 1 30 V90 Q1 100 8 104 L30 116 Z" />
         {[20, 36, 52, 68, 84, 100].map((cy) => (
-          <circle key={cy} cx="9" cy={cy} r="2.5" fill="currentColor" stroke="none" />
+          <circle key={cy} cx="9" cy={cy} r="2.5" fill="var(--grace)" opacity="0.65" stroke="none" />
         ))}
       </svg>
 
       {/* Nut */}
-      <div aria-hidden="true" className="h-40 w-1 shrink-0 bg-foreground/40" />
+      <div aria-hidden="true" className="h-40 w-1 shrink-0 bg-grace/70" />
 
       {/* Neck: frets, inlays, strings, and the projects on their markers */}
       <div className="relative h-40 flex-1">

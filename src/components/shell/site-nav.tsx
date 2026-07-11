@@ -36,7 +36,7 @@ export function SiteNav() {
 
   return (
     <header className="fixed inset-x-0 top-4 z-50 px-4">
-      <nav className="relative mx-auto flex h-14 max-w-5xl items-center justify-between overflow-hidden rounded-full border border-white/40 bg-white/60 px-6 shadow-lg shadow-black/[0.06] ring-1 ring-black/5 backdrop-blur-2xl backdrop-saturate-150">
+      <nav className="relative mx-auto flex h-14 max-w-5xl items-center justify-between overflow-hidden rounded-full border border-white/40 bg-white/60 px-6 shadow-lg shadow-black/[0.06] ring-1 ring-grace/25 backdrop-blur-2xl backdrop-saturate-150">
         {/* Scroll progress along the capsule's bottom edge */}
         <motion.div
           aria-hidden="true"
@@ -49,7 +49,7 @@ export function SiteNav() {
           className="flex items-center gap-2 text-foreground"
           aria-label="Daksh Agrawal, home"
         >
-          <TrebleClefIcon className="text-foreground/70" />
+          <TrebleClefIcon className="text-grace" />
           <span className="font-heading text-lg italic tracking-wide">DA</span>
         </Link>
 

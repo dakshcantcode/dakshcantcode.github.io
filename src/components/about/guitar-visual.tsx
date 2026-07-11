@@ -47,10 +47,10 @@ export function GuitarVisual({ className }: { className?: string }) {
         cx="690"
         cy="130"
         r="33"
-        className="fill-foreground/10 stroke-foreground/40"
+        className="fill-grace/15 stroke-grace/60"
       />
       {/* Bridge */}
-      <rect x="786" y="110" width="12" height="40" rx="3" className="fill-foreground/30" />
+      <rect x="786" y="110" width="12" height="40" rx="3" className="fill-grace/50" />
       {/* Neck */}
       <rect
         x="60"
@@ -78,7 +78,7 @@ export function GuitarVisual({ className }: { className?: string }) {
         <circle key={cy} cx="20" cy={cy} r="2.2" className="fill-foreground/35" />
       ))}
       {/* Nut */}
-      <line x1="60" y1="108" x2="60" y2="152" className="stroke-foreground/50" strokeWidth="3" />
+      <line x1="60" y1="108" x2="60" y2="152" className="stroke-grace/80" strokeWidth="3" />
       {/* Strings */}
       {STRING_YS.map((y, i) => (
         <motion.path

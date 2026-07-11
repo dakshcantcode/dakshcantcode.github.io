@@ -38,17 +38,23 @@ type TempoEyebrowProps = {
 /** Section eyebrow: an italic serif marking, e.g. "Experience". */
 export function TempoEyebrow({ tempo, label, className }: TempoEyebrowProps) {
   return (
-    <p className={cn("text-sm text-muted-foreground", className)}>
-      <span className="font-heading text-lg italic text-grace">{tempo}</span>
-      {label && (
-        <>
-          <span aria-hidden="true" className="mx-2 text-foreground/30">
-            ·
-          </span>
-          <span className="text-xs uppercase tracking-[0.25em]">{label}</span>
-        </>
-      )}
-    </p>
+    <div className={cn("text-sm text-muted-foreground", className)}>
+      <p>
+        <span className="font-heading text-lg italic text-grace">{tempo}</span>
+        {label && (
+          <>
+            <span aria-hidden="true" className="mx-2 text-foreground/30">
+              ·
+            </span>
+            <span className="text-xs uppercase tracking-[0.25em]">{label}</span>
+          </>
+        )}
+      </p>
+      <span aria-hidden="true" className="mt-1.5 flex items-center gap-1.5">
+        <span className="h-px w-8 bg-gradient-to-r from-grace/70 to-transparent" />
+        <span className="size-1 rotate-45 bg-grace/70" />
+      </span>
+    </div>
   );
 }
 
@@ -59,8 +65,8 @@ export function FinalBarline({ className }: { className?: string }) {
       aria-hidden="true"
       className={cn("flex h-6 shrink-0 items-stretch gap-1", className)}
     >
-      <span className="w-px bg-foreground/60" />
-      <span className="w-1 bg-foreground/60" />
+      <span className="w-px bg-grace/80" />
+      <span className="w-1 bg-grace/80" />
     </span>
   );
 }
