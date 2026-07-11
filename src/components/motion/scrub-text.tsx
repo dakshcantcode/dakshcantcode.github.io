@@ -24,7 +24,7 @@ function Word({
   const opacity = useTransform(progress, range, [0.06, 1]);
   const y = useTransform(progress, range, [20, 0]);
   const x = useTransform(progress, range, [drift, 0]);
-  const blur = useTransform(progress, range, [8, 0]);
+  const blur = useTransform(progress, range, [5, 0]);
   const filter = useMotionTemplate`blur(${blur}px)`;
   return (
     <motion.span
@@ -43,7 +43,7 @@ type ScrubTextProps = {
 
 // Words animate in overlapping windows, so several are mid-flight at
 // once — a wave of type settling into place rather than a hard sweep.
-const OVERLAP = 4;
+const OVERLAP = 3;
 
 /**
  * Scroll-scrubbed "typesetting": each word rises out of a blur and

@@ -12,7 +12,7 @@ type StaggerGroupProps = {
 export function StaggerGroup({
   children,
   className,
-  stagger = 0.1,
+  stagger = 0.08,
   delay = 0,
 }: StaggerGroupProps) {
   return (
@@ -46,7 +46,7 @@ export function StaggerItem({ children, className }: StaggerItemProps) {
           opacity: 1,
           y: 0,
           scale: 1,
-          transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] },
+          transition: { type: "spring", stiffness: 100, damping: 18, mass: 0.9 },
         },
       }}
     >

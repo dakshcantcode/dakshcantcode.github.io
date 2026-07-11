@@ -86,7 +86,7 @@ export function SignalThread({ segments }: { segments: SignalSeg[] }) {
     target: ref,
     offset: ["start 0.75", "end 0.95"],
   });
-  const progress = useSpring(scrollYProgress, { stiffness: 70, damping: 22 });
+  const progress = useSpring(scrollYProgress, { stiffness: 55, damping: 20 });
 
   const path = h > 0 ? buildPath(h, segments) : "";
 

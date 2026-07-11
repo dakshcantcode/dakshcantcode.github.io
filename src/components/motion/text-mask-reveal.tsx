@@ -41,7 +41,7 @@ export function TextMaskReveal({
               show: {
                 y: "0%",
                 transition: {
-                  duration: 0.9,
+                  duration: 0.8,
                   delay: delay + i * 0.12,
                   ease: [0.22, 1, 0.36, 1],
                 },
