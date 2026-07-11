@@ -149,7 +149,10 @@ export function ScoreCard({ className }: { className?: string }) {
 
         <svg
           viewBox="0 0 470 170"
-          className="mt-4 w-full"
+          className={cn(
+            "mt-4 w-full transition-colors duration-700",
+            playing && "text-grace",
+          )}
           aria-hidden="true"
         >
           <g transform="translate(0 -28)">
@@ -237,7 +240,7 @@ export function ScoreCard({ className }: { className?: string }) {
                 ? { duration: 1.15, repeat: Infinity, ease: "easeInOut" }
                 : { duration: 0.3 }
             }
-            className="size-1.5 rounded-full bg-foreground"
+            className="size-1.5 rounded-full bg-grace"
           />
           <p className="text-xs italic text-muted-foreground transition-colors group-hover:text-foreground">
             {playing ? "now playing, tap to pause" : "tap to hear it"}

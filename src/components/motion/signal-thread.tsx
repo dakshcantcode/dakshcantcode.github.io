@@ -94,14 +94,14 @@ export function SignalThread({ segments }: { segments: SignalSeg[] }) {
     <div
       ref={ref}
       aria-hidden="true"
-      className="pointer-events-none absolute inset-y-0 left-5 hidden w-10 mix-blend-difference xl:block"
+      className="pointer-events-none absolute inset-y-0 left-5 hidden w-10 xl:block"
     >
       {h > 0 && (
         <svg
           width="40"
           height={h}
           viewBox={`0 0 40 ${h}`}
-          className="text-white"
+          className="text-grace"
           fill="none"
         >
           {/* Faint score of the full journey */}

@@ -111,7 +111,7 @@ function GuitarNeck() {
           <span
             key={x}
             aria-hidden="true"
-            className="absolute top-1/2 size-2 -translate-x-1/2 -translate-y-1/2 rounded-full bg-foreground/20"
+            className="absolute top-1/2 size-2 -translate-x-1/2 -translate-y-1/2 rounded-full bg-grace/50"
             style={{ left: `${x}%` }}
           />
         ))}
@@ -119,7 +119,7 @@ function GuitarNeck() {
           <span
             key={top}
             aria-hidden="true"
-            className="absolute size-2 -translate-x-1/2 -translate-y-1/2 rounded-full bg-foreground/20"
+            className="absolute size-2 -translate-x-1/2 -translate-y-1/2 rounded-full bg-grace/50"
             style={{ left: `${INLAY_12}%`, top: `${top}%` }}
           />
         ))}

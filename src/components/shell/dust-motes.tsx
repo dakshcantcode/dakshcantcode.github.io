@@ -44,7 +44,7 @@ export function DustMotes() {
             repeat: Infinity,
             ease: "easeInOut",
           }}
-          className="absolute rounded-full bg-white/50 blur-[1px]"
+          className="absolute rounded-full bg-[#e9c67c]/60 blur-[1px]"
         />
       ))}
     </div>

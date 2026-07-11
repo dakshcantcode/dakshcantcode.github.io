@@ -39,7 +39,7 @@ type TempoEyebrowProps = {
 export function TempoEyebrow({ tempo, label, className }: TempoEyebrowProps) {
   return (
     <p className={cn("text-sm text-muted-foreground", className)}>
-      <span className="font-heading text-lg italic">{tempo}</span>
+      <span className="font-heading text-lg italic text-grace">{tempo}</span>
       {label && (
         <>
           <span aria-hidden="true" className="mx-2 text-foreground/30">

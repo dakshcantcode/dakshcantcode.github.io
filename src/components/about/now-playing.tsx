@@ -132,7 +132,7 @@ export function NowPlaying() {
           {/* Top-artist spotlight: the Eagles, on vinyl */}
           <Reveal>
             <div className="relative inline-block w-full max-w-sm">
-              <Badge className="absolute -top-3 left-4 z-10 gap-1">
+              <Badge className="absolute -top-3 left-4 z-10 gap-1 border-transparent bg-[#d5b26a] text-[#1a1405]">
                 <Star className="size-3 fill-current" />
                 Top artist
               </Badge>

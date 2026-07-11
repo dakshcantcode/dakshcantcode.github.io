@@ -55,7 +55,7 @@ export function DashboardStrip() {
                 </span>
                 <svg
                   viewBox="0 0 60 20"
-                  className="h-5 w-16 text-foreground/50 opacity-70 transition-opacity group-hover:opacity-100"
+                  className="h-5 w-16 text-grace opacity-80 transition-opacity group-hover:opacity-100"
                   aria-hidden="true"
                 >
                   <polyline
@@ -82,11 +82,11 @@ export function DashboardStrip() {
             </p>
             <p className="text-xs text-muted-foreground">2022 → 2026</p>
           </div>
-          <svg viewBox="0 0 360 100" className="mt-4 w-full text-foreground/80" aria-hidden="true">
+          <svg viewBox="0 0 360 100" className="mt-4 w-full text-grace" aria-hidden="true">
             <defs>
               <linearGradient id="ws-fill" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="0" stopColor="#8a8a8a" stopOpacity="0.25" />
-                <stop offset="1" stopColor="#8a8a8a" stopOpacity="0" />
+                <stop offset="0" stopColor="#d5b26a" stopOpacity="0.28" />
+                <stop offset="1" stopColor="#d5b26a" stopOpacity="0" />
               </linearGradient>
             </defs>
             <path d={`${AREA_LINE} L360,100 L0,100 Z`} fill="url(#ws-fill)" />

@@ -42,7 +42,7 @@ function JobEntry({ job }: { job: Experience }) {
         <div className="absolute inset-y-0 left-0 hidden w-px bg-border md:block" />
         <motion.div
           style={{ scaleY }}
-          className="absolute inset-y-0 left-0 hidden w-px origin-top bg-foreground md:block"
+          className="absolute inset-y-0 left-0 hidden w-px origin-top bg-grace md:block"
         />
         <div className="space-y-12">
           {job.highlights.map((highlight, i) => (
@@ -104,7 +104,7 @@ export function WorkTimeline() {
                 className={cn(
                   "group flex items-center gap-4 rounded-2xl border p-4 text-left transition-all duration-300 sm:p-5",
                   active
-                    ? "-translate-y-0.5 border-foreground/50 bg-card shadow-xl shadow-black/25"
+                    ? "-translate-y-0.5 border-grace/60 bg-card shadow-xl shadow-black/25"
                     : "border-border/60 bg-card/40 hover:-translate-y-0.5 hover:bg-card/70 hover:shadow-lg hover:shadow-black/15",
                 )}
               >
@@ -118,7 +118,7 @@ export function WorkTimeline() {
                   </span>
                 </span>
                 {active ? (
-                  <MiniEq className="shrink-0 text-foreground" />
+                  <MiniEq className="shrink-0 text-grace" />
                 ) : (
                   <Play className="size-4 shrink-0 text-muted-foreground opacity-0 transition-opacity group-hover:opacity-100" />
                 )}

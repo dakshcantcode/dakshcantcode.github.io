@@ -64,10 +64,10 @@ export function GuitarVisual({ className }: { className?: string }) {
         <line key={x} x1={x} y1="111" x2={x} y2="149" className="stroke-foreground/20" />
       ))}
       {INLAYS.map((x) => (
-        <circle key={x} cx={x} cy="130" r="2.5" className="fill-foreground/25" />
+        <circle key={x} cx={x} cy="130" r="2.5" className="fill-grace/60" />
       ))}
-      <circle cx={INLAY_12} cy="121" r="2.5" className="fill-foreground/25" />
-      <circle cx={INLAY_12} cy="139" r="2.5" className="fill-foreground/25" />
+      <circle cx={INLAY_12} cy="121" r="2.5" className="fill-grace/60" />
+      <circle cx={INLAY_12} cy="139" r="2.5" className="fill-grace/60" />
       {/* Headstock + tuners */}
       <path
         d="M60,110 L18,97 Q8,94 8,104 V156 Q8,166 18,163 L60,150 Z"

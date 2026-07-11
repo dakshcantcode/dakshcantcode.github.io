@@ -155,7 +155,7 @@ export function ProjectShowcase() {
           <div className="relative mb-5 h-1 overflow-hidden rounded-full bg-foreground/15">
             <motion.div
               style={{ scaleX: scrollYProgress }}
-              className="absolute inset-0 origin-left rounded-full bg-foreground/80"
+              className="absolute inset-0 origin-left rounded-full bg-grace"
             />
           </div>
           <div className="grid grid-cols-3 gap-3">
@@ -168,7 +168,7 @@ export function ProjectShowcase() {
                 aria-label={`Show ${p.name}`}
                 className={
                   active === i
-                    ? "flex items-center gap-3 rounded-xl border border-foreground/50 bg-card px-4 py-3 text-left shadow-lg shadow-black/20 transition-all duration-300"
+                    ? "flex items-center gap-3 rounded-xl border border-grace/70 bg-card px-4 py-3 text-left shadow-lg shadow-black/20 transition-all duration-300"
                     : "flex items-center gap-3 rounded-xl border border-border/60 bg-card/40 px-4 py-3 text-left transition-all duration-300 hover:-translate-y-0.5 hover:bg-card/70"
                 }
               >
@@ -179,7 +179,7 @@ export function ProjectShowcase() {
                   {p.name}
                 </span>
                 {active === i ? (
-                  <MiniEq className="shrink-0 text-foreground" />
+                  <MiniEq className="shrink-0 text-grace" />
                 ) : (
                   <span className="shrink-0 text-xs text-muted-foreground">
                     {TRACK_TIMES[i]}

@@ -96,7 +96,7 @@ export function ProjectPanel({ project, compact = false }: ProjectPanelProps) {
                 }
                 viewport={{ once: true, margin: "-10% 0px" }}
                 transition={{ duration: 1, delay: 0.15 * i, ease: "easeOut" }}
-                className="h-full rounded-full bg-gradient-to-r from-foreground/40 to-foreground/70"
+                className="h-full rounded-full bg-gradient-to-r from-grace/60 to-grace"
                 style={
                   reduceMotion
                     ? { width: `${BAR_WIDTHS[i % BAR_WIDTHS.length]}%` }

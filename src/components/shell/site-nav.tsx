@@ -41,7 +41,7 @@ export function SiteNav() {
         <motion.div
           aria-hidden="true"
           style={{ scaleX: progress }}
-          className="absolute inset-x-6 bottom-0 h-[2px] origin-left rounded-full bg-foreground/50"
+          className="absolute inset-x-6 bottom-0 h-[2px] origin-left rounded-full bg-grace/80"
         />
 
         <Link
@@ -91,8 +91,8 @@ export function SiteNav() {
                       className="absolute bottom-[15px]"
                       style={{ left: "50%", marginLeft: -4 }}
                     >
-                      <span className="block size-2 -rotate-[20deg] scale-x-125 rounded-full bg-foreground" />
-                      <span className="absolute -top-2.5 right-0 h-2.5 w-px bg-foreground" />
+                      <span className="block size-2 -rotate-[20deg] scale-x-125 rounded-full bg-grace" />
+                      <span className="absolute -top-2.5 right-0 h-2.5 w-px bg-grace" />
                     </motion.span>
                   )}
                 </li>
