@@ -28,7 +28,7 @@ export function TextMaskReveal({
       className={cn("block", className)}
       initial="hidden"
       whileInView="show"
-      viewport={{ once: true }}
+      viewport={{ once: false, margin: "-8% 0px" }}
     >
       {lines.map((line, i) => (
         // pb/-mb give serif descenders room inside the mask without

@@ -50,7 +50,7 @@ export function SkillsGrid() {
             <motion.div
               initial="rest"
               whileInView="played"
-              viewport={{ once: true, margin: "-15% 0px" }}
+              viewport={{ once: false, margin: "-15% 0px" }}
               variants={{
                 rest: {},
                 played: { transition: { staggerChildren: 0.055 } },

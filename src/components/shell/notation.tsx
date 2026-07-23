@@ -16,7 +16,7 @@ export function StaffDivider({ className }: { className?: string }) {
           key={i}
           initial={{ scaleX: 0 }}
           whileInView={{ scaleX: 1 }}
-          viewport={{ once: true, margin: "-10% 0px" }}
+          viewport={{ once: false, margin: "-10% 0px" }}
           transition={{
             duration: 0.9,
             delay: 0.08 * i,

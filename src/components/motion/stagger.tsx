@@ -20,7 +20,7 @@ export function StaggerGroup({
       className={className}
       initial="hidden"
       whileInView="show"
-      viewport={{ once: true, margin: "-10% 0px" }}
+      viewport={{ once: false, margin: "-10% 0px" }}
       variants={{
         hidden: {},
         show: { transition: { staggerChildren: stagger, delayChildren: delay } },

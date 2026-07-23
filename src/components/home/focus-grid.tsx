@@ -70,7 +70,7 @@ function GuitarString({
           whileInView={
             reduceMotion || introduced ? undefined : { opacity: 1 }
           }
-          viewport={{ once: true, margin: "-15% 0px" }}
+          viewport={{ once: false, margin: "-15% 0px" }}
           onViewportEnter={() => {
             if (reduceMotion || introduced) return;
             // Staggered introductory strum, one string after another.

@@ -21,7 +21,7 @@ export function Counter({
   duration = 1.4,
 }: CounterProps) {
   const ref = useRef<HTMLSpanElement>(null);
-  const inView = useInView(ref, { once: true, margin: "-10% 0px" });
+  const inView = useInView(ref, { once: false, margin: "-10% 0px" });
   const reduceMotion = useReducedMotion();
   const [display, setDisplay] = useState((0).toFixed(decimals));
 

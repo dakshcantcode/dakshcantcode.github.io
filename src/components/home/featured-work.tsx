@@ -77,7 +77,7 @@ function GuitarNeck() {
       onPointerEnter={doStrum}
       onPointerDown={doStrum}
       onViewportEnter={() => setTimeout(doStrum, 350)}
-      viewport={{ once: true, margin: "-20% 0px" }}
+      viewport={{ once: false, margin: "-20% 0px" }}
     >
       {/* Headstock with six tuners */}
       <svg

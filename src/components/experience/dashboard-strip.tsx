@@ -98,7 +98,7 @@ export function DashboardStrip() {
               strokeLinecap="round"
               initial={reduceMotion ? undefined : { pathLength: 0 }}
               whileInView={reduceMotion ? undefined : { pathLength: 1 }}
-              viewport={{ once: true, margin: "-15% 0px" }}
+              viewport={{ once: false, margin: "-15% 0px" }}
               transition={{ duration: 1.6, ease: "easeOut" }}
             />
             <motion.circle
@@ -108,7 +108,7 @@ export function DashboardStrip() {
               fill="currentColor"
               initial={reduceMotion ? undefined : { opacity: 0 }}
               whileInView={{ opacity: 1 }}
-              viewport={{ once: true }}
+              viewport={{ once: false }}
               transition={{ delay: 1.5 }}
             />
           </svg>
