@@ -4,7 +4,6 @@ import { SignalThread } from "@/components/motion/signal-thread";
 import { TextMaskReveal } from "@/components/motion/text-mask-reveal";
 import { Reveal } from "@/components/motion/reveal";
 import { TempoEyebrow } from "@/components/shell/notation";
-import { DashboardStrip } from "@/components/experience/dashboard-strip";
 import { WorkTimeline } from "@/components/experience/work-timeline";
 import { ProjectShowcase } from "@/components/experience/project-showcase";
 import { SkillsGrid } from "@/components/experience/skills-grid";
@@ -31,10 +30,6 @@ export default function ExperiencePage() {
             </p>
           </Reveal>
         </div>
-      </ThemedSection>
-
-      <ThemedSection>
-        <DashboardStrip />
       </ThemedSection>
 
       <ThemedSection theme="dark">
