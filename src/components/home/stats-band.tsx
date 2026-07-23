@@ -29,7 +29,7 @@ export function StatsBand() {
               decimals={stat.decimals}
               prefix={stat.prefix}
               suffix={stat.suffix}
-              className="numeral bg-gradient-to-b from-[#f5e6c4] via-[#d5b26a] to-[#8a6d33] bg-clip-text text-6xl font-semibold text-transparent sm:text-7xl"
+              className="numeral bg-gradient-to-b from-grace-bright via-grace to-grace-2 bg-clip-text text-6xl font-semibold text-transparent sm:text-7xl"
             />
             <p className="mt-3 max-w-[16rem] text-xs uppercase leading-relaxed tracking-widest text-muted-foreground">
               {stat.label}

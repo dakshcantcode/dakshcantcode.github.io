@@ -85,8 +85,8 @@ export function DashboardStrip() {
           <svg viewBox="0 0 360 100" className="mt-4 w-full text-grace" aria-hidden="true">
             <defs>
               <linearGradient id="ws-fill" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="0" stopColor="#d5b26a" stopOpacity="0.28" />
-                <stop offset="1" stopColor="#d5b26a" stopOpacity="0" />
+                <stop offset="0" stopColor="var(--grace)" stopOpacity="0.28" />
+                <stop offset="1" stopColor="var(--grace)" stopOpacity="0" />
               </linearGradient>
             </defs>
             <path d={`${AREA_LINE} L360,100 L0,100 Z`} fill="url(#ws-fill)" />

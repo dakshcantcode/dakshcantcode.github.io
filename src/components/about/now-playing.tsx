@@ -37,7 +37,7 @@ function Vinyl({ art, alt }: { art: string; alt: string }) {
     <motion.div
       animate={reduceMotion ? undefined : { rotate: 360 }}
       transition={{ duration: 14, repeat: Infinity, ease: "linear" }}
-      className="relative aspect-square w-full max-w-sm rounded-full border border-[#d5b26a]/40 shadow-[0_18px_50px_rgba(0,0,0,0.55)]"
+      className="relative aspect-square w-full max-w-sm rounded-full border border-grace/40 shadow-[0_18px_50px_rgba(0,0,0,0.55)]"
       style={{
         background:
           "repeating-radial-gradient(circle at 50% 50%, #101010 0 2.5px, #1b1b1b 2.5px 5px)",
@@ -53,7 +53,7 @@ function Vinyl({ art, alt }: { art: string; alt: string }) {
         <Image src={art} alt={alt} width={220} height={220} className="w-full" />
       </div>
       {/* Spindle */}
-      <span className="absolute left-1/2 top-1/2 size-2.5 -translate-x-1/2 -translate-y-1/2 rounded-full border border-[#d5b26a]/60 bg-[#070707]" />
+      <span className="absolute left-1/2 top-1/2 size-2.5 -translate-x-1/2 -translate-y-1/2 rounded-full border border-grace/60 bg-[#070707]" />
     </motion.div>
   );
 }
@@ -132,7 +132,7 @@ export function NowPlaying() {
           {/* Top-artist spotlight: the Eagles, on vinyl */}
           <Reveal>
             <div className="relative inline-block w-full max-w-sm">
-              <Badge className="absolute -top-3 left-4 z-10 gap-1 border-transparent bg-[#d5b26a] text-[#1a1405]">
+              <Badge className="absolute -top-3 left-4 z-10 gap-1 border-transparent bg-grace text-[#17121f]">
                 <Star className="size-3 fill-current" />
                 Top artist
               </Badge>

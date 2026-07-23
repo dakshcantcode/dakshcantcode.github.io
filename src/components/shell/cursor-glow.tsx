@@ -35,7 +35,7 @@ export function CursorGlow() {
     <motion.div
       aria-hidden="true"
       style={{ x, y, marginLeft: -180, marginTop: -180 }}
-      className="pointer-events-none fixed left-0 top-0 z-[5] size-[360px] rounded-full bg-[radial-gradient(circle,rgba(233,198,124,0.5),transparent_62%)] mix-blend-soft-light"
+      className="pointer-events-none fixed left-0 top-0 z-[5] size-[360px] rounded-full bg-[radial-gradient(circle,rgba(191,169,224,0.5),transparent_62%)] mix-blend-soft-light"
     />
   );
 }
