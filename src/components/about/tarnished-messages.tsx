@@ -1,408 +1,43 @@
 "use client";
 
-import { motion, useReducedMotion } from "framer-motion";
 import { Reveal } from "@/components/motion/reveal";
-import { StaggerGroup, StaggerItem } from "@/components/motion/stagger";
 
-const GOLD = "#d5b26a";
-const GOLD_LIGHT = "#f2e3bd";
-
-// Short attributed lines from the game.
-const QUOTES = [
-  { q: "Put these foolish ambitions to rest.", by: "Margit, the Fell Omen" },
-  { q: "I command thee, kneel!", by: "Godrick the Grafted" },
-  {
-    q: "Let strength be granted, so the world might be mended.",
-    by: "a Site of Grace",
-  },
-];
-
-// Drifting golden embers, like leaves off the Erdtree.
-const EMBERS = [
-  [8, 4, 11, 0], [24, 12, 14, 3], [42, 2, 12, 6], [58, 9, 16, 1.5],
-  [72, 5, 13, 4.5], [86, 14, 15, 8], [95, 3, 12, 10.5],
-] as const;
-
-/** The guidance of grace: a drifting golden wisp with orbiting tendrils. */
-function GraceWisp() {
-  const reduceMotion = useReducedMotion();
-  return (
-    <div aria-hidden="true" className="relative mx-auto size-44">
-      {/* Descending shaft of light */}
-      <div
-        className="absolute -top-28 left-1/2 h-32 w-40 -translate-x-1/2 blur-xl [clip-path:polygon(38%_0,62%_0,88%_100%,12%_100%)]"
-        style={{
-          background: `linear-gradient(to bottom, ${GOLD}00, ${GOLD}2e)`,
-        }}
-      />
-      {/* Halo */}
-      <motion.div
-        animate={
-          reduceMotion ? undefined : { scale: [1, 1.18, 1], opacity: [0.55, 0.9, 0.55] }
-        }
-        transition={{ duration: 4.5, repeat: Infinity, ease: "easeInOut" }}
-        className="absolute inset-0 rounded-full blur-lg"
-        style={{
-          background: `radial-gradient(circle, ${GOLD}59, transparent 62%)`,
-        }}
-      />
-      {/* Core */}
-      <motion.span
-        animate={reduceMotion ? undefined : { scale: [1, 1.3, 1] }}
-        transition={{ duration: 2.8, repeat: Infinity, ease: "easeInOut" }}
-        className="absolute left-1/2 top-1/2 size-3 -translate-x-1/2 -translate-y-1/2 rounded-full"
-        style={{
-          backgroundColor: GOLD_LIGHT,
-          boxShadow: `0 0 22px 6px ${GOLD}b3`,
-        }}
-      />
-      {/* Orbiting tendrils, two rings counter-rotating */}
-      <motion.svg
-        viewBox="0 0 176 176"
-        className="absolute inset-0"
-        animate={reduceMotion ? undefined : { rotate: 360 }}
-        transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-        fill="none"
-        stroke={GOLD}
-        strokeLinecap="round"
-      >
-        <path d="M88 22 A66 66 0 0 1 154 88" strokeWidth="1.6" opacity="0.55" />
-        <path d="M88 154 A66 66 0 0 1 22 88" strokeWidth="1.2" opacity="0.3" />
-      </motion.svg>
-      <motion.svg
-        viewBox="0 0 176 176"
-        className="absolute inset-0"
-        animate={reduceMotion ? undefined : { rotate: -360 }}
-        transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
-        fill="none"
-        stroke={GOLD}
-        strokeLinecap="round"
-      >
-        <path d="M132 44 A62 62 0 0 1 148 100" strokeWidth="1" opacity="0.4" />
-        <path d="M44 132 A62 62 0 0 1 28 76" strokeWidth="1.4" opacity="0.5" />
-      </motion.svg>
-      {/* Rising sparks */}
-      {!reduceMotion &&
-        [22, 48, 70, 84].map((x, i) => (
-          <motion.span
-            key={x}
-            animate={{ y: [8, -34], opacity: [0, 0.8, 0] }}
-            transition={{
-              duration: 3.4 + i * 0.6,
-              delay: i * 1.1,
-              repeat: Infinity,
-              ease: "easeOut",
-            }}
-            className="absolute size-1 rounded-full"
-            style={{
-              left: `${x}%`,
-              top: "58%",
-              backgroundColor: GOLD_LIGHT,
-              boxShadow: `0 0 6px 1px ${GOLD}99`,
-            }}
-          />
-        ))}
-    </div>
-  );
-}
-
-/** A faint Erdtree on the horizon, glowing behind the section. */
-function Erdtree() {
-  return (
-    <div
-      aria-hidden="true"
-      className="pointer-events-none absolute inset-y-0 right-0 hidden w-[44%] overflow-hidden lg:block"
-    >
-      <div
-        className="absolute right-[8%] top-[8%] h-[55%] w-[80%] rounded-[100%] blur-3xl"
-        style={{ background: `radial-gradient(ellipse, ${GOLD}26, transparent 65%)` }}
-      />
-      <svg
-        viewBox="0 0 400 560"
-        className="absolute inset-y-0 right-0 h-full"
-        fill="none"
-        stroke={GOLD}
-        strokeLinecap="round"
-        opacity="0.32"
-      >
-        <path d="M210 560 C206 460 202 380 200 330 C198 290 196 260 200 230" strokeWidth="7" />
-        <path d="M200 330 C185 300 170 285 148 272" strokeWidth="3.5" />
-        <path d="M200 300 C218 272 236 258 262 248" strokeWidth="4" />
-        <path d="M200 230 C185 185 160 155 118 132" strokeWidth="3" />
-        <path d="M200 230 C202 178 206 148 224 112" strokeWidth="3.2" />
-        <path d="M200 230 C222 190 252 162 296 144" strokeWidth="2.8" />
-        <path d="M148 272 C120 250 100 236 74 228" strokeWidth="2" />
-        <path d="M262 248 C292 232 314 224 342 222" strokeWidth="2.2" />
-        <path d="M224 112 C232 84 244 62 262 44" strokeWidth="2" />
-        <path d="M118 132 C100 110 88 92 82 68" strokeWidth="1.8" />
-        <path d="M296 144 C318 122 334 100 344 74" strokeWidth="1.8" />
-        {[
-          [66, 96], [118, 58], [176, 36], [238, 28], [298, 44], [344, 86],
-          [96, 152], [200, 64], [330, 140],
-        ].map(([cx, cy], i) => (
-          <circle key={i} cx={cx} cy={cy} r={3 + (i % 3)} fill={GOLD} stroke="none" opacity="0.35" />
-        ))}
-      </svg>
-    </div>
-  );
-}
-
-/** The shattered ring, turning very slowly on the far side. */
-function ShatteredRing() {
-  const reduceMotion = useReducedMotion();
-  return (
-    <div
-      aria-hidden="true"
-      className="pointer-events-none absolute inset-y-0 left-[-6%] hidden w-[36%] items-center overflow-hidden lg:flex"
-    >
-      <motion.svg
-        viewBox="0 0 300 300"
-        className="w-full opacity-25"
-        animate={reduceMotion ? undefined : { rotate: 360 }}
-        transition={{ duration: 140, repeat: Infinity, ease: "linear" }}
-        fill="none"
-        stroke={GOLD}
-        strokeLinecap="round"
-      >
-        {/* Broken outer ring */}
-        <path d="M150 22 A128 128 0 0 1 272 122" strokeWidth="5" />
-        <path d="M276 168 A128 128 0 0 1 186 272" strokeWidth="5" />
-        <path d="M118 274 A128 128 0 0 1 24 176" strokeWidth="4" />
-        <path d="M28 122 A128 128 0 0 1 110 30" strokeWidth="3" />
-        {/* The tilted shard through the center */}
-        <path d="M150 40 L150 150" strokeWidth="4" transform="rotate(24 150 150)" />
-        <path d="M150 150 L150 252" strokeWidth="5" transform="rotate(24 150 150)" />
-        {/* Inner arc fragments */}
-        <path d="M150 84 A66 66 0 0 1 214 144" strokeWidth="2.5" opacity="0.7" />
-        <path d="M92 178 A66 66 0 0 1 108 100" strokeWidth="2" opacity="0.5" />
-      </motion.svg>
-    </div>
-  );
-}
-
-/** An ornate straight sword, lying behind Fia's line. */
-function DeathBlade() {
-  const reduceMotion = useReducedMotion();
-  return (
-    <motion.svg
-      viewBox="0 0 800 64"
-      preserveAspectRatio="none"
-      className="absolute inset-x-0 top-1/2 h-14 w-full -translate-y-1/2"
-      aria-hidden="true"
-      animate={reduceMotion ? undefined : { opacity: [0.3, 0.5, 0.3] }}
-      transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
-      style={{ filter: `drop-shadow(0 0 10px ${GOLD}66)` }}
-    >
-      {/* Pommel + grip */}
-      <circle cx="24" cy="32" r="7" stroke={GOLD} strokeWidth="2" fill="none" />
-      <circle cx="24" cy="32" r="2.5" fill={GOLD} />
-      <rect x="34" y="28" width="52" height="8" rx="3" fill="none" stroke={GOLD} strokeWidth="1.5" />
-      {[44, 54, 64, 74].map((x) => (
-        <line key={x} x1={x} y1="28" x2={x + 4} y2="36" stroke={GOLD} strokeWidth="1" opacity="0.7" />
-      ))}
-      {/* Crossguard, flared horns */}
-      <path d="M96 10 C88 22 88 42 96 54" stroke={GOLD} strokeWidth="2.5" fill="none" />
-      <line x1="97" y1="12" x2="97" y2="52" stroke={GOLD} strokeWidth="3" />
-      {/* Blade with fuller */}
-      <path
-        d={`M104 26 L720 28 L784 32 L720 36 L104 38 Z`}
-        fill={`${GOLD}14`}
-        stroke={GOLD}
-        strokeWidth="1.5"
-        strokeLinejoin="round"
-      />
-      <line x1="112" y1="32" x2="712" y2="32" stroke={GOLD} strokeWidth="1" opacity="0.55" />
-    </motion.svg>
-  );
-}
-
-/** Ornamental rule: line, diamond, line. */
-function GoldRule({ className }: { className?: string }) {
-  return (
-    <div aria-hidden="true" className={`flex items-center gap-3 ${className ?? ""}`}>
-      <span className="h-px flex-1" style={{ background: `linear-gradient(to right, transparent, ${GOLD}66)` }} />
-      <span className="size-1.5 rotate-45" style={{ backgroundColor: `${GOLD}b3` }} />
-      <span className="h-px flex-1" style={{ background: `linear-gradient(to left, transparent, ${GOLD}66)` }} />
-    </div>
-  );
-}
-
+/**
+ * A quiet aside on the About page: my favorite game, and the one line
+ * from it that stuck with me. Deliberately minimal — no fan art, no
+ * lore dump, just the quote and a small mention.
+ */
 export function TarnishedMessages() {
-  const reduceMotion = useReducedMotion();
-
   return (
-    <div className="relative overflow-hidden">
-      {/* Edge vignette so the gold burns against true black */}
-      <div
-        aria-hidden="true"
-        className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_40%,rgba(0,0,0,0.55)_100%)]"
-      />
-      <ShatteredRing />
-      <Erdtree />
-
-      {/* Embers drifting down across the band */}
-      {!reduceMotion &&
-        EMBERS.map(([left, top, dur, delay]) => (
-          <motion.span
-            key={`${left}-${top}`}
-            aria-hidden="true"
-            animate={{
-              x: [0, -90, -150],
-              y: [0, 140, 260],
-              rotate: [0, 90, 200],
-              opacity: [0, 0.7, 0],
-            }}
-            transition={{ duration: dur, delay, repeat: Infinity, ease: "linear" }}
-            className="pointer-events-none absolute size-1.5 rounded-[2px]"
-            style={{
-              left: `${left}%`,
-              top: `${top}%`,
-              backgroundColor: GOLD,
-              boxShadow: `0 0 6px 1px ${GOLD}59`,
-            }}
-          />
-        ))}
-
-      <div className="relative mx-auto max-w-5xl px-6 py-32">
-        <Reveal>
-          <div className="mx-auto flex max-w-md items-center gap-4">
-            <GoldRule className="flex-1" />
-            <p
-              className="whitespace-nowrap text-xs uppercase tracking-[0.3em]"
-              style={{ color: `${GOLD}b3` }}
-            >
-              From the Lands Between
-            </p>
-            <GoldRule className="flex-1" />
-          </div>
-        </Reveal>
-
-        {/* Screen-text heading, the way the game announces things */}
-        <motion.h2
-          initial={
-            reduceMotion
-              ? undefined
-              : { opacity: 0, scale: 1.05, filter: "blur(8px)" }
-          }
-          whileInView={
-            reduceMotion ? undefined : { opacity: 1, scale: 1, filter: "blur(0px)" }
-          }
-          viewport={{ once: true, margin: "-15% 0px" }}
-          transition={{ duration: 1.6, ease: [0.22, 1, 0.36, 1] }}
-          className="mt-8 bg-gradient-to-b from-[#f5e6c4] via-[#e2c078] to-[#a8863f] bg-clip-text text-center font-heading text-3xl font-medium uppercase tracking-[0.16em] text-transparent [filter:drop-shadow(0_0_20px_rgba(213,178,106,0.3))] sm:text-5xl"
-        >
-          Arise now, ye Tarnished
-        </motion.h2>
-        <p
-          className="mt-3 text-center text-[11px] uppercase tracking-[0.25em]"
-          style={{ color: `${GOLD}80` }}
-        >
-          Elden Ring, opening narration
+    <div className="mx-auto max-w-2xl px-6 py-32 text-center">
+      <Reveal>
+        <p className="text-[11px] uppercase tracking-[0.3em] text-muted-foreground">
+          Off the clock
         </p>
+      </Reveal>
 
-        <Reveal className="mt-10">
-          <GraceWisp />
-        </Reveal>
+      <Reveal delay={0.1}>
+        <blockquote className="mt-8 font-heading text-3xl font-medium italic leading-snug sm:text-4xl">
+          “O Death, become my blade once more.”
+        </blockquote>
+      </Reveal>
 
-        <GoldRule className="mx-auto mt-12 max-w-2xl" />
+      <Reveal delay={0.2}>
+        <div className="mx-auto mt-6 flex max-w-[200px] items-center gap-3">
+          <span className="h-px flex-1 bg-gradient-to-r from-transparent to-grace/60" />
+          <span aria-hidden="true" className="size-1 rotate-45 bg-grace/70" />
+          <span className="h-px flex-1 bg-gradient-to-l from-transparent to-grace/60" />
+        </div>
+        <p className="mt-4 text-xs uppercase tracking-[0.25em] text-grace">
+          Maliketh, the Black Blade
+        </p>
+      </Reveal>
 
-        <StaggerGroup className="mt-12 grid grid-cols-1 gap-6 md:grid-cols-3">
-          {QUOTES.map((quote) => (
-            <StaggerItem key={quote.by}>
-              <div
-                className="group relative flex h-full flex-col justify-between p-7 backdrop-blur-sm transition-shadow duration-500"
-                style={{
-                  border: `1px solid ${GOLD}4d`,
-                  backgroundColor: "rgba(10, 8, 4, 0.55)",
-                }}
-              >
-                {["-top-1 -left-1", "-top-1 -right-1", "-bottom-1 -left-1", "-bottom-1 -right-1"].map(
-                  (pos) => (
-                    <span
-                      key={pos}
-                      aria-hidden="true"
-                      className={`absolute ${pos} size-2 rotate-45`}
-                      style={{ backgroundColor: `${GOLD}cc` }}
-                    />
-                  ),
-                )}
-                <span
-                  aria-hidden="true"
-                  className="pointer-events-none absolute inset-1.5"
-                  style={{ border: `1px solid ${GOLD}26` }}
-                />
-                <span
-                  aria-hidden="true"
-                  className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-500 group-hover:opacity-100"
-                  style={{ boxShadow: `inset 0 0 44px ${GOLD}21, 0 0 30px ${GOLD}1f` }}
-                />
-                <p
-                  className="text-center font-heading text-xl italic leading-relaxed"
-                  style={{ color: GOLD_LIGHT }}
-                >
-                  “{quote.q}”
-                </p>
-                <div>
-                  <GoldRule className="mx-auto my-4 max-w-[120px]" />
-                  <p
-                    className="text-center text-[10px] uppercase tracking-[0.25em]"
-                    style={{ color: `${GOLD}b3` }}
-                  >
-                    {quote.by}
-                  </p>
-                </div>
-              </div>
-            </StaggerItem>
-          ))}
-        </StaggerGroup>
-
-        {/* The centerpiece: Maliketh's line, laid over the blade */}
-        <Reveal className="mt-10">
-          <div
-            className="group relative overflow-hidden px-8 py-14 backdrop-blur-sm sm:px-16"
-            style={{
-              border: `1px solid ${GOLD}59`,
-              backgroundColor: "rgba(8, 6, 3, 0.6)",
-            }}
-          >
-            {["-top-1 -left-1", "-top-1 -right-1", "-bottom-1 -left-1", "-bottom-1 -right-1"].map(
-              (pos) => (
-                <span
-                  key={pos}
-                  aria-hidden="true"
-                  className={`absolute ${pos} size-2.5 rotate-45`}
-                  style={{ backgroundColor: GOLD }}
-                />
-              ),
-            )}
-            <span
-              aria-hidden="true"
-              className="pointer-events-none absolute inset-2"
-              style={{ border: `1px solid ${GOLD}26` }}
-            />
-            <DeathBlade />
-            <p
-              className="relative text-center font-heading text-2xl font-medium italic leading-snug [filter:drop-shadow(0_0_14px_rgba(213,178,106,0.35))] sm:text-4xl"
-              style={{ color: GOLD_LIGHT }}
-            >
-              “O Death, become my blade once more.”
-            </p>
-            <p
-              className="relative mt-5 text-center text-[11px] uppercase tracking-[0.3em]"
-              style={{ color: `${GOLD}b3` }}
-            >
-              Maliketh, the Black Blade
-            </p>
-          </div>
-        </Reveal>
-
-        <Reveal className="mt-14">
-          <p className="mx-auto max-w-md text-center text-sm text-muted-foreground">
-            My favorite game, full stop. The worlds I want my backends to
-            run look a lot like this one.
-          </p>
-        </Reveal>
-      </div>
+      <Reveal delay={0.3}>
+        <p className="mt-10 text-sm text-muted-foreground">
+          Elden Ring is my favorite game.
+        </p>
+      </Reveal>
     </div>
   );
 }
